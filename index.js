@@ -3,12 +3,19 @@ const path = require("path");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const connectDB = require("./config/db");
 
 dotenv.config({ path: "./config/config.env" });
 
+// Database Connection
+connectDB();
+
 const app = express();
 
+// Body Parser
 app.use(express.json());
+
+// Enable CORS
 app.use(cors());
 
 // Routes
