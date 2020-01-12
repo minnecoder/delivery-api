@@ -1,12 +1,8 @@
 const express = require("express");
+const { getNotes, getSingleNote } = require("../controllers/notes");
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("This will return all notes");
-});
-
-router.get("/:id", (req, res) => {
-  res.send("This will return notes for a single route");
-});
-
+router.route("/").get(getNotes);
+router.route("/:id").get(getSingleNote);
 module.exports = router;
