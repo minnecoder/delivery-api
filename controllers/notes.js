@@ -1,13 +1,36 @@
+const Note = require("../models/Note");
+
 // @desc  Get all notes
 // @route GET /notes
 // @access Public
-exports.getNotes = (req, res, next) => {
-  res.send("This will return all notes");
+exports.getNotes = async (req, res, next) => {
+  try {
+    const notes = await Note.find();
+
+    return res.status(200).json({
+      success: true,
+      count: notes.length,
+      data: notes
+    });
+  } catch (error) {
+    console.error(err);
+    res.status(500).json({ error: "Server Error" });
+  }
 };
 
-// @desc  Get single note
-// @route GET /notes/:id
+// @desc  Add note
+// @route POST /notes
 // @access Public
-exports.getSingleNote = (req, res, next) => {
-  res.send("This is one note");
+exports.addNote = async (req, res, next) => {
+  try {
+    const note = await Note.create(req.body);
+
+    return res.status(200).json({
+      success: true,
+      data: note
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
 };
