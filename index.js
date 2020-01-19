@@ -3,10 +3,12 @@ const path = require("path");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
 const connectDB = require("./config/db");
 
 dotenv.config({ path: "./config/config.env" });
 const app = express();
+app.use(bodyParser.json());
 
 // Database Connection
 connectDB();
@@ -21,13 +23,13 @@ app.use(cors());
 const notes = require("./routes/notes");
 const dashboard = require("./routes/dashboard");
 const scanner = require("./routes/scanner");
+const user = require("./routes/user");
 
 app.get("/", (req, res) => res.send("Hello World!"));
 app.use("/notes", notes);
 app.use("/dashboard", dashboard);
 app.use("/scanner", scanner);
+app.use("/user", user);
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () =>
-  console.log(`Server is running in ${process.env.NODE_ENV} on port ${PORT}`)
-);
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
