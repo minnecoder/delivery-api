@@ -1,4 +1,15 @@
 const Note = require("../models/Note");
+const Joi = require("@hapi/joi");
+
+// Validation
+const schema = {
+  custName: Joi.string().required(),
+  address: Joi.string().required(),
+  suite: Joi.string().required(),
+  city: Joi.string().required(),
+  deliveryLocation: Joi.string().required(),
+  notes: Joi.string().required()
+};
 
 // @desc  Get all notes
 // @route GET /notes

@@ -1,6 +1,21 @@
 const bcrypt = require("bcryptjs");
-
+const Joi = require("@hapi/joi");
 const User = require("../models/User");
+
+// Validation
+const schema = {
+  userName: Joi.string()
+    .min(6)
+    .required(),
+  email: Joi.string()
+    .min(6)
+    .required()
+    .email(),
+  password: Joi.string()
+    .min(8)
+    .required(),
+  role: Joi.string().required()
+};
 
 // @desc Add user
 // @route /user/add
