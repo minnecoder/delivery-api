@@ -1,15 +1,5 @@
 const Note = require("../models/Note");
-const Joi = require("@hapi/joi");
-
-// Validation
-const schema = {
-  custName: Joi.string().required(),
-  address: Joi.string().required(),
-  suite: Joi.string().required(),
-  city: Joi.string().required(),
-  deliveryLocation: Joi.string().required(),
-  notes: Joi.string().required()
-};
+const { noteValidation } = require("../validation");
 
 // @desc  Get all notes
 // @route GET /notes
@@ -33,6 +23,10 @@ exports.getNotes = async (req, res, next) => {
 // @route POST /notes
 // @access Public
 exports.addNote = async (req, res, next) => {
+  // Validate data before adding
+  const { error } = noteValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
   try {
     const note = await Note.create(req.body);
 
