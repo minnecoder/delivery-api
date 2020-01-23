@@ -6,8 +6,9 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/db");
 
-dotenv.config({ path: "./config/config.env" });
 const app = express();
+
+dotenv.config({ path: "./config/config.env" });
 app.use(bodyParser.json());
 
 // Database Connection
