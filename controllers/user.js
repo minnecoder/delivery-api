@@ -5,7 +5,7 @@ const { userValidation, loginValidation } = require("../validation");
 
 // @desc Add user
 // @route /user/add
-// @access Admin
+// @access Driver, Admin
 
 exports.addUser = async (req, res, next) => {
   // Validate data before adding
@@ -41,7 +41,7 @@ exports.addUser = async (req, res, next) => {
 
 // @desc Login in user
 // @route POST /user/login
-// @access Public
+// @access Driver, Admin
 
 exports.loginUser = async (req, res) => {
   // Validate entered data
@@ -56,7 +56,9 @@ exports.loginUser = async (req, res) => {
   if (!validPassword) return res.status(400).send("Password is wrong");
 
   // Create and assign token
-  const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-
-  res.send("Logged in");
+  const token = jwt.sign(
+    { _id: user._id, role: user.role },
+    process.env.JWT_SECRET
+  );
+  res.header("Authorization", token).send(token);
 };

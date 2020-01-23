@@ -1,4 +1,5 @@
 const Note = require("../models/Note");
+const verify = require("../routes/verifyToken");
 const { noteValidation } = require("../validation");
 
 // @desc  Get all notes
