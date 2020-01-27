@@ -15,7 +15,7 @@ exports.getNotes = async (req, res, next) => {
       data: notes
     });
   } catch (error) {
-    console.error(err);
+    console.error(error);
     res.status(500).json({ error: "Server Error" });
   }
 };
