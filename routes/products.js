@@ -13,10 +13,10 @@ const router = express.Router();
 router
   .route("/")
   .get(getProducts)
-  .post(addProduct)
-  
-  router
+  .post(addProduct);
+
+router
   .route("/:id")
   .get(getSingleProduct)
-  .put(updateProduct);
+  .put(updateProduct)
   .delete(deleteProduct);

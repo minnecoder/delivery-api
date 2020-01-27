@@ -2,9 +2,10 @@ const express = require("express");
 const verify = require("../routes/verifyToken");
 const {
   getCustomers,
-  addCustomers,
-  updateCustomers,
-  deleteCustomers
+  getSingleCustomer,
+  addCustomer,
+  updateCustomer,
+  deleteCustomer
 } = require("../controllers/customers");
 
 const router = express.Router();
@@ -12,6 +13,10 @@ const router = express.Router();
 router
   .route("/")
   .get(getCustomers)
-  .post(addCustomers)
-  .update(updateCustomers)
-  .delete(deleteCustomers);
+  .post(addCustomer);
+
+router
+  .route("/:id")
+  .get(getSingleCustomer)
+  .put(updateCustomer)
+  .delete(deleteCustomer);
