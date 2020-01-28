@@ -20,3 +20,4 @@ router
   .get(getSingleCustomer)
   .put(updateCustomer)
   .delete(deleteCustomer);
+module.exports = router;

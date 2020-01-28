@@ -20,3 +20,4 @@ router
   .get(getSingleProduct)
   .put(updateProduct)
   .delete(deleteProduct);
+module.exports = router;

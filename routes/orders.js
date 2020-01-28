@@ -15,7 +15,9 @@ router
   .get(getOrders)
   .post(addOrder);
 
-router("/:id")
+router
+  .route("/:id")
   .get(getSingleOrder)
   .put(updateOrder)
   .delete(deleteOrder);
+module.exports = router;

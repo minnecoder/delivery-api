@@ -5,7 +5,7 @@ const { orderValidation } = require("../validation");
 // @desc Get all orders
 // @route GET /orders
 // @access User
-exports.getOrders = async (req, res, next) => {
+exports.getOrders = async (req, res) => {
   try {
     const orders = await Order.find();
 
@@ -23,7 +23,7 @@ exports.getOrders = async (req, res, next) => {
 // @desc Get single order
 // @route GET /orders/:id
 // @access User
-exports.getSingleOrder = async (req, res, next) => {
+exports.getSingleOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
 
@@ -40,7 +40,7 @@ exports.getSingleOrder = async (req, res, next) => {
 // @desc Add order
 // @route POST /orders
 // @access User
-exports.addOrder = async (req, res, next) => {
+exports.addOrder = async (req, res) => {
   // Validate data before adding
   const { error } = orderValidation(req.body);
   if (error) {
@@ -63,7 +63,7 @@ exports.addOrder = async (req, res, next) => {
 // @desc Update order
 // @route UPDATE /orders/:id
 // @access User
-exports.updateOrder = async (req, res, next) => {
+exports.updateOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id).exec();
     order.set(req.body);
@@ -81,7 +81,7 @@ exports.updateOrder = async (req, res, next) => {
 // @desc Delete order
 // @route DELETE /orders/:id
 // @access User
-exports.deleteOrder = async (req, res, next) => {
+exports.deleteOrder = async (req, res) => {
   try {
     const result = await Order.deleteOne({ _id: req.params.id });
     return res.status(200).json({

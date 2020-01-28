@@ -25,8 +25,10 @@ const notes = require("./routes/notes");
 const dashboard = require("./routes/dashboard");
 const scanner = require("./routes/scanner");
 const user = require("./routes/user");
+const orders = require("./routes/orders");
+const products = require("./routes/products");
+const customers = require("./routes/customers");
 
-app.get("/", (req, res) => res.send("Hello World!"));
 app.use("/notes", notes);
 app.use("/dashboard", dashboard);
 app.use("/scanner", scanner);
