@@ -31,6 +31,9 @@ app.use("/notes", notes);
 app.use("/dashboard", dashboard);
 app.use("/scanner", scanner);
 app.use("/user", user);
+app.use("/orders", orders);
+app.use("/products", products);
+app.use("/customers", customers);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

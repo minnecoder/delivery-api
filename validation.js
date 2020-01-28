@@ -39,12 +39,12 @@ const noteValidation = data => {
         "string.empty": "Notes is required"
       })
   };
-  return Joi.assert(data, noteSchema);
+  return noteSchema.validate(data);
 };
 module.exports.noteValidation = noteValidation;
 
 const userValidation = data => {
-  const schema = Joi.object({
+  const userSchema = Joi.object({
     userName: Joi.string()
       .min(6)
       .max(50)
@@ -58,13 +58,13 @@ const userValidation = data => {
       .required(),
     role: Joi.string().required()
   });
-  return schema.validate(data);
+  return userSchema.validate(data);
 };
 
 module.exports.userValidation = userValidation;
 
 const loginValidation = data => {
-  const schema = Joi.object({
+  const loginSchema = Joi.object({
     userName: Joi.string()
       .min(6)
       .max(50)
@@ -73,7 +73,65 @@ const loginValidation = data => {
       .min(8)
       .required()
   });
-  return schema.validate(data);
+  return loginSchema.validate(data);
 };
 
 module.exports.loginValidation = loginValidation;
+
+const customerValidation = data => {
+  const customerSchema = Joi.object({
+    customerID: Joi.number().required(),
+    firstName: Joi.string()
+      .min(4)
+      .max(50)
+      .required(),
+    lastName: Joi.string()
+      .min(4)
+      .max(50)
+      .required(),
+    address: Joi.string()
+      .max(500)
+      .required(),
+    city: Joi.string()
+      .min(4)
+      .max(50)
+      .required(),
+    state: Joi.string()
+      .min(2)
+      .max(50)
+      .required(),
+    zipCode: Joi.string()
+      .min(4)
+      .max(20)
+      .required(),
+    phone: Joi.string()
+      .min(4)
+      .max(20)
+      .required(),
+    email: Joi.string()
+      .min(8)
+      .max(50)
+      .required(),
+    password: Joi.string()
+      .min(8)
+      .required()
+  });
+  return customerSchema.validate(data);
+};
+
+module.exports.customerValidation = customerValidation;
+
+const productValidation = data => {
+  const productSchema = Joi.object({
+    productID: Joi.number().required(),
+    name: Joi.string().required(),
+    description: Joi.string().required(),
+    cost: Joi.number().required(),
+    price: Joi.number().required(),
+    onHand: Joi.number().required(),
+    picture: Joi.string().required()
+  });
+  return productSchema.validate(data);
+};
+
+module.exports.productValidation = productValidation;
