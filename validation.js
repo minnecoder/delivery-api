@@ -80,7 +80,6 @@ module.exports.loginValidation = loginValidation;
 
 const customerValidation = data => {
   const customerSchema = Joi.object({
-    customerID: Joi.number().required(),
     firstName: Joi.string()
       .min(4)
       .max(50)

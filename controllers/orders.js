@@ -1,13 +1,17 @@
-const Order = require("../models/Product");
+const Order = require("../models/Order");
+const Product = require("../models/Product");
 const verify = require("../routes/verifyToken");
-const { orderValidation } = require("../validation");
+// const { orderValidation } = require("../validation");
 
 // @desc Get all orders
 // @route GET /orders
 // @access User
 exports.getOrders = async (req, res) => {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find()
+      .populate("customer")
+      .populate("products", "_id name description")
+      .exec();
 
     return res.status(200).json({
       success: true,
@@ -42,10 +46,10 @@ exports.getSingleOrder = async (req, res) => {
 // @access User
 exports.addOrder = async (req, res) => {
   // Validate data before adding
-  const { error } = orderValidation(req.body);
-  if (error) {
-    return res.status(400).send(error.details[0].message);
-  }
+  // const { error } = orderValidation(req.body);
+  // if (error) {
+  //   return res.status(400).send(error.details[0].message);
+  // }
 
   try {
     const order = await Order.create(req.body);
@@ -67,7 +71,7 @@ exports.updateOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id).exec();
     order.set(req.body);
-    const result = await Order.save();
+    const result = await order.save();
     return res.status(200).json({
       success: true,
       data: order

@@ -67,7 +67,7 @@ exports.updateCustomer = async (req, res, next) => {
   try {
     const customer = await Customer.findById(req.params.id).exec();
     customer.set(req.body);
-    const result = await Customer.save();
+    const result = await customer.save();
     return res.status(200).json({
       success: true,
       data: customer

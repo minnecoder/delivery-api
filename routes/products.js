@@ -16,7 +16,7 @@ router
   .post(addProduct);
 
 router
-  .route("/:id")
+  .route("/:productID")
   .get(getSingleProduct)
   .put(updateProduct)
   .delete(deleteProduct);

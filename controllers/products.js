@@ -25,7 +25,7 @@ exports.getProducts = async (req, res, next) => {
 // @access User
 exports.getSingleProduct = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.productID);
 
     return res.status(200).json({
       success: true,
@@ -65,7 +65,7 @@ exports.addProduct = async (req, res, next) => {
 // @access User
 exports.updateProduct = async (req, res, next) => {
   try {
-    const product = awaitProduct.findById(req.params.id).exec();
+    const product = await Product.findById(req.params.id).exec();
     product.set(req.body);
     const result = await product.save();
     return res.status(200).json({
