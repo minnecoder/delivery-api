@@ -9,8 +9,11 @@ const verify = require("../routes/verifyToken");
 exports.getOrders = async (req, res) => {
   try {
     const orders = await Order.find()
-      .populate("customer")
-      .populate("products", "_id name description")
+      .populate(
+        "customer",
+        "firstName lastName address city state zipCode phone email "
+      )
+      .populate("products", "name description price picture")
       .exec();
 
     return res.status(200).json({
