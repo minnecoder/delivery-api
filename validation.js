@@ -134,3 +134,15 @@ const productValidation = data => {
 };
 
 module.exports.productValidation = productValidation;
+
+const orderValidation = data => {
+  const orderSchema = Joi.object({
+    products: Joi.array().required(),
+    customer: Joi.object().required(),
+    status: Joi.string(),
+    total: Joi.number().required()
+  });
+  return orderSchema.validate(data);
+};
+
+module.exports.orderValidation = orderValidation;
