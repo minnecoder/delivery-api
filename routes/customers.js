@@ -12,7 +12,7 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(getCustomers)
+  .get(verify, getCustomers)
   .post(addCustomer);
 
 router

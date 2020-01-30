@@ -5,7 +5,8 @@ const {
   getSingleOrder,
   addOrder,
   updateOrder,
-  deleteOrder
+  deleteOrder,
+  changeOrderStatus
 } = require("../controllers/orders");
 
 const router = express.Router();
@@ -16,8 +17,9 @@ router
   .post(addOrder);
 
 router
-  .route("/:productID")
+  .route("/:orderID")
   .get(getSingleOrder)
   .put(updateOrder)
   .delete(deleteOrder);
+
 module.exports = router;
