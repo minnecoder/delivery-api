@@ -1,6 +1,11 @@
 const express = require("express");
 const verify = require("../routes/verifyToken");
 const {
+  scannerAccess,
+  dashboardAccess,
+  ecommerceAccess
+} = require("./verifyRoles");
+const {
   getCustomers,
   getSingleCustomer,
   addCustomer,

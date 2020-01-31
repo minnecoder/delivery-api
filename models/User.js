@@ -20,7 +20,8 @@ const UserSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    required: true
+    required: true,
+    enum: ["driver", "manager", "admin", "user", "customer"]
   },
   createdAt: {
     type: Date,
