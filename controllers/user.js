@@ -46,19 +46,20 @@ exports.addUser = async (req, res, next) => {
 exports.loginUser = async (req, res) => {
   // Validate entered data
   const { error } = loginValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ error: error.details[0].message });
   // Check if user exists
   const user = await User.findOne({ userName: req.body.userName });
-  if (!user) return res.status(400).send("User is not found");
+  if (!user) return res.status(400).json({ error: "User is not found" });
 
   // Check if password is correct
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  if (!validPassword) return res.status(400).send("Password is wrong");
+  if (!validPassword)
+    return res.status(400).json({ error: "Password is wrong" });
 
   // Create and assign token
   const token = jwt.sign(
     { _id: user._id, role: user.role },
     process.env.JWT_SECRET
   );
-  res.header("Authorization", token).send(token);
+  res.header("Authorization", token).json({ token });
 };

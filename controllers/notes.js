@@ -25,7 +25,7 @@ exports.getNotes = async (req, res, next) => {
 exports.addNote = async (req, res, next) => {
   // Validate data before adding
   const { error } = noteValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ error: error.details[0].message });
 
   try {
     const note = await Note.create(req.body);
