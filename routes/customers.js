@@ -1,10 +1,6 @@
 const express = require("express");
 const verify = require("../routes/verifyToken");
-const {
-  scannerAccess,
-  dashboardAccess,
-  ecommerceAccess
-} = require("./verifyRoles");
+const { customerCUDAccess } = require("./verifyRoles");
 const {
   getCustomers,
   getSingleCustomer,
@@ -17,12 +13,12 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(verify, getCustomers)
-  .post(addCustomer);
+  .get(getCustomers)
+  .post(verify, customerCUDAccess, addCustomer);
 
 router
   .route("/:id")
   .get(getSingleCustomer)
-  .put(updateCustomer)
-  .delete(deleteCustomer);
+  .put(verify, customerCUDAccess, updateCustomer)
+  .delete(verify, customerCUDAccess, deleteCustomer);
 module.exports = router;

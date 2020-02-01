@@ -1,5 +1,4 @@
 const Note = require("../models/Note");
-const verify = require("../routes/verifyToken");
 const { noteValidation } = require("../validation");
 
 // @desc  Get all notes
@@ -34,6 +33,39 @@ exports.addNote = async (req, res, next) => {
     return res.status(200).json({
       success: true,
       data: note
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
+};
+
+// @desc Update note
+// @route PUT /notes/:id
+// @access
+exports.updateNote = async (req, res, next) => {
+  try {
+    const note = await Note.findById(req.params.noteID).exec();
+    note.set(req.body);
+    const result = await note.save();
+    return res.status(200).json({
+      success: true,
+      data: note
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
+};
+
+// @desc Delete note
+// @route DELETE /notes/:id
+// @access
+exports.deleteNote = async (req, res) => {
+  try {
+    const result = await Note.deleteOne({ _id: req.params.id });
+    return res.status(200).json({
+      success: true
     });
   } catch (error) {
     console.error(error);
