@@ -49,7 +49,7 @@ exports.loginUser = async (req, res) => {
   if (error) return res.status(400).json({ error: error.details[0].message });
   // Check if user exists
   const user = await User.findOne({ userName: req.body.userName });
-  if (!user) return res.status(400).json({ error: "User is not found" });
+  if (!user) return res.json({ error: "User is not found" });
 
   // Check if password is correct
   const validPassword = await bcrypt.compare(req.body.password, user.password);
