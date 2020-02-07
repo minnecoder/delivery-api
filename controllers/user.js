@@ -49,12 +49,12 @@ exports.loginUser = async (req, res) => {
   if (error) return res.status(400).json({ error: error.details[0].message });
   // Check if user exists
   const user = await User.findOne({ userName: req.body.userName });
-  if (!user) return res.json({ error: "User is not found" });
+  if (!user) return res.json({ error: "User name or password is wrong" });
 
   // Check if password is correct
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword)
-    return res.status(400).json({ error: "Password is wrong" });
+    return res.status(400).json({ error: "User name or password is wrong" });
 
   // Create and assign token
   const token = jwt.sign(
@@ -62,4 +62,23 @@ exports.loginUser = async (req, res) => {
     process.env.JWT_SECRET
   );
   res.header("Authorization", token).json({ token });
+};
+
+// @desc Get single user
+// @route POST /user/get/id:
+// @access Driver, Admin
+exports.getUser = async (req, res) => {
+  try {
+    const user = await User.find({ userName: req.params.userName }).select(
+      "userName email role"
+    );
+
+    return res.status(200).json({
+      success: true,
+      data: user
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
 };

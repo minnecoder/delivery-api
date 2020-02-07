@@ -7,7 +7,9 @@ const { customerValidation } = require("../validation");
 // @access User
 exports.getCustomers = async (req, res, next) => {
   try {
-    const customers = await Customer.find();
+    const customers = await Customer.find().select(
+      "firstName lastName address city state zipCode phone email"
+    );
 
     return res.status(200).json({
       success: true,
@@ -25,7 +27,9 @@ exports.getCustomers = async (req, res, next) => {
 // @access User
 exports.getSingleCustomer = async (req, res, next) => {
   try {
-    const customer = await Customer.findById(req.params.id);
+    const customer = await Customer.findById(req.params.id).select(
+      "firstName lastName address city state zipCode phone email"
+    );
 
     return res.status(200).json({
       success: true,
