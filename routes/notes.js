@@ -5,7 +5,8 @@ const {
   getNotes,
   addNote,
   updateNote,
-  deleteNote
+  deleteNote,
+  getSingleNote
 } = require("../controllers/notes");
 
 const router = express.Router();
@@ -13,7 +14,11 @@ const router = express.Router();
 router
   .route("/")
   .get(verify, getNotes)
-  .post(verify, addNote)
+  .post(verify, addNote);
+
+router
+  .route("/:id")
+  .get(verify, getSingleNote)
   .put(verify, updateNote)
   .delete(verify, deleteNote);
 module.exports = router;

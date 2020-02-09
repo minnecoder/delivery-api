@@ -72,3 +72,20 @@ exports.deleteNote = async (req, res) => {
     res.status(500).json({ error: "Server Error" });
   }
 };
+
+// @desc Get single note
+// @route GET /notes/:id
+// @access User
+exports.getSingleNote = async (req, res, next) => {
+  try {
+    const note = await Note.findById(req.params.noteID);
+
+    return res.status(200).json({
+      success: true,
+      data: note
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
+};
