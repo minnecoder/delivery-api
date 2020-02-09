@@ -6,7 +6,7 @@ const { noteValidation } = require("../validation");
 // @access Public
 exports.getNotes = async (req, res, next) => {
   try {
-    const notes = await Note.find();
+    const notes = await Note.find({}, null, { sort: { custName: asc } });
 
     return res.status(200).json({
       success: true,
