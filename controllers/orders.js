@@ -72,7 +72,7 @@ exports.addOrder = async (req, res) => {
 // @access User
 exports.updateOrder = async (req, res) => {
   try {
-    const order = await Order.findById(req.params.orderID).exec();
+    const order = await Order.findById(req.params.id).exec();
     order.set(req.body);
     const result = await order.save();
     return res.status(200).json({

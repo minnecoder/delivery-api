@@ -25,7 +25,7 @@ exports.getProducts = async (req, res, next) => {
 // @access User
 exports.getSingleProduct = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.productID);
+    const product = await Product.findById(req.params.id);
 
     return res.status(200).json({
       success: true,
