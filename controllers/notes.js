@@ -45,7 +45,7 @@ exports.addNote = async (req, res, next) => {
 // @access
 exports.updateNote = async (req, res, next) => {
   try {
-    const note = await Note.findById(req.params.noteID).exec();
+    const note = await Note.findById(req.params.id).exec();
     note.set(req.body);
     const result = await note.save();
     return res.status(200).json({
