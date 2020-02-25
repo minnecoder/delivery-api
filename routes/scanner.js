@@ -1,8 +1,9 @@
-const express = require("express");
+const express = require('express');
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("This is the main endpoint for the scanner app");
+router.get('/', (req, res) => {
+  res.send('This is the main endpoint for the scanner app');
 });
 
 module.exports = router;

@@ -1,24 +1,24 @@
-const express = require("express");
-const verify = require("../routes/verifyToken");
-const { orderCUDAccess } = require("./verifyRoles");
+const express = require('express');
+const verify = require('../routes/verifyToken');
+const { orderCUDAccess } = require('./verifyRoles');
 const {
   getOrders,
   getSingleOrder,
   addOrder,
   updateOrder,
   deleteOrder,
-  changeOrderStatus
-} = require("../controllers/orders");
+  // changeOrderStatus,
+} = require('../controllers/orders');
 
 const router = express.Router();
 
 router
-  .route("/")
+  .route('/')
   .get(getOrders)
   .post(verify, orderCUDAccess, addOrder);
 
 router
-  .route("/:orderID")
+  .route('/:orderID')
   .get(getSingleOrder)
   .put(verify, orderCUDAccess, updateOrder)
   .delete(verify, orderCUDAccess, deleteOrder);

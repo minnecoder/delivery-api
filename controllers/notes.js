@@ -1,5 +1,5 @@
-const Note = require("../models/Note");
-const { noteValidation } = require("../validation");
+const Note = require('../models/Note');
+const { noteValidation } = require('../validation');
 
 // @desc  Get all notes
 // @route GET /notes
@@ -11,11 +11,11 @@ exports.getNotes = async (req, res, next) => {
     return res.status(200).json({
       success: true,
       count: notes.length,
-      data: notes
+      data: notes,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -32,11 +32,11 @@ exports.addNote = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      data: note
+      data: note,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -50,11 +50,11 @@ exports.updateNote = async (req, res, next) => {
     const result = await note.save();
     return res.status(200).json({
       success: true,
-      data: note
+      data: note,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -65,11 +65,11 @@ exports.deleteNote = async (req, res) => {
   try {
     const result = await Note.deleteOne({ _id: req.params.id });
     return res.status(200).json({
-      success: true
+      success: true,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -82,10 +82,10 @@ exports.getSingleNote = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      data: note
+      data: note,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };

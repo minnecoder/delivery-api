@@ -1,6 +1,6 @@
-const Product = require("../models/Product");
-const verify = require("../routes/verifyToken");
-const { productValidation } = require("../validation");
+const Product = require('../models/Product');
+const verify = require('../routes/verifyToken');
+const { productValidation } = require('../validation');
 
 // @desc Get all products
 // @route GET /products
@@ -12,11 +12,11 @@ exports.getProducts = async (req, res, next) => {
     return res.status(200).json({
       success: true,
       count: products.length,
-      data: products
+      data: products,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -29,11 +29,11 @@ exports.getSingleProduct = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      data: product
+      data: product,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -52,11 +52,11 @@ exports.addProduct = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      data: product
+      data: product,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -70,11 +70,11 @@ exports.updateProduct = async (req, res, next) => {
     const result = await product.save();
     return res.status(200).json({
       success: true,
-      data: product
+      data: product,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -85,10 +85,10 @@ exports.deleteProduct = async (req, res, next) => {
   try {
     const result = await Product.deleteOne({ _id: req.params.id });
     return res.status(200).json({
-      success: true
+      success: true,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };

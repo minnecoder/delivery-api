@@ -1,6 +1,6 @@
-const Customer = require("../models/Customer");
-const verify = require("../routes/verifyToken");
-const { customerValidation } = require("../validation");
+const Customer = require('../models/Customer');
+const verify = require('../routes/verifyToken');
+const { customerValidation } = require('../validation');
 
 // @desc Get all customers
 // @route GET /customers
@@ -8,17 +8,17 @@ const { customerValidation } = require("../validation");
 exports.getCustomers = async (req, res, next) => {
   try {
     const customers = await Customer.find().select(
-      "firstName lastName address city state zipCode phone email"
+      'firstName lastName address city state zipCode phone email'
     );
 
     return res.status(200).json({
       success: true,
       count: customers.length,
-      data: customers
+      data: customers,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -28,16 +28,16 @@ exports.getCustomers = async (req, res, next) => {
 exports.getSingleCustomer = async (req, res, next) => {
   try {
     const customer = await Customer.findById(req.params.id).select(
-      "firstName lastName address city state zipCode phone email"
+      'firstName lastName address city state zipCode phone email'
     );
 
     return res.status(200).json({
       success: true,
-      data: customer
+      data: customer,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -56,11 +56,11 @@ exports.addCustomer = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      data: customer
+      data: customer,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -74,11 +74,11 @@ exports.updateCustomer = async (req, res, next) => {
     const result = await customer.save();
     return res.status(200).json({
       success: true,
-      data: customer
+      data: customer,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -89,10 +89,10 @@ exports.deleteCustomer = async (req, res, next) => {
   try {
     const result = await Customer.deleteOne({ _id: req.params.id });
     return res.status(200).json({
-      success: true
+      success: true,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };

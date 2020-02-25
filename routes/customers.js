@@ -1,23 +1,23 @@
-const express = require("express");
-const verify = require("../routes/verifyToken");
-const { customerCUDAccess } = require("./verifyRoles");
+const express = require('express');
+const verify = require('../routes/verifyToken');
+const { customerCUDAccess } = require('./verifyRoles');
 const {
   getCustomers,
   getSingleCustomer,
   addCustomer,
   updateCustomer,
-  deleteCustomer
-} = require("../controllers/customers");
+  deleteCustomer,
+} = require('../controllers/customers');
 
 const router = express.Router();
 
 router
-  .route("/")
+  .route('/')
   .get(getCustomers)
   .post(verify, customerCUDAccess, addCustomer);
 
 router
-  .route("/:id")
+  .route('/:id')
   .get(getSingleCustomer)
   .put(verify, customerCUDAccess, updateCustomer)
   .delete(verify, customerCUDAccess, deleteCustomer);

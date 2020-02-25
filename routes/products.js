@@ -1,23 +1,23 @@
-const express = require("express");
-const verify = require("../routes/verifyToken");
-const { productCUDAccess } = require("./verifyRoles");
+const express = require('express');
+const verify = require('../routes/verifyToken');
+const { productCUDAccess } = require('./verifyRoles');
 const {
   getProducts,
   getSingleProduct,
   addProduct,
   updateProduct,
-  deleteProduct
-} = require("../controllers/products");
+  deleteProduct,
+} = require('../controllers/products');
 
 const router = express.Router();
 
 router
-  .route("/")
+  .route('/')
   .get(getProducts)
   .post(verify, productCUDAccess, addProduct);
 
 router
-  .route("/:productID")
+  .route('/:productID')
   .get(getSingleProduct)
   .put(verify, productCUDAccess, updateProduct)
   .delete(verify, productCUDAccess, deleteProduct);

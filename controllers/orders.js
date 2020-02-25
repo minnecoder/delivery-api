@@ -1,7 +1,7 @@
-const Order = require("../models/Order");
-const Product = require("../models/Product");
-const verify = require("../routes/verifyToken");
-const { orderValidation } = require("../validation");
+const Order = require('../models/Order');
+const Product = require('../models/Product');
+const verify = require('../routes/verifyToken');
+const { orderValidation } = require('../validation');
 
 // @desc Get all orders
 // @route GET /orders
@@ -10,20 +10,20 @@ exports.getOrders = async (req, res) => {
   try {
     const orders = await Order.find()
       .populate(
-        "customer",
-        "firstName lastName address city state zipCode phone email "
+        'customer',
+        'firstName lastName address city state zipCode phone email '
       )
-      .populate("products", "name description price picture")
+      .populate('products', 'name description price picture')
       .exec();
 
     return res.status(200).json({
       success: true,
       count: orders.length,
-      data: orders
+      data: orders,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -36,11 +36,11 @@ exports.getSingleOrder = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: order
+      data: order,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -59,11 +59,11 @@ exports.addOrder = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: order
+      data: order,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -77,11 +77,11 @@ exports.updateOrder = async (req, res) => {
     const result = await order.save();
     return res.status(200).json({
       success: true,
-      data: order
+      data: order,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -92,10 +92,10 @@ exports.deleteOrder = async (req, res) => {
   try {
     const result = await Order.deleteOne({ _id: req.params.id });
     return res.status(200).json({
-      success: true
+      success: true,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    res.status(500).json({ error: 'Server Error' });
   }
 };
