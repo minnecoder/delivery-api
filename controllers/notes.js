@@ -1,5 +1,4 @@
 const Note = require('../models/Note');
-const { noteValidation } = require('../validation');
 
 // @desc  Get all notes
 // @route GET /notes
@@ -23,10 +22,6 @@ exports.getNotes = async (req, res, next) => {
 // @route POST /notes
 // @access Public
 exports.addNote = async (req, res, next) => {
-  // Validate data before adding
-  // const { error } = noteValidation(req.body);
-  // if (error) return res.status(400).json({ error: error.details[0].message });
-
   try {
     const note = await Note.create(req.body);
 
@@ -47,7 +42,7 @@ exports.updateNote = async (req, res, next) => {
   try {
     const note = await Note.findById(req.params.id).exec();
     note.set(req.body);
-    const result = await note.save();
+    await note.save();
     return res.status(200).json({
       success: true,
       data: note,
@@ -63,26 +58,18 @@ exports.updateNote = async (req, res, next) => {
 // @access
 exports.deleteNote = async (req, res) => {
   try {
-    const result = await Note.deleteOne({ _id: req.params.id });
-    return res.status(200).json({
-      success: true,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Server Error' });
-  }
-};
+    const note = await Note.findById(req.params.id);
 
-// @desc Get single note
-// @route GET /notes/:id
-// @access User
-exports.getSingleNote = async (req, res, next) => {
-  try {
-    const note = await Note.findById(req.params.noteID);
+    if (!note) {
+      return res.status(404).json({
+        success: false,
+        error: 'No note found',
+      });
+    }
+    await note.remove();
 
     return res.status(200).json({
       success: true,
-      data: note,
     });
   } catch (error) {
     console.error(error);
