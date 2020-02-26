@@ -1,43 +1,43 @@
-const Joi = require("@hapi/joi");
+const Joi = require('@hapi/joi');
 
 const noteValidation = data => {
   const noteSchema = {
     custName: Joi.string()
       .required()
       .messages({
-        "string.base": "Customer Name must be a string",
-        "string.empty": "Customer Name is required"
+        'string.base': 'Customer Name must be a string',
+        'string.empty': 'Customer Name is required',
       }),
     address: Joi.string()
       .required()
       .messages({
-        "string.base": "Address must be a string",
-        "string.empty": "Address is required"
+        'string.base': 'Address must be a string',
+        'string.empty': 'Address is required',
       }),
     suite: Joi.string()
       .required()
       .messages({
-        "string.base": "Suite must be a string",
-        "string.empty": "Suite is required"
+        'string.base': 'Suite must be a string',
+        'string.empty': 'Suite is required',
       }),
     city: Joi.string()
       .required()
       .messages({
-        "string.base": "City must be a string",
-        "string.empty": "City is required"
+        'string.base': 'City must be a string',
+        'string.empty': 'City is required',
       }),
     deliveryLocation: Joi.string()
       .required()
       .messages({
-        "string.base": "Delivery Location must be a string",
-        "string.empty": "Delivery Location is required"
+        'string.base': 'Delivery Location must be a string',
+        'string.empty': 'Delivery Location is required',
       }),
     notes: Joi.string()
       .required()
       .messages({
-        "string.base": "Notes must be a string",
-        "string.empty": "Notes is required"
-      })
+        'string.base': 'Notes must be a string',
+        'string.empty': 'Notes is required',
+      }),
   };
   return noteSchema.validate(data);
 };
@@ -56,7 +56,7 @@ const userValidation = data => {
     password: Joi.string()
       .min(8)
       .required(),
-    role: Joi.string().required()
+    role: Joi.string().required(),
   });
   return userSchema.validate(data);
 };
@@ -71,7 +71,7 @@ const loginValidation = data => {
       .required(),
     password: Joi.string()
       .min(8)
-      .required()
+      .required(),
   });
   return loginSchema.validate(data);
 };
@@ -113,7 +113,7 @@ const customerValidation = data => {
       .required(),
     password: Joi.string()
       .min(8)
-      .required()
+      .required(),
   });
   return customerSchema.validate(data);
 };
@@ -128,7 +128,7 @@ const productValidation = data => {
     cost: Joi.number().required(),
     price: Joi.number().required(),
     onHand: Joi.number().required(),
-    picture: Joi.string().required()
+    picture: Joi.string().required(),
   });
   return productSchema.validate(data);
 };
@@ -140,7 +140,7 @@ const orderValidation = data => {
     products: Joi.array().required(),
     customer: Joi.object().required(),
     status: Joi.string(),
-    total: Joi.number().required()
+    total: Joi.number().required(),
   });
   return orderSchema.validate(data);
 };
