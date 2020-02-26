@@ -1,17 +1,12 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const { userValidation, loginValidation } = require('../validation');
 
 // @desc Add user
 // @route /user/add
 // @access Driver, Admin
 
 exports.addUser = async (req, res) => {
-  // Validate data before adding
-  const { error } = userValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-
   // Check if email is in the database
   const emailExists = await User.findOne({ email: req.body.email });
   if (emailExists) return res.status(400).send('Email address already exists');
@@ -44,9 +39,6 @@ exports.addUser = async (req, res) => {
 // @access Driver, Admin
 
 exports.loginUser = async (req, res) => {
-  // Validate entered data
-  const { error } = loginValidation(req.body);
-  if (error) return res.status(400).json({ error: error.details[0].message });
   // Check if user exists
   const user = await User.findOne({ userName: req.body.userName });
   if (!user) return res.json({ error: 'User name or password is wrong' });

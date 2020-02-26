@@ -1,7 +1,6 @@
 const Order = require('../models/Order');
 const Product = require('../models/Product');
 const verify = require('../routes/verifyToken');
-const { orderValidation } = require('../validation');
 
 // @desc Get all orders
 // @route GET /orders
@@ -48,12 +47,6 @@ exports.getSingleOrder = async (req, res) => {
 // @route POST /orders
 // @access User
 exports.addOrder = async (req, res) => {
-  // Validate data before adding
-  const { error } = orderValidation(req.body);
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  }
-
   try {
     const order = await Order.create(req.body);
 
@@ -74,7 +67,7 @@ exports.updateOrder = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id).exec();
     order.set(req.body);
-    const result = await order.save();
+    await order.save();
     return res.status(200).json({
       success: true,
       data: order,
@@ -90,7 +83,14 @@ exports.updateOrder = async (req, res) => {
 // @access User
 exports.deleteOrder = async (req, res) => {
   try {
-    const result = await Order.deleteOne({ _id: req.params.id });
+    const order = await Order.findById(req.params.id);
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        error: 'Order not found',
+      });
+    }
+    order.remove();
     return res.status(200).json({
       success: true,
     });

@@ -1,6 +1,5 @@
 const Product = require('../models/Product');
 const verify = require('../routes/verifyToken');
-const { productValidation } = require('../validation');
 
 // @desc Get all products
 // @route GET /products
@@ -41,12 +40,6 @@ exports.getSingleProduct = async (req, res, next) => {
 // @route POST /products
 // @access User
 exports.addProduct = async (req, res, next) => {
-  // Validate data before adding
-  const { error } = productValidation(req.body);
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  }
-
   try {
     const product = await Product.create(req.body);
 
@@ -67,7 +60,7 @@ exports.updateProduct = async (req, res, next) => {
   try {
     const product = await Product.findById(req.params.id).exec();
     product.set(req.body);
-    const result = await product.save();
+    await product.save();
     return res.status(200).json({
       success: true,
       data: product,
@@ -83,7 +76,14 @@ exports.updateProduct = async (req, res, next) => {
 // @access User
 exports.deleteProduct = async (req, res, next) => {
   try {
-    const result = await Product.deleteOne({ _id: req.params.id });
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        error: 'Product not found',
+      });
+    }
+    product.remove();
     return res.status(200).json({
       success: true,
     });

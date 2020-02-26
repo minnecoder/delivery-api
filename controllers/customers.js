@@ -1,6 +1,5 @@
 const Customer = require('../models/Customer');
 const verify = require('../routes/verifyToken');
-const { customerValidation } = require('../validation');
 
 // @desc Get all customers
 // @route GET /customers
@@ -45,12 +44,6 @@ exports.getSingleCustomer = async (req, res, next) => {
 // @route POST /customers
 // @access User
 exports.addCustomer = async (req, res, next) => {
-  // Validate data before adding
-  const { error } = customerValidation(req.body);
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  }
-
   try {
     const customer = await Customer.create(req.body);
 
@@ -71,7 +64,7 @@ exports.updateCustomer = async (req, res, next) => {
   try {
     const customer = await Customer.findById(req.params.id).exec();
     customer.set(req.body);
-    const result = await customer.save();
+    await customer.save();
     return res.status(200).json({
       success: true,
       data: customer,
@@ -87,7 +80,17 @@ exports.updateCustomer = async (req, res, next) => {
 // @access User
 exports.deleteCustomer = async (req, res, next) => {
   try {
-    const result = await Customer.deleteOne({ _id: req.params.id });
+    const customer = await Customer.findById(req.params.id);
+
+    if (!customer) {
+      return res.status(404).json({
+        success: false,
+        error: 'Customer not found',
+      });
+    }
+
+    customer.remove();
+
     return res.status(200).json({
       success: true,
     });

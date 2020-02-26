@@ -27,13 +27,13 @@ const orders = require('./routes/orders');
 const products = require('./routes/products');
 const customers = require('./routes/customers');
 
-app.use('/notes', notes);
-app.use('/dashboard', dashboard);
-app.use('/scanner', scanner);
-app.use('/user', user);
-app.use('/orders', orders);
-app.use('/products', products);
-app.use('/customers', customers);
+app.use('/api/v1/notes', notes);
+app.use('/api/v1/dashboard', dashboard);
+app.use('/api/v1/scanner', scanner);
+app.use('/api/v1/user', user);
+app.use('/api/v1/orders', orders);
+app.use('/api/v1/products', products);
+app.use('/api/v1/customers', customers);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
