@@ -1,48 +1,31 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
+const db = require('../config/postgres-db');
 
-const CustomerSchema = new mongoose.Schema({
+const Customer = db.define('customers', {
   firstName: {
-    type: String,
-    required: [true, 'First name is required'],
+    type: Sequelize.STRING,
   },
   lastName: {
-    type: String,
-    required: [true, 'Last name is required'],
+    type: Sequelize.STRING,
   },
   address: {
-    type: String,
-    required: [true, 'Address is required'],
+    type: Sequelize.STRING,
   },
   city: {
-    type: String,
-    required: [true, 'City is required'],
+    type: Sequelize.STRING,
   },
   state: {
-    type: String,
-    required: [true, 'State is required'],
+    type: Sequelize.STRING,
   },
   zipCode: {
-    type: String,
-    required: [true, 'Zip code name is required'],
+    type: Sequelize.STRING,
   },
   phone: {
-    type: String,
-    required: [true, 'Phone number is required'],
+    type: Sequelize.STRING,
   },
   email: {
-    type: String,
-    required: [true, 'Email is required'],
-  },
-  password: {
-    type: String,
-    required: true,
-    unique: true,
-    minlength: 8,
-  },
-  createdOn: {
-    type: Date,
-    default: Date.now,
+    type: Sequelize.STRING,
   },
 });
 
-module.exports = mongoose.model('Customer', CustomerSchema);
+module.exports = Customer;
