@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+const path = require('path');
+
 const connectDB = require('./config/db');
 
 const app = express();
@@ -9,8 +11,14 @@ const app = express();
 dotenv.config({ path: './config/config.env' });
 app.use(bodyParser.json());
 
-// Database Connection
-connectDB();
+// Database Connection and Test
+const db = require('./config/postgres-db');
+
+db.authenticate()
+  .then(() => console.log('Database connected...'))
+  .catch(error => {
+    console.log('Error: ', error);
+  });
 
 // Body Parser
 app.use(express.json());
