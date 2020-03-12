@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
+const db = require('../config/postgres-db');
 
-const UserSchema = new mongoose.Schema({
+const User = db.define({
   userName: {
     type: String,
     required: [true, 'User name is required'],
@@ -23,10 +24,6 @@ const UserSchema = new mongoose.Schema({
     required: true,
     enum: ['driver', 'manager', 'admin', 'user', 'customer'],
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = User;

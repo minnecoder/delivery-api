@@ -9,9 +9,3 @@ module.exports = new Sequelize(
     dialect: 'postgres',
   }
 );
-
-// db.authenticate()
-//   .then(() => console.log('Database connected...'))
-//   .catch(error => {
-//     console.log('Error: ', error);
-//   });

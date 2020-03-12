@@ -1,26 +1,25 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
+const db = require('../config/postgres-db');
+const Customer = require('./Customer');
 
-const { ObjectId } = mongoose.Schema;
-
-const OrderSchema = new mongoose.Schema({
-  products: [{ type: ObjectId, ref: 'Product' }],
-  customer: { type: ObjectId, ref: 'Customer' },
-  status: {
-    type: String,
-    default: 'Not processed',
-    enum: [
-      'Not processed',
-      'Processing',
-      'Out for delivery',
-      'Delivered',
-      'Returned',
-      'Cancelled',
-    ],
+const Order = db.define('orders', {
+  customerID: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: Customer,
+      key: 'id',
+      deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
+    },
   },
-  total: {
-    type: Number,
-    required: [true, 'Total is required'],
+  order_date: {
+    type: Sequelize.DATE,
+  },
+  order_status: {
+    type: Sequelize.STRING,
+  },
+  order_total: {
+    type: Sequelize.DECIMAL,
   },
 });
 
-module.exports = mongoose.model('Order', OrderSchema);
+module.exports = Order;

@@ -1,30 +1,23 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
+const db = require('../config/postgres-db');
 
-const ProductSchema = new mongoose.Schema({
+const Product = db.define('products', {
   name: {
-    type: String,
-    required: [true, 'Product name is required'],
+    type: Sequelize.STRING,
   },
   description: {
-    type: String,
-    required: [true, 'Product description is required'],
+    type: Sequelize.STRING,
   },
   cost: {
-    type: Number,
-    required: [true, 'Product cost is required'],
+    type: Sequelize.DECIMAL,
   },
   price: {
-    type: Number,
-    required: [true, 'Product price is required'],
+    type: Sequelize.DECIMAL,
   },
   onHand: {
-    type: Number,
-    required: [true, 'Number of items in stock is required'],
-  },
-  picture: {
-    type: String,
-    required: [true, 'Picture link is required'],
+    type: Sequelize.INTEGER,
+    isNumeric: true,
   },
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = Product;
