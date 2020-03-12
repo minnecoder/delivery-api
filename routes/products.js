@@ -14,11 +14,14 @@ const router = express.Router();
 router
   .route('/')
   .get(getProducts)
-  .post(verify, productCUDAccess, addProduct);
+  .post(addProduct);
+// .post(verify, productCUDAccess, addProduct);
 
 router
   .route('/:productID')
   .get(getSingleProduct)
-  .put(verify, productCUDAccess, updateProduct)
-  .delete(verify, productCUDAccess, deleteProduct);
+  .put(updateProduct)
+  .delete(deleteProduct);
+// .put(verify, productCUDAccess, updateProduct)
+// .delete(verify, productCUDAccess, deleteProduct);
 module.exports = router;

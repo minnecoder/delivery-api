@@ -14,9 +14,15 @@ const Product = db.define('products', {
   price: {
     type: Sequelize.DECIMAL,
   },
-  onHand: {
+  on_hand: {
     type: Sequelize.INTEGER,
     isNumeric: true,
+  },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
   },
 });
 

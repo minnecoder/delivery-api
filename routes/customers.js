@@ -14,11 +14,14 @@ const router = express.Router();
 router
   .route('/')
   .get(getCustomers)
-  .post(verify, customerCUDAccess, addCustomer);
+  .post(addCustomer);
+// .post(verify, customerCUDAccess, addCustomer);
 
 router
   .route('/:id')
   .get(getSingleCustomer)
-  .put(verify, customerCUDAccess, updateCustomer)
-  .delete(verify, customerCUDAccess, deleteCustomer);
+  .put(updateCustomer)
+  .delete(deleteCustomer);
+// .put(verify, customerCUDAccess, updateCustomer)
+// .delete(verify, customerCUDAccess, deleteCustomer);
 module.exports = router;

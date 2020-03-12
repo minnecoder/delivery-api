@@ -8,6 +8,12 @@ const DeliveryRoute = db.define('delivery_routes', {
   other_route_notes: {
     type: Sequelize.STRING,
   },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
+  },
 });
 
 module.exports = DeliveryRoute;

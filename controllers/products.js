@@ -6,7 +6,7 @@ const verify = require('../routes/verifyToken');
 // @access User
 exports.getProducts = async (req, res, next) => {
   try {
-    const products = await Product.find();
+    const products = await Product.findAll();
 
     return res.status(200).json({
       success: true,

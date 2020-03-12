@@ -15,12 +15,15 @@ const router = express.Router();
 router
   .route('/')
   .get(getOrders)
-  .post(verify, orderCUDAccess, addOrder);
+  .post(addOrder);
+// .post(verify, orderCUDAccess, addOrder);
 
 router
   .route('/:orderID')
   .get(getSingleOrder)
-  .put(verify, orderCUDAccess, updateOrder)
-  .delete(verify, orderCUDAccess, deleteOrder);
+  .put(updateOrder)
+  .delete(deleteOrder);
+// .put(verify, orderCUDAccess, updateOrder)
+// .delete(verify, orderCUDAccess, deleteOrder);
 
 module.exports = router;

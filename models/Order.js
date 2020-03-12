@@ -20,6 +20,12 @@ const Order = db.define('orders', {
   order_total: {
     type: Sequelize.DECIMAL,
   },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
+  },
 });
 
 module.exports = Order;

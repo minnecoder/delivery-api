@@ -14,6 +14,12 @@ const Truck = db.define('trucks', {
   truck_license_number: {
     type: Sequelize.STRING,
   },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
+  },
 });
 
 module.exports = Truck;

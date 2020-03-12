@@ -6,9 +6,7 @@ const verify = require('../routes/verifyToken');
 // @access User
 exports.getCustomers = async (req, res, next) => {
   try {
-    const customers = await Customer.find().select(
-      'firstName lastName address city state zipCode phone email'
-    );
+    const customers = await Customer.findAll();
 
     return res.status(200).json({
       success: true,

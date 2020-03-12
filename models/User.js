@@ -3,26 +3,26 @@ const db = require('../config/postgres-db');
 
 const User = db.define({
   userName: {
-    type: String,
-    required: [true, 'User name is required'],
-    trim: true,
+    type: Sequelize.STRING,
   },
   email: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true,
+    type: Sequelize.STRING,
+    isEmail: true,
+    unique: 'compositeIndex',
   },
   password: {
-    type: String,
-    required: true,
-    unique: true,
-    minlength: 8,
+    type: Sequelize.STRING,
+    min: 8,
   },
   role: {
-    type: String,
-    required: true,
-    enum: ['driver', 'manager', 'admin', 'user', 'customer'],
+    type: Sequelize.STRING,
+    isIn: [['driver', 'manager', 'admin', 'user', 'customer']],
+  },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
   },
 });
 

@@ -2,10 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../config/postgres-db');
 
 const Customer = db.define('customers', {
-  first_name: {
-    type: Sequelize.STRING,
-  },
-  last_name: {
+  customer_name: {
     type: Sequelize.STRING,
   },
   address: {
@@ -17,8 +14,8 @@ const Customer = db.define('customers', {
   state: {
     type: Sequelize.STRING,
   },
-  zipCode: {
-    type: Sequelize.STRING,
+  zip: {
+    type: Sequelize.INTEGER,
     isNumeric: true,
   },
   phone: {
@@ -28,6 +25,12 @@ const Customer = db.define('customers', {
   email: {
     type: Sequelize.STRING,
     isEmail: true,
+  },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
   },
 });
 

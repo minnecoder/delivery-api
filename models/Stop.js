@@ -50,6 +50,12 @@ const Stop = db.define('stops', {
   signer_name: {
     type: Sequelize.STRING,
   },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
+  },
 });
 
 module.exports = Stop;

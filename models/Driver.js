@@ -8,6 +8,12 @@ const Driver = db.define('drivers', {
   last_name: {
     type: Sequelize.STRING,
   },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
+  },
 });
 
 module.exports = Driver;
