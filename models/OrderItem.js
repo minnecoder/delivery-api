@@ -28,5 +28,17 @@ const OrderItem = db.define('order_items', {
     isNumeric: true,
   },
 });
+OrderItem.associate = function(models) {
+  OrderItem.belongsTo(models.Order, {
+    foreignKey: 'orderID',
+    as: 'order',
+  });
+};
+OrderItem.associate = function(models) {
+  OrderItem.belongsTo(models.Product, {
+    foreignKey: 'productID',
+    as: 'product',
+  });
+};
 
 module.exports = OrderItem;

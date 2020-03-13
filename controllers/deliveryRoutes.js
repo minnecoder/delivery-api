@@ -1,18 +1,17 @@
-const Customer = require('../models/Customer');
-const verify = require('../routes/verifyToken');
+const DeliveryRoute = require('../models/DeliveryRoute');
 
 // POST
-// @desc Get all customers
-// @route GET /customers
+// @desc Get all deliveryRoutes
+// @route GET /deliveryRoutes
 // @access User
-exports.getCustomers = async (req, res, next) => {
+exports.getDeliveryRoutes = async (req, res, next) => {
   try {
-    const customers = await Customer.findAll();
+    const deliveryRoutes = await DeliveryRoute.findAll();
 
     return res.status(200).json({
       success: true,
-      count: customers.length,
-      data: customers,
+      count: deliveryRoutes.length,
+      data: deliveryRoutes,
     });
   } catch (error) {
     console.error(error);
@@ -21,12 +20,12 @@ exports.getCustomers = async (req, res, next) => {
 };
 
 // POST
-// @desc Get single customer
-// @route GET /customers/:id
+// @desc Get single deliveryRoute
+// @route GET /deliveryRoutes/:id
 // @access User
-exports.getSingleCustomer = async (req, res, next) => {
+exports.getSingledeliveryRoute = async (req, res, next) => {
   try {
-    const customer = await Customer.findOne({
+    const deliveryRoute = await DeliveryRoute.findOne({
       where: {
         id: req.params.id,
       },
@@ -34,7 +33,7 @@ exports.getSingleCustomer = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      data: customer,
+      data: deliveryRoute,
     });
   } catch (error) {
     console.error(error);
@@ -43,16 +42,16 @@ exports.getSingleCustomer = async (req, res, next) => {
 };
 
 // POST
-// @desc Add customer
-// @route POST /customers
+// @desc Add deliveryRoute
+// @route POST /deliveryRoutes
 // @access User
-exports.addCustomer = async (req, res, next) => {
+exports.addDeliveryRoute = async (req, res, next) => {
   try {
-    const customer = await Customer.create(req.body);
+    const deliveryRoute = await DeliveryRoute.create(req.body);
 
     return res.status(200).json({
       success: true,
-      data: customer,
+      data: deliveryRoute,
     });
   } catch (error) {
     console.error(error);
@@ -61,25 +60,25 @@ exports.addCustomer = async (req, res, next) => {
 };
 
 // POST
-// @desc Update customer
-// @route UPDATE /customers/:id
+// @desc Update deliveryRoute
+// @route UPDATE /deliveryRoutes/:id
 // @access User
-exports.updateCustomer = async (req, res, next) => {
+exports.updatedeliveryRoute = async (req, res, next) => {
   try {
-    const customer = await Customer.findOne({
+    const deliveryRoute = await DeliveryRoute.findOne({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!customer) {
+    if (!deliveryRoute) {
       return res.status(404).json({
         success: false,
-        error: 'Customer not found',
+        error: 'Delivery Route not found',
       });
     }
 
-    await Customer.update(req.body, {
+    await deliveryRoute.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -87,7 +86,7 @@ exports.updateCustomer = async (req, res, next) => {
 
     return res.status(200).json({
       success: true,
-      data: customer,
+      data: deliveryRoute,
     });
   } catch (error) {
     console.error(error);
@@ -96,25 +95,25 @@ exports.updateCustomer = async (req, res, next) => {
 };
 
 // POST
-// @desc Delete customer
-// @route DELETE /customers/:id
+// @desc Delete deliveryRoute
+// @route DELETE /deliveryRoutes/:id
 // @access User
-exports.deleteCustomer = async (req, res, next) => {
+exports.deletedeliveryRoute = async (req, res, next) => {
   try {
-    const customer = await Customer.findOne({
+    const deliveryRoute = await DeliveryRoute.findOne({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!customer) {
+    if (!deliveryRoute) {
       return res.status(404).json({
         success: false,
-        error: 'Customer not found',
+        error: 'Delivery Route not found',
       });
     }
 
-    await Customer.destroy({
+    await DeliveryRoute.destroy({
       where: {
         id: req.params.id,
       },

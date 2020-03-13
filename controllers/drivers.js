@@ -1,20 +1,17 @@
-const Order = require('../models/Order');
-const Customer = require('../models/Customer');
+const Driver = require('../models/Driver');
 const verify = require('../routes/verifyToken');
 
-// @desc Get all orders
-// @route GET /orders
+// @desc Get all drivers
+// @route GET /drivers
 // @access User
-exports.getOrders = async (req, res) => {
+exports.getdrivers = async (req, res, next) => {
   try {
-    const orders = await Order.findAll({
-      include: Customer,
-    });
+    const drivers = await Driver.findAll();
 
     return res.status(200).json({
       success: true,
-      count: orders.length,
-      data: orders,
+      count: drivers.length,
+      data: drivers,
     });
   } catch (error) {
     console.error(error);
@@ -22,77 +19,63 @@ exports.getOrders = async (req, res) => {
   }
 };
 
-// @desc Get single order
-// @route GET /orders/:id
+// @desc Get single driver
+// @route GET /drivers/:id
 // @access User
-exports.getSingleOrder = async (req, res) => {
+exports.getSingledriver = async (req, res, next) => {
   try {
-    const order = await Order.findOne({
-      where: {
-        id: req.params.id,
-      },
-      include: Customer,
-    });
-
-    return res.status(200).json({
-      success: true,
-      data: order,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Server Error' });
-  }
-};
-
-// @desc Add order
-// @route POST /orders
-// @access User
-exports.addOrder = async (req, res) => {
-  try {
-    // Check if customerID is found
-    const customer = await Customer.findOne({
-      where: {
-        id: req.body.customerId,
-      },
-    });
-
-    if (!customer) {
-      return res.status(404).json({
-        sucess: false,
-        error: 'The customerID was not found',
-      });
-    }
-    const order = await Order.create(req.body);
-
-    return res.status(200).json({
-      success: true,
-      data: order,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Server Error' });
-  }
-};
-
-// @desc Update order
-// @route UPDATE /orders/:id
-// @access User
-exports.updateOrder = async (req, res) => {
-  try {
-    const order = await Order.findOne({
+    const driver = await Driver.findOne({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!order) {
+    return res.status(200).json({
+      success: true,
+      data: driver,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
+
+// @desc Add driver
+// @route POST /drivers
+// @access User
+exports.adddriver = async (req, res, next) => {
+  try {
+    const driver = await Driver.create(req.body);
+
+    return res.status(200).json({
+      success: true,
+      data: driver,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
+
+// @desc Update driver
+// @route UPDATE /drivers/:id
+// @access User
+exports.updatedriver = async (req, res, next) => {
+  try {
+    const driver = await Driver.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!driver) {
       return res.status(404).json({
         success: false,
-        error: 'Order not found',
+        error: 'Driver not found',
       });
     }
 
-    await Order.update(req.body, {
+    await driver.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -100,7 +83,7 @@ exports.updateOrder = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: order,
+      data: driver,
     });
   } catch (error) {
     console.error(error);
@@ -108,25 +91,25 @@ exports.updateOrder = async (req, res) => {
   }
 };
 
-// @desc Delete order
-// @route DELETE /orders/:id
+// @desc Delete driver
+// @route DELETE /drivers/:id
 // @access User
-exports.deleteOrder = async (req, res) => {
+exports.deletedriver = async (req, res, next) => {
   try {
-    const order = await Order.findOne({
+    const driver = await Driver.findOne({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!order) {
+    if (!driver) {
       return res.status(404).json({
         success: false,
-        error: 'Order not found',
+        error: 'Driver not found',
       });
     }
 
-    await Order.destroy({
+    await driver.destroy({
       where: {
         id: req.params.id,
       },

@@ -3,7 +3,7 @@ const db = require('../config/postgres-db');
 const Customer = require('./Customer');
 
 const Order = db.define('orders', {
-  customerID: {
+  customerId: {
     type: Sequelize.INTEGER,
     references: {
       model: Customer,
@@ -27,5 +27,7 @@ const Order = db.define('orders', {
     type: Sequelize.DATE,
   },
 });
+Customer.hasMany(Order);
+Order.belongsTo(Customer);
 
 module.exports = Order;

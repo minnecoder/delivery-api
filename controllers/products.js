@@ -24,7 +24,11 @@ exports.getProducts = async (req, res, next) => {
 // @access User
 exports.getSingleProduct = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
 
     return res.status(200).json({
       success: true,
@@ -58,9 +62,25 @@ exports.addProduct = async (req, res, next) => {
 // @access User
 exports.updateProduct = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id).exec();
-    product.set(req.body);
-    await product.save();
+    const product = await Product.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        error: 'Product not found',
+      });
+    }
+
+    await Product.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
     return res.status(200).json({
       success: true,
       data: product,
@@ -76,14 +96,24 @@ exports.updateProduct = async (req, res, next) => {
 // @access User
 exports.deleteProduct = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+
     if (!product) {
       return res.status(404).json({
         success: false,
         error: 'Product not found',
       });
     }
-    product.remove();
+
+    await Product.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
     return res.status(200).json({
       success: true,
     });
