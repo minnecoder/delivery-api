@@ -4,6 +4,7 @@ const {
   getDeliveryRoutes,
   getSingleDeliveryRoute,
   addDeliveryRoute,
+  addBulkDeliveryRoutes,
   updateDeliveryRoute,
   deleteDeliveryRoute,
 } = require('../controllers/deliveryRoutes');
@@ -20,5 +21,7 @@ router
   .get(getSingleDeliveryRoute)
   .put(updateDeliveryRoute)
   .delete(deleteDeliveryRoute);
+
+router.route('/bulk').post(addBulkDeliveryRoutes);
 
 module.exports = router;

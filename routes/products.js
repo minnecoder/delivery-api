@@ -5,6 +5,7 @@ const {
   getProducts,
   getSingleProduct,
   addProduct,
+  addBulkProducts,
   updateProduct,
   deleteProduct,
 } = require('../controllers/products');
@@ -24,4 +25,6 @@ router
   .delete(deleteProduct);
 // .put(verify, productCUDAccess, updateProduct)
 // .delete(verify, productCUDAccess, deleteProduct);
+
+router.route('/bulk').post(addBulkProducts);
 module.exports = router;

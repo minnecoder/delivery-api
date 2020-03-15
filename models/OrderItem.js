@@ -4,7 +4,7 @@ const Order = require('./Order');
 const Product = require('./Product');
 
 const OrderItem = db.define('order_items', {
-  orderID: {
+  orderId: {
     type: Sequelize.INTEGER,
     references: {
       model: Order,
@@ -12,7 +12,7 @@ const OrderItem = db.define('order_items', {
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
     },
   },
-  productID: {
+  productId: {
     type: Sequelize.INTEGER,
     references: {
       model: Product,
@@ -26,6 +26,12 @@ const OrderItem = db.define('order_items', {
   quantity: {
     type: Sequelize.INTEGER,
     isNumeric: true,
+  },
+  createdAt: {
+    type: Sequelize.DATE,
+  },
+  updatedAt: {
+    type: Sequelize.DATE,
   },
 });
 OrderItem.associate = function(models) {

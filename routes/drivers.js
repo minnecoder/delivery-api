@@ -4,6 +4,7 @@ const {
   getDrivers,
   getSingleDriver,
   addDriver,
+  addBulkDrivers,
   updateDriver,
   deleteDriver,
 } = require('../controllers/drivers');
@@ -20,5 +21,7 @@ router
   .get(getSingleDriver)
   .put(updateDriver)
   .delete(deleteDriver);
+
+router.route('/bulk').post(addBulkDrivers);
 
 module.exports = router;

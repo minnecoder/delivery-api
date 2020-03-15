@@ -4,6 +4,7 @@ const {
   getTrucks,
   getSingleTruck,
   addTruck,
+  addBulkTrucks,
   updateTruck,
   deleteTruck,
 } = require('../controllers/trucks');
@@ -20,5 +21,7 @@ router
   .get(getSingleTruck)
   .put(updateTruck)
   .delete(deleteTruck);
+
+router.route('/bulk').post(addBulkTrucks);
 
 module.exports = router;

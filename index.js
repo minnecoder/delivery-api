@@ -30,6 +30,11 @@ const user = require('./routes/user');
 const orders = require('./routes/orders');
 const products = require('./routes/products');
 const customers = require('./routes/customers');
+const deliveryRoutes = require('./routes/deliveryRoutes');
+const drivers = require('./routes/drivers');
+const orderItems = require('./routes/orderItem');
+const stops = require('./routes/stops');
+const trucks = require('./routes/trucks');
 
 app.use('/api/v1/dashboard', dashboard);
 app.use('/api/v1/scanner', scanner);
@@ -37,6 +42,11 @@ app.use('/api/v1/user', user);
 app.use('/api/v1/orders', orders);
 app.use('/api/v1/products', products);
 app.use('/api/v1/customers', customers);
+app.use('/api/v1/deliveryroutes', deliveryRoutes);
+app.use('/api/v1/drivers', drivers);
+app.use('/api/v1/orderitems', orderItems);
+app.use('/api/v1/stops', stops);
+app.use('/api/v1/trucks', trucks);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

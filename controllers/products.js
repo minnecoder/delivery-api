@@ -57,6 +57,21 @@ exports.addProduct = async (req, res, next) => {
   }
 };
 
+exports.addBulkProducts = async (req, res, next) => {
+  try {
+    const products = await Product.bulkCreate(req.body);
+
+    return res.status(200).json({
+      success: true,
+      count: products.length,
+      data: products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
+
 // @desc Update product
 // @route UPDATE /products/:id
 // @access User

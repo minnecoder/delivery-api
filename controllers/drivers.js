@@ -4,7 +4,7 @@ const verify = require('../routes/verifyToken');
 // @desc Get all drivers
 // @route GET /drivers
 // @access User
-exports.getdrivers = async (req, res, next) => {
+exports.getDrivers = async (req, res, next) => {
   try {
     const drivers = await Driver.findAll();
 
@@ -22,7 +22,7 @@ exports.getdrivers = async (req, res, next) => {
 // @desc Get single driver
 // @route GET /drivers/:id
 // @access User
-exports.getSingledriver = async (req, res, next) => {
+exports.getSingleDriver = async (req, res, next) => {
   try {
     const driver = await Driver.findOne({
       where: {
@@ -43,7 +43,7 @@ exports.getSingledriver = async (req, res, next) => {
 // @desc Add driver
 // @route POST /drivers
 // @access User
-exports.adddriver = async (req, res, next) => {
+exports.addDriver = async (req, res, next) => {
   try {
     const driver = await Driver.create(req.body);
 
@@ -57,10 +57,25 @@ exports.adddriver = async (req, res, next) => {
   }
 };
 
+exports.addBulkDrivers = async (req, res, next) => {
+  try {
+    const drivers = await Driver.bulkCreate(req.body);
+
+    return res.status(200).json({
+      success: true,
+      count: drivers.length,
+      data: drivers,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
+
 // @desc Update driver
 // @route UPDATE /drivers/:id
 // @access User
-exports.updatedriver = async (req, res, next) => {
+exports.updateDriver = async (req, res, next) => {
   try {
     const driver = await Driver.findOne({
       where: {
@@ -94,7 +109,7 @@ exports.updatedriver = async (req, res, next) => {
 // @desc Delete driver
 // @route DELETE /drivers/:id
 // @access User
-exports.deletedriver = async (req, res, next) => {
+exports.deleteDriver = async (req, res, next) => {
   try {
     const driver = await Driver.findOne({
       where: {

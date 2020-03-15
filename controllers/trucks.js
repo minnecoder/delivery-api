@@ -56,7 +56,21 @@ exports.addTruck = async (req, res, next) => {
   }
 };
 
-/ POST
+exports.addBulkTrucks = async (req, res, next) => {
+  try {
+    const trucks = await Truck.bulkCreate(req.body);
+
+    return res.status(200).json({
+      success: true,
+      count: trucks.length,
+      data: trucks,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
+
 // @desc Update truck
 // @route UPDATE /trucks/:id
 // @access User
@@ -91,7 +105,6 @@ exports.updateTruck = async (req, res, next) => {
   }
 };
 
-// POST
 // @desc Delete truck
 // @route DELETE /trucks/:id
 // @access User

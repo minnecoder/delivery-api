@@ -2,7 +2,10 @@ const Sequelize = require('sequelize');
 const db = require('../config/postgres-db');
 
 const Product = db.define('products', {
-  name: {
+  brand_name: {
+    type: Sequelize.STRING,
+  },
+  item: {
     type: Sequelize.STRING,
   },
   description: {

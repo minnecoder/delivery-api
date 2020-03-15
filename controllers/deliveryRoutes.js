@@ -1,6 +1,5 @@
 const DeliveryRoute = require('../models/DeliveryRoute');
 
-// POST
 // @desc Get all deliveryRoutes
 // @route GET /deliveryRoutes
 // @access User
@@ -19,11 +18,10 @@ exports.getDeliveryRoutes = async (req, res, next) => {
   }
 };
 
-// POST
 // @desc Get single deliveryRoute
 // @route GET /deliveryRoutes/:id
 // @access User
-exports.getSingledeliveryRoute = async (req, res, next) => {
+exports.getSingleDeliveryRoute = async (req, res, next) => {
   try {
     const deliveryRoute = await DeliveryRoute.findOne({
       where: {
@@ -41,7 +39,6 @@ exports.getSingledeliveryRoute = async (req, res, next) => {
   }
 };
 
-// POST
 // @desc Add deliveryRoute
 // @route POST /deliveryRoutes
 // @access User
@@ -59,11 +56,25 @@ exports.addDeliveryRoute = async (req, res, next) => {
   }
 };
 
-// POST
+exports.addBulkDeliveryRoutes = async (req, res, next) => {
+  try {
+    const deliveryRoutes = await DeliveryRoute.bulkCreate(req.body);
+
+    return res.status(200).json({
+      success: true,
+      count: deliveryRoutes.length,
+      data: deliveryRoutes,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
+
 // @desc Update deliveryRoute
 // @route UPDATE /deliveryRoutes/:id
 // @access User
-exports.updatedeliveryRoute = async (req, res, next) => {
+exports.updateDeliveryRoute = async (req, res, next) => {
   try {
     const deliveryRoute = await DeliveryRoute.findOne({
       where: {
@@ -94,11 +105,10 @@ exports.updatedeliveryRoute = async (req, res, next) => {
   }
 };
 
-// POST
 // @desc Delete deliveryRoute
 // @route DELETE /deliveryRoutes/:id
 // @access User
-exports.deletedeliveryRoute = async (req, res, next) => {
+exports.deleteDeliveryRoute = async (req, res, next) => {
   try {
     const deliveryRoute = await DeliveryRoute.findOne({
       where: {

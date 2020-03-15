@@ -5,6 +5,7 @@ const {
   getCustomers,
   getSingleCustomer,
   addCustomer,
+  addBulkCustomers,
   updateCustomer,
   deleteCustomer,
 } = require('../controllers/customers');
@@ -24,4 +25,6 @@ router
   .delete(deleteCustomer);
 // .put(verify, customerCUDAccess, updateCustomer)
 // .delete(verify, customerCUDAccess, deleteCustomer);
+
+router.route('/bulk').post(addBulkCustomers);
 module.exports = router;

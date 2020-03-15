@@ -6,7 +6,7 @@ const DeliveryRoute = require('./DeliveryRoute');
 const Truck = require('./Truck');
 
 const Stop = db.define('stops', {
-  customerID: {
+  customerId: {
     type: Sequelize.INTEGER,
     references: {
       model: Customer,
@@ -14,7 +14,7 @@ const Stop = db.define('stops', {
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
     },
   },
-  orderID: {
+  orderId: {
     type: Sequelize.INTEGER,
     references: {
       model: Order,
@@ -22,7 +22,7 @@ const Stop = db.define('stops', {
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
     },
   },
-  deliveryRouteID: {
+  deliveryRouteId: {
     type: Sequelize.INTEGER,
     references: {
       model: DeliveryRoute,
@@ -30,7 +30,7 @@ const Stop = db.define('stops', {
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
     },
   },
-  TruckID: {
+  truckId: {
     type: Sequelize.INTEGER,
     references: {
       model: Truck,

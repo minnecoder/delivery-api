@@ -115,3 +115,67 @@ exports.addStop = async (req, res) => {
     res.status(500).json({ error: 'Server Error' });
   }
 };
+
+exports.updateStop = async (req, res, next) => {
+  try {
+    const stop = await Stop.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!stop) {
+      return res.status(404).json({
+        success: false,
+        error: 'Delivery Route not found',
+      });
+    }
+
+    await stop.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    return res.status(200).json({
+      success: true,
+      data: stop,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
+
+// @desc Delete deliveryRoute
+// @route DELETE /deliveryRoutes/:id
+// @access User
+exports.deleteStop = async (req, res, next) => {
+  try {
+    const stop = await Stop.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!stop) {
+      return res.status(404).json({
+        success: false,
+        error: 'Delivery Route not found',
+      });
+    }
+
+    await stop.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    return res.status(200).json({
+      success: true,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server Error' });
+  }
+};
