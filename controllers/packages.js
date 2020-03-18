@@ -1,20 +1,20 @@
-const OrderItem = require('../models/OrderItem');
+const Package = require('../models/Package');
 const Order = require('../models/Order');
 const Product = require('../models/Product');
 
-// @desc Get all order items
-// @route GET /orderitems
+// @desc Get all packages
+// @route GET /packages
 // @access User
-exports.getOrderItems = async (req, res) => {
+exports.getPackages = async (req, res) => {
   try {
-    const orderItems = await OrderItem.findAll({
+    const packages = await Package.findAll({
       include: [Order, Product],
     });
 
     return res.status(200).json({
       success: true,
-      count: orderItems.length,
-      data: orderItems,
+      count: packages.length,
+      data: packages,
     });
   } catch (error) {
     console.error(error);
@@ -22,12 +22,12 @@ exports.getOrderItems = async (req, res) => {
   }
 };
 
-// @desc Get single order item
-// @route GET /orderitems/:id
+// @desc Get single package
+// @route GET /packages/:id
 // @access User
-exports.getSingleOrderItem = async (req, res) => {
+exports.getSinglePackage = async (req, res, next) => {
   try {
-    const orderItem = await OrderItem.findOne({
+    const packages = await Package.findOne({
       where: {
         id: req.params.id,
       },
@@ -35,7 +35,7 @@ exports.getSingleOrderItem = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: orderItem,
+      data: packages,
     });
   } catch (error) {
     console.error(error);
@@ -43,10 +43,10 @@ exports.getSingleOrderItem = async (req, res) => {
   }
 };
 
-// @desc Add order item
-// @route POST /orderitems
+// @desc Add package
+// @route POST /packages
 // @access User
-exports.addOrderItem = async (req, res) => {
+exports.addPackage = async (req, res) => {
   try {
     // Check if orderID is found
     const order = await Order.findOne({
@@ -73,11 +73,11 @@ exports.addOrderItem = async (req, res) => {
         error: 'The productID was not found',
       });
     }
-    const orderItem = await OrderItem.create(req.body);
+    const packages = await Package.create(req.body);
 
     return res.status(200).json({
       success: true,
-      data: orderItem,
+      data: packages,
     });
   } catch (error) {
     console.error(error);
@@ -85,25 +85,25 @@ exports.addOrderItem = async (req, res) => {
   }
 };
 
-// @desc Update order item
-// @route UPDATE /orderitems/:id
+// @desc Update package
+// @route UPDATE /packages/:id
 // @access User
-exports.updateOrderItem = async (req, res) => {
+exports.updatePackage = async (req, res) => {
   try {
-    const orderItem = await OrderItem.findOne({
+    const packages = await Package.findOne({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!orderItem) {
+    if (!packages) {
       return res.status(404).json({
         success: false,
-        error: 'Order item not found',
+        error: 'package not found',
       });
     }
 
-    await OrderItem.update(req.body, {
+    await packages.update(req.body, {
       where: {
         id: req.params.id,
       },
@@ -111,7 +111,7 @@ exports.updateOrderItem = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: orderItem,
+      data: packages,
     });
   } catch (error) {
     console.error(error);
@@ -119,25 +119,25 @@ exports.updateOrderItem = async (req, res) => {
   }
 };
 
-// @desc Delete order item
-// @route DELETE /orderitems/:id
+// @desc Delete package
+// @route DELETE /packages/:id
 // @access User
-exports.deleteOrderItem = async (req, res) => {
+exports.deletePackage = async (req, res) => {
   try {
-    const orderItem = await OrderItem.findOne({
+    const packages = await Package.findOne({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!orderItem) {
+    if (!packages) {
       return res.status(404).json({
         success: false,
         error: 'Order item not found',
       });
     }
 
-    await OrderItem.destroy({
+    await packages.destroy({
       where: {
         id: req.params.id,
       },

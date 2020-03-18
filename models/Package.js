@@ -3,7 +3,7 @@ const db = require('../config/postgres-db');
 const Order = require('./Order');
 const Product = require('./Product');
 
-const OrderItem = db.define('order_items', {
+const Package = db.define('packages', {
   orderId: {
     type: Sequelize.INTEGER,
     references: {
@@ -34,17 +34,17 @@ const OrderItem = db.define('order_items', {
     type: Sequelize.DATE,
   },
 });
-OrderItem.associate = function(models) {
-  OrderItem.belongsTo(models.Order, {
+Package.associate = function(models) {
+  Package.belongsTo(models.Order, {
     foreignKey: 'orderID',
     as: 'order',
   });
 };
-OrderItem.associate = function(models) {
-  OrderItem.belongsTo(models.Product, {
+Package.associate = function(models) {
+  Package.belongsTo(models.Product, {
     foreignKey: 'productID',
     as: 'product',
   });
 };
 
-module.exports = OrderItem;
+module.exports = Package;

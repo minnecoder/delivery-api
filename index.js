@@ -32,7 +32,7 @@ const products = require('./routes/products');
 const customers = require('./routes/customers');
 const deliveryRoutes = require('./routes/deliveryRoutes');
 const drivers = require('./routes/drivers');
-const orderItems = require('./routes/orderItem');
+const packages = require('./routes/packages');
 const stops = require('./routes/stops');
 const trucks = require('./routes/trucks');
 
@@ -44,7 +44,7 @@ app.use('/api/v1/products', products);
 app.use('/api/v1/customers', customers);
 app.use('/api/v1/deliveryroutes', deliveryRoutes);
 app.use('/api/v1/drivers', drivers);
-app.use('/api/v1/orderitems', orderItems);
+app.use('/api/v1/packages', packages);
 app.use('/api/v1/stops', stops);
 app.use('/api/v1/trucks', trucks);
 
