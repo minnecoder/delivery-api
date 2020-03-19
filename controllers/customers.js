@@ -1,5 +1,5 @@
 const Customer = require('../models/Customer');
-const verify = require('../routes/verifyToken');
+const verify = require('../auth/verifyToken');
 
 // @desc Get all customers
 // @route GET /customers
