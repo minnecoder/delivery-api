@@ -1,5 +1,5 @@
 const Product = require('../models/Product');
-const verify = require('../routes/verifyToken');
+// const verify = require('../auth/verifyToken');
 
 // @desc Get all products
 // @route GET /products

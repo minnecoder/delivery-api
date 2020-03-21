@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('../config/postgres-db');
 
-const User = db.define({
-  userName: {
+const User = db.define('users', {
+  user__name: {
     type: Sequelize.STRING,
   },
   email: {

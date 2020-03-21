@@ -1,6 +1,6 @@
 const express = require('express');
-const verify = require('../routes/verifyToken');
-const { customerCUDAccess } = require('./verifyRoles');
+// const verify = require('../auth/verifyToken');
+// const { customerCUDAccess } = require('../auth/verifyRoles');
 const {
   getCustomers,
   getSingleCustomer,

@@ -1,5 +1,5 @@
 const Driver = require('../models/Driver');
-const verify = require('../routes/verifyToken');
+// const verify = require('../auth/verifyToken');
 
 // @desc Get all drivers
 // @route GET /drivers

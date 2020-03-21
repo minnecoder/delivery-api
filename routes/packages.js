@@ -1,5 +1,5 @@
 const express = require('express');
-const verify = require('./verifyToken');
+// const verify = require('../auth/verifyToken');
 const {
   getPackages,
   getSinglePackage,
