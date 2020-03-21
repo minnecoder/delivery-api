@@ -59,6 +59,12 @@ const Stop = db.define('stops', {
   signer_name: {
     type: Sequelize.STRING,
   },
+  start_time: {
+    type: Sequelize.TIME,
+  },
+  stop_time: {
+    type: Sequelize.TIME,
+  },
   createdAt: {
     type: Sequelize.DATE,
   },
