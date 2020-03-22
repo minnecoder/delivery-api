@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+// Enable CORS
+app.use(cors());
+
 dotenv.config({ path: './config/config.env' });
 app.use(bodyParser.json());
 
@@ -20,8 +23,6 @@ db.authenticate()
 // Body Parser
 app.use(express.json());
 
-// Enable CORS
-app.use(cors());
 
 // Routes
 const dashboard = require('./routes/dashboard');
