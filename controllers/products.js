@@ -4,7 +4,7 @@ const Product = require('../models/Product');
 // @desc Get all products
 // @route GET /products
 // @access User
-exports.getProducts = async (req, res, next) => {
+exports.getProducts = async (req, res) => {
   try {
     const products = await Product.findAll();
 
@@ -15,14 +15,14 @@ exports.getProducts = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Get single product
 // @route GET /products/:id
 // @access User
-exports.getSingleProduct = async (req, res, next) => {
+exports.getSingleProduct = async (req, res) => {
   try {
     const product = await Product.findOne({
       where: {
@@ -36,14 +36,14 @@ exports.getSingleProduct = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Add product
 // @route POST /products
 // @access User
-exports.addProduct = async (req, res, next) => {
+exports.addProduct = async (req, res) => {
   try {
     const product = await Product.create(req.body);
 
@@ -53,11 +53,11 @@ exports.addProduct = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
-exports.addBulkProducts = async (req, res, next) => {
+exports.addBulkProducts = async (req, res) => {
   try {
     const products = await Product.bulkCreate(req.body);
 
@@ -68,14 +68,14 @@ exports.addBulkProducts = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Update product
 // @route UPDATE /products/:id
 // @access User
-exports.updateProduct = async (req, res, next) => {
+exports.updateProduct = async (req, res) => {
   try {
     const product = await Product.findOne({
       where: {
@@ -102,14 +102,14 @@ exports.updateProduct = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Delete product
 // @route DELETE /products/:id
 // @access User
-exports.deleteProduct = async (req, res, next) => {
+exports.deleteProduct = async (req, res) => {
   try {
     const product = await Product.findOne({
       where: {
@@ -134,6 +134,6 @@ exports.deleteProduct = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };

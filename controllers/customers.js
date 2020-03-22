@@ -4,7 +4,7 @@ const Customer = require('../models/Customer');
 // @desc Get all customers
 // @route GET /customers
 // @access User
-exports.getCustomers = async (req, res, next) => {
+exports.getCustomers = async (req, res) => {
   try {
     const customers = await Customer.findAll();
 
@@ -15,14 +15,14 @@ exports.getCustomers = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Get single customer
 // @route GET /customers/:id
 // @access User
-exports.getSingleCustomer = async (req, res, next) => {
+exports.getSingleCustomer = async (req, res) => {
   try {
     const customer = await Customer.findOne({
       where: {
@@ -36,14 +36,14 @@ exports.getSingleCustomer = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Add customer
 // @route POST /customers
 // @access User
-exports.addCustomer = async (req, res, next) => {
+exports.addCustomer = async (req, res) => {
   try {
     const customer = await Customer.create(req.body);
 
@@ -53,14 +53,14 @@ exports.addCustomer = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Add multiple customers at once
 // @route POST /customers/bulk
 // @access User
-exports.addBulkCustomers = async (req, res, next) => {
+exports.addBulkCustomers = async (req, res) => {
   try {
     const customers = await Customer.bulkCreate(req.body);
 
@@ -71,14 +71,14 @@ exports.addBulkCustomers = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Update customer
 // @route UPDATE /customers/:id
 // @access User
-exports.updateCustomer = async (req, res, next) => {
+exports.updateCustomer = async (req, res) => {
   try {
     const customer = await Customer.findOne({
       where: {
@@ -105,14 +105,14 @@ exports.updateCustomer = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Delete customer
 // @route DELETE /customers/:id
 // @access User
-exports.deleteCustomer = async (req, res, next) => {
+exports.deleteCustomer = async (req, res) => {
   try {
     const customer = await Customer.findOne({
       where: {
@@ -138,6 +138,6 @@ exports.deleteCustomer = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };

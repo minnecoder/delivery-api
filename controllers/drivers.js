@@ -4,7 +4,7 @@ const Driver = require('../models/Driver');
 // @desc Get all drivers
 // @route GET /drivers
 // @access User
-exports.getDrivers = async (req, res, next) => {
+exports.getDrivers = async (req, res) => {
   try {
     const drivers = await Driver.findAll();
 
@@ -15,14 +15,14 @@ exports.getDrivers = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Get single driver
 // @route GET /drivers/:id
 // @access User
-exports.getSingleDriver = async (req, res, next) => {
+exports.getSingleDriver = async (req, res) => {
   try {
     const driver = await Driver.findOne({
       where: {
@@ -36,14 +36,14 @@ exports.getSingleDriver = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Add driver
 // @route POST /drivers
 // @access User
-exports.addDriver = async (req, res, next) => {
+exports.addDriver = async (req, res) => {
   try {
     const driver = await Driver.create(req.body);
 
@@ -53,11 +53,11 @@ exports.addDriver = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
-exports.addBulkDrivers = async (req, res, next) => {
+exports.addBulkDrivers = async (req, res) => {
   try {
     const drivers = await Driver.bulkCreate(req.body);
 
@@ -68,14 +68,14 @@ exports.addBulkDrivers = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Update driver
 // @route UPDATE /drivers/:id
 // @access User
-exports.updateDriver = async (req, res, next) => {
+exports.updateDriver = async (req, res) => {
   try {
     const driver = await Driver.findOne({
       where: {
@@ -102,14 +102,14 @@ exports.updateDriver = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Delete driver
 // @route DELETE /drivers/:id
 // @access User
-exports.deleteDriver = async (req, res, next) => {
+exports.deleteDriver = async (req, res) => {
   try {
     const driver = await Driver.findOne({
       where: {
@@ -135,6 +135,6 @@ exports.deleteDriver = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };

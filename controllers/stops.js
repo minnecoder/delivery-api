@@ -20,7 +20,7 @@ exports.getStops = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -42,7 +42,7 @@ exports.getSingleStop = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -112,11 +112,11 @@ exports.addStop = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
-exports.updateStop = async (req, res, next) => {
+exports.updateStop = async (req, res) => {
   try {
     const stop = await Stop.findOne({
       where: {
@@ -143,14 +143,14 @@ exports.updateStop = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Delete deliveryRoute
 // @route DELETE /deliveryRoutes/:id
 // @access User
-exports.deleteStop = async (req, res, next) => {
+exports.deleteStop = async (req, res) => {
   try {
     const stop = await Stop.findOne({
       where: {
@@ -176,6 +176,6 @@ exports.deleteStop = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };

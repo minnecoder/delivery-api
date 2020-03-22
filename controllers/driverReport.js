@@ -3,7 +3,7 @@ const DriverReport = require('../models/DriverReport');
 // @desc Get all driver reports
 // @route GET /driverreports
 // @access User
-exports.getDriverReports = async (req, res, next) => {
+exports.getDriverReports = async (req, res) => {
   try {
     const driverReports = await DriverReport.findAll();
 
@@ -14,14 +14,14 @@ exports.getDriverReports = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Get single driver report
 // @route GET /driverreports/:id
 // @access User
-exports.getSingleDriverReport = async (req, res, next) => {
+exports.getSingleDriverReport = async (req, res) => {
   try {
     const driverReport = await DriverReport.findOne({
       where: {
@@ -35,14 +35,14 @@ exports.getSingleDriverReport = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Add driverReport
 // @route POST /driverReports
 // @access User
-exports.addDriverReport = async (req, res, next) => {
+exports.addDriverReport = async (req, res) => {
   try {
     const driverReport = await DriverReport.create(req.body);
 
@@ -52,14 +52,14 @@ exports.addDriverReport = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Update driver report
 // @route UPDATE /driverreports/:id
 // @access User
-exports.updateDriverReport = async (req, res, next) => {
+exports.updateDriverReport = async (req, res) => {
   try {
     const driverReport = await DriverReport.findOne({
       where: {
@@ -86,14 +86,14 @@ exports.updateDriverReport = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Delete driver report
 // @route DELETE /driverreports/:id
 // @access User
-exports.deleteDriverReport = async (req, res, next) => {
+exports.deleteDriverReport = async (req, res) => {
   try {
     const driverReport = await DriverReport.findOne({
       where: {
@@ -119,6 +119,6 @@ exports.deleteDriverReport = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };

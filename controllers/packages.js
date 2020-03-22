@@ -18,14 +18,14 @@ exports.getPackages = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Get single package
 // @route GET /packages/:id
 // @access User
-exports.getSinglePackage = async (req, res, next) => {
+exports.getSinglePackage = async (req, res) => {
   try {
     const packages = await Package.findOne({
       where: {
@@ -39,7 +39,7 @@ exports.getSinglePackage = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -81,7 +81,7 @@ exports.addPackage = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -115,7 +115,7 @@ exports.updatePackage = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
@@ -148,6 +148,6 @@ exports.deletePackage = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };

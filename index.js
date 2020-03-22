@@ -13,7 +13,7 @@ const db = require('./config/postgres-db');
 
 db.authenticate()
   .then(() => console.log('Database connected...'))
-  .catch(error => {
+  .catch((error) => {
     console.log('Error: ', error);
   });
 

@@ -3,7 +3,7 @@ const Truck = require('../models/Truck');
 // @desc Get all trucks
 // @route GET /trucks
 // @access User
-exports.getTrucks = async (req, res, next) => {
+exports.getTrucks = async (req, res) => {
   try {
     const trucks = await Truck.findAll();
 
@@ -14,14 +14,14 @@ exports.getTrucks = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Get single truck
 // @route GET /trucks/:id
 // @access User
-exports.getSingleTruck = async (req, res, next) => {
+exports.getSingleTruck = async (req, res) => {
   try {
     const truck = await Truck.findOne({
       where: {
@@ -35,14 +35,14 @@ exports.getSingleTruck = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Add truck
 // @route POST /trucks
 // @access User
-exports.addTruck = async (req, res, next) => {
+exports.addTruck = async (req, res) => {
   try {
     const truck = await Truck.create(req.body);
 
@@ -52,11 +52,11 @@ exports.addTruck = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
-exports.addBulkTrucks = async (req, res, next) => {
+exports.addBulkTrucks = async (req, res) => {
   try {
     const trucks = await Truck.bulkCreate(req.body);
 
@@ -67,14 +67,14 @@ exports.addBulkTrucks = async (req, res, next) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Update truck
 // @route UPDATE /trucks/:id
 // @access User
-exports.updateTruck = async (req, res, next) => {
+exports.updateTruck = async (req, res) => {
   try {
     const truck = await Truck.findOne({
       where: {
@@ -101,14 +101,14 @@ exports.updateTruck = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
 
 // @desc Delete truck
 // @route DELETE /trucks/:id
 // @access User
-exports.deleteTruck = async (req, res, next) => {
+exports.deleteTruck = async (req, res) => {
   try {
     const truck = await Truck.findOne({
       where: {
@@ -134,6 +134,6 @@ exports.deleteTruck = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: 'Server Error' });
   }
 };
