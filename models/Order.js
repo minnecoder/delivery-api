@@ -11,6 +11,9 @@ const Order = db.define('orders', {
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
     },
   },
+  order_number: {
+    type: Sequelize.INTEGER,
+  },
   order_date: {
     type: Sequelize.DATE,
   },

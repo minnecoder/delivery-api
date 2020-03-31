@@ -1,4 +1,7 @@
 const DriverReport = require('../models/DriverReport');
+const Driver = require('../models/Driver');
+const DeliveryRoute = require('../models/DeliveryRoute');
+const Truck = require('../models/Truck');
 
 // @desc Get all driver reports
 // @route GET /driverreports
@@ -27,6 +30,9 @@ exports.getSingleDriverReport = async (req, res) => {
       where: {
         id: req.params.id,
       },
+      include: Driver,
+      DeliveryRoute,
+      Truck,
     });
 
     return res.status(200).json({
@@ -44,6 +50,48 @@ exports.getSingleDriverReport = async (req, res) => {
 // @access User
 exports.addDriverReport = async (req, res) => {
   try {
+    // Check if driverId is valid
+    const driver = await Driver.findOne({
+      where: {
+        id: req.body.driverId,
+      },
+    });
+
+    if (!driver) {
+      return res.status(404).json({
+        success: false,
+        error: 'The driver ID was not found',
+      });
+    }
+
+    // Check if deliveryRouteId is valid
+    const route = await DeliveryRoute.findOne({
+      where: {
+        id: req.body.routeId,
+      },
+    });
+
+    if (!route) {
+      return res.status(404).json({
+        success: false,
+        error: 'The route ID was not found',
+      });
+    }
+
+    // Check if truckId is valid
+    const truck = await Truck.findOne({
+      where: {
+        id: req.body.truckId,
+      },
+    });
+
+    if (!truck) {
+      res.status(404).json({
+        success: false,
+        error: 'The truck ID was not found',
+      });
+    }
+
     const driverReport = await DriverReport.create(req.body);
 
     return res.status(200).json({

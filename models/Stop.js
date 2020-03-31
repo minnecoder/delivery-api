@@ -72,5 +72,15 @@ const Stop = db.define('stops', {
     type: Sequelize.DATE,
   },
 });
+Customer.hasMany(Stop);
+Stop.belongsTo(Customer);
+Order.hasMany(Stop);
+Stop.belongsTo(Order);
+DeliveryRoute.hasMany(Stop);
+Stop.belongsTo(Order);
+Truck.hasMany(Stop);
+Stop.belongsTo(Truck);
+Driver.hasMany(Stop);
+Stop.belongsTo(Driver);
 
 module.exports = Stop;

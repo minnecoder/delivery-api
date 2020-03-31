@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('../config/postgres-db');
-const Driver = require('../models/Driver');
-const DeliveryRoute = require('../models/DeliveryRoute');
-const Truck = require('../models/Truck');
+const Driver = require('./Driver');
+const DeliveryRoute = require('./DeliveryRoute');
+const Truck = require('./Truck');
 
 const DriverReport = db.define('driver_report', {
   driverId: {
@@ -69,5 +69,11 @@ const DriverReport = db.define('driver_report', {
     type: Sequelize.INTEGER,
   },
 });
+Driver.hasMany(DriverReport);
+DriverReport.belongsTo(Driver);
+Truck.hasMany(DriverReport);
+DriverReport.belongsTo(Truck);
+DeliveryRoute.hasMany(DriverReport);
+DriverReport.belongsTo(DeliveryRoute);
 
 module.exports = DriverReport;

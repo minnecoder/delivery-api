@@ -19,7 +19,7 @@ router
 // .post(verify, orderCUDAccess, addOrder);
 
 router
-  .route('/:orderID')
+  .route('/:id')
   .get(getSingleOrder)
   .put(updateOrder)
   .delete(deleteOrder);
