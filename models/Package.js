@@ -34,13 +34,13 @@ const Package = db.define('packages', {
     type: Sequelize.DATE,
   },
 });
-Package.associate = function(models) {
+Package.associate = (models) => {
   Package.belongsTo(models.Order, {
     foreignKey: 'orderID',
     as: 'order',
   });
 };
-Package.associate = function(models) {
+Package.associate = (models) => {
   Package.belongsTo(models.Product, {
     foreignKey: 'productID',
     as: 'product',
