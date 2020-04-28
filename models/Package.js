@@ -48,6 +48,7 @@ Package.associate = (models) => {
 };
 Order.hasMany(Package);
 Package.belongsTo(Order);
-
+Product.hasMany(Package);
+Package.belongsTo(Product);
 
 module.exports = Package;
