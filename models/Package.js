@@ -46,5 +46,8 @@ Package.associate = (models) => {
     as: 'product',
   });
 };
+Order.hasMany(Package);
+Package.belongsTo(Order);
+
 
 module.exports = Package;
