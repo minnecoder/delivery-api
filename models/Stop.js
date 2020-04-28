@@ -77,7 +77,7 @@ Stop.belongsTo(Customer);
 Order.hasMany(Stop);
 Stop.belongsTo(Order);
 DeliveryRoute.hasMany(Stop);
-Stop.belongsTo(Order);
+Stop.belongsTo(DeliveryRoute);
 Truck.hasMany(Stop);
 Stop.belongsTo(Truck);
 Driver.hasMany(Stop);
