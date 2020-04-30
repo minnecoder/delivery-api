@@ -46,8 +46,8 @@ exports.getSingleStop = async (req, res) => {
   }
 };
 
-// @desc Add order
-// @route POST /orders
+// @desc Add stop
+// @route POST /stops
 // @access User
 exports.addStop = async (req, res) => {
   try {

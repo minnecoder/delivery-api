@@ -170,3 +170,25 @@ exports.deleteDriverReport = async (req, res) => {
     return res.status(500).json({ error: 'Server Error' });
   }
 };
+
+exports.saveBreak = async (req, res) => {
+  //  Find driver report for driver for the current day
+  try {
+    const report = await DriverReport.findOne({
+      where: {
+        date: req.params.date,
+        route: req.params.route,
+      },
+    });
+    console.log(report);
+    // Check if break has already been saved
+    // if (report.dataValues.break1_start !== '') {
+    // If no break saved save to break1
+    // report.dataValues.break1_start = req.body.break1_start;
+    // report.dataValues.break1_end = req.body.break1_end;
+    // }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Server Error' });
+  }
+};

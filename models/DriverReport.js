@@ -38,7 +38,7 @@ const DriverReport = db.define('driver_report', {
   last_stop_mileage: {
     type: Sequelize.INTEGER,
   },
-  final_milegage: {
+  final_mileage: {
     type: Sequelize.INTEGER,
   },
   break1_start: {
@@ -68,6 +68,11 @@ const DriverReport = db.define('driver_report', {
   num_signature_stops: {
     type: Sequelize.INTEGER,
   },
+  date: {
+    type: Sequelize.DATE,
+  },
+}, {
+  freezeTableName: true,
 });
 Driver.hasMany(DriverReport);
 DriverReport.belongsTo(Driver);

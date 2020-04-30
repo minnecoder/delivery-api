@@ -5,6 +5,7 @@ const {
   addDriverReport,
   updateDriverReport,
   deleteDriverReport,
+  saveBreak,
 } = require('../controllers/driverReport');
 
 const router = express.Router();
@@ -20,4 +21,5 @@ router
   .put(updateDriverReport)
   .delete(deleteDriverReport);
 
+router.route('/:route/:date').post(saveBreak);
 module.exports = router;
