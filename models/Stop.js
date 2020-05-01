@@ -23,7 +23,7 @@ const Stop = db.define('stops', {
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
     },
   },
-  deliveryRouteId: {
+  routeId: {
     type: Sequelize.INTEGER,
     references: {
       model: DeliveryRoute,
@@ -71,6 +71,8 @@ const Stop = db.define('stops', {
   updatedAt: {
     type: Sequelize.DATE,
   },
+}, {
+  freezeTableName: true,
 });
 Customer.hasMany(Stop);
 Stop.belongsTo(Customer);

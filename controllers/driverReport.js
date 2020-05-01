@@ -64,7 +64,7 @@ exports.addDriverReport = async (req, res) => {
       });
     }
 
-    // Check if deliveryRouteId is valid
+    // Check if d is valid
     const route = await DeliveryRoute.findOne({
       where: {
         id: req.body.routeId,

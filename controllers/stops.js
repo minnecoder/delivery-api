@@ -80,14 +80,14 @@ exports.addStop = async (req, res) => {
 
     const deliveryRoute = await DeliveryRoute.findOne({
       where: {
-        id: req.body.deliveryRouteId,
+        id: req.body.routeId,
       },
     });
 
     if (!deliveryRoute) {
       return res.status(404).json({
         sucess: false,
-        error: 'The deliveryRouteID was not found',
+        error: 'The Delivery RouteID was not found',
       });
     }
 
