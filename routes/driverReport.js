@@ -1,23 +1,25 @@
-const express = require('express');
+const express = require("express");
 const {
   getDriverReports,
   getSingleDriverReport,
   addDriverReport,
   updateDriverReport,
   deleteDriverReport,
-} = require('../controllers/driverReport');
+  syncUpdateDR
+} = require("../controllers/driverReport");
 
 const router = express.Router();
 
 router
-  .route('/')
+  .route("/")
   .get(getDriverReports)
   .post(addDriverReport);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(getSingleDriverReport)
   .put(updateDriverReport)
   .delete(deleteDriverReport);
 
+router.route("/update").post(syncUpdateDR);
 module.exports = router;
