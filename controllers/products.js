@@ -1,4 +1,4 @@
-const Product = require('../models/Product');
+const Product = require("../models/Product");
 // const verify = require('../auth/verifyToken');
 
 // @desc Get all products
@@ -11,11 +11,11 @@ exports.getProducts = async (req, res) => {
     return res.status(200).json({
       success: true,
       count: products.length,
-      data: products,
+      data: products
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -26,17 +26,17 @@ exports.getSingleProduct = async (req, res) => {
   try {
     const product = await Product.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: product,
+      data: product
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -49,11 +49,11 @@ exports.addProduct = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: product,
+      data: product
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -64,11 +64,11 @@ exports.addBulkProducts = async (req, res) => {
     return res.status(200).json({
       success: true,
       count: products.length,
-      data: products,
+      data: products
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -79,30 +79,30 @@ exports.updateProduct = async (req, res) => {
   try {
     const product = await Product.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!product) {
       return res.status(404).json({
         success: false,
-        error: 'Product not found',
+        error: "Product not found"
       });
     }
 
     await Product.update(req.body, {
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: product,
+      data: product
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -113,27 +113,27 @@ exports.deleteProduct = async (req, res) => {
   try {
     const product = await Product.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!product) {
       return res.status(404).json({
         success: false,
-        error: 'Product not found',
+        error: "Product not found"
       });
     }
 
     await Product.destroy({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
     return res.status(200).json({
-      success: true,
+      success: true
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };

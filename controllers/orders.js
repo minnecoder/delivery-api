@@ -1,5 +1,5 @@
-const Order = require('../models/Order');
-const Customer = require('../models/Customer');
+const Order = require("../models/Order");
+const Customer = require("../models/Customer");
 // const verify = require('../auth/verifyToken');
 
 // @desc Get all orders
@@ -8,17 +8,16 @@ const Customer = require('../models/Customer');
 exports.getOrders = async (req, res) => {
   try {
     const orders = await Order.findAll({
-      include: Customer,
+      include: Customer
     });
-
     return res.status(200).json({
       success: true,
       count: orders.length,
-      data: orders,
+      data: orders
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -29,18 +28,18 @@ exports.getSingleOrder = async (req, res) => {
   try {
     const order = await Order.findOne({
       where: {
-        id: req.params.id,
+        id: req.params.id
       },
-      include: Customer,
+      include: Customer
     });
 
     return res.status(200).json({
       success: true,
-      data: order,
+      data: order
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -52,25 +51,25 @@ exports.addOrder = async (req, res) => {
     // Check if customerID is found
     const customer = await Customer.findOne({
       where: {
-        id: req.body.customerId,
-      },
+        id: req.body.customerId
+      }
     });
 
     if (!customer) {
       return res.status(404).json({
         sucess: false,
-        error: 'The customerID was not found',
+        error: "The customerID was not found"
       });
     }
     const order = await Order.create(req.body);
 
     return res.status(200).json({
       success: true,
-      data: order,
+      data: order
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -81,30 +80,30 @@ exports.updateOrder = async (req, res) => {
   try {
     const order = await Order.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!order) {
       return res.status(404).json({
         success: false,
-        error: 'Order not found',
+        error: "Order not found"
       });
     }
 
     await Order.update(req.body, {
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: order,
+      data: order
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -115,28 +114,28 @@ exports.deleteOrder = async (req, res) => {
   try {
     const order = await Order.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!order) {
       return res.status(404).json({
         success: false,
-        error: 'Order not found',
+        error: "Order not found"
       });
     }
 
     await Order.destroy({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
-      success: true,
+      success: true
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };

@@ -5,13 +5,11 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-// Enable CORS
 app.use(cors());
-
 dotenv.config({ path: "./config/config.env" });
 app.use(bodyParser.json());
 
-// Database Connection and Test
+// DB Connection and Test
 const db = require("./config/postgres-db");
 
 db.authenticate()
@@ -19,9 +17,6 @@ db.authenticate()
   .catch(error => {
     console.log("Error: ", error);
   });
-
-// Body Parser
-app.use(express.json());
 
 // Routes
 const dashboard = require("./routes/dashboard");

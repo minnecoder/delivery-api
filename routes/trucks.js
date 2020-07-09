@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 // const verify = require('../auth/verifyToken');
 const {
   getTrucks,
@@ -6,22 +6,22 @@ const {
   addTruck,
   addBulkTrucks,
   updateTruck,
-  deleteTruck,
-} = require('../controllers/trucks');
+  deleteTruck
+} = require("../controllers/trucks");
 
 const router = express.Router();
 
 router
-  .route('/')
+  .route("/")
   .get(getTrucks)
   .post(addTruck);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(getSingleTruck)
   .put(updateTruck)
   .delete(deleteTruck);
 
-router.route('/bulk').post(addBulkTrucks);
+router.route("/bulk").post(addBulkTrucks);
 
 module.exports = router;

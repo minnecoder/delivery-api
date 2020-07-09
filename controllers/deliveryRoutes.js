@@ -1,4 +1,4 @@
-const DeliveryRoute = require('../models/DeliveryRoute');
+const DeliveryRoute = require("../models/DeliveryRoute");
 
 // @desc Get all deliveryRoutes
 // @route GET /deliveryRoutes
@@ -10,11 +10,11 @@ exports.getDeliveryRoutes = async (req, res) => {
     return res.status(200).json({
       success: true,
       count: deliveryRoutes.length,
-      data: deliveryRoutes,
+      data: deliveryRoutes
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -25,17 +25,17 @@ exports.getSingleDeliveryRoute = async (req, res) => {
   try {
     const deliveryRoute = await DeliveryRoute.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: deliveryRoute,
+      data: deliveryRoute
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -48,11 +48,11 @@ exports.addDeliveryRoute = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: deliveryRoute,
+      data: deliveryRoute
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -63,11 +63,11 @@ exports.addBulkDeliveryRoutes = async (req, res) => {
     return res.status(200).json({
       success: true,
       count: deliveryRoutes.length,
-      data: deliveryRoutes,
+      data: deliveryRoutes
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -78,30 +78,30 @@ exports.updateDeliveryRoute = async (req, res) => {
   try {
     const deliveryRoute = await DeliveryRoute.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!deliveryRoute) {
       return res.status(404).json({
         success: false,
-        error: 'Delivery Route not found',
+        error: "Delivery Route not found"
       });
     }
 
     await deliveryRoute.update(req.body, {
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: deliveryRoute,
+      data: deliveryRoute
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -112,28 +112,28 @@ exports.deleteDeliveryRoute = async (req, res) => {
   try {
     const deliveryRoute = await DeliveryRoute.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!deliveryRoute) {
       return res.status(404).json({
         success: false,
-        error: 'Delivery Route not found',
+        error: "Delivery Route not found"
       });
     }
 
     await DeliveryRoute.destroy({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
-      success: true,
+      success: true
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };

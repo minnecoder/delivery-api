@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 // const verify = require('../auth/verifyToken');
 // const { orderCUDAccess } = require('../auth/verifyRoles');
 const {
@@ -6,20 +6,20 @@ const {
   getSingleOrder,
   addOrder,
   updateOrder,
-  deleteOrder,
+  deleteOrder
   // changeOrderStatus,
-} = require('../controllers/orders');
+} = require("../controllers/orders");
 
 const router = express.Router();
 
 router
-  .route('/')
+  .route("/")
   .get(getOrders)
   .post(addOrder);
 // .post(verify, orderCUDAccess, addOrder);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(getSingleOrder)
   .put(updateOrder)
   .delete(deleteOrder);

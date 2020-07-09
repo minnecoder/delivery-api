@@ -1,6 +1,6 @@
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 // @desc Add user
 // @route /user/add
@@ -9,11 +9,11 @@ const User = require('../models/User');
 exports.addUser = async (req, res) => {
   // Check if email is already used
   const emailExists = await User.findOne({ where: { email: req.body.email } });
-  if (emailExists) return res.status(400).send('Email address already exists');
+  if (emailExists) return res.status(400).send("Email address already exists");
 
   // Check if user name is already used
   const userExists = await User.findOne({ where: { user_name: req.body.user_name } });
-  if (userExists) return res.status(400).send('User name already exists');
+  if (userExists) return res.status(400).send("User name already exists");
 
   // Create hashed password
   const salt = await bcrypt.genSalt(10);
@@ -26,15 +26,15 @@ exports.addUser = async (req, res) => {
       user_name: req.body.user_name,
       email: req.body.email,
       password: hashedPassword,
-      role: req.body.role,
+      role: req.body.role
     });
     return res.status(200).json({
       success: true,
-      data: user,
+      data: user
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -44,18 +44,17 @@ exports.addUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   // Check if user exists
   const user = await User.findOne({ where: { user_name: req.body.user_name } });
-  if (!user) return res.json({ error: 'User name or password is wrong' });
+  if (!user) return res.json({ error: "User name or password is wrong" });
 
   // Check if password is correct
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  if (!validPassword) { return res.status(400).json({ error: 'User name or password is wrong' }); }
+  if (!validPassword) {
+    return res.status(400).json({ error: "User name or password is wrong" });
+  }
 
   // Create and assign token
-  const token = jwt.sign(
-    { id: user.id, role: user.role },
-    process.env.JWT_SECRET,
-  );
-  return res.header('Authorization', token).json({ token });
+  const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET);
+  return res.header("Authorization", token).json({ token });
 };
 
 // @desc Get single user
@@ -64,15 +63,15 @@ exports.loginUser = async (req, res) => {
 exports.getUser = async (req, res) => {
   try {
     const user = await User.findOne({ where: { userName: req.params.userName } }).select(
-      '-password',
+      "-password"
     );
 
     return res.status(200).json({
       success: true,
-      data: user,
+      data: user
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };

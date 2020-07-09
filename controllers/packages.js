@@ -1,6 +1,6 @@
-const Package = require('../models/Package');
-const Order = require('../models/Order');
-const Product = require('../models/Product');
+const Package = require("../models/Package");
+const Order = require("../models/Order");
+const Product = require("../models/Product");
 
 // @desc Get all packages
 // @route GET /packages
@@ -8,17 +8,17 @@ const Product = require('../models/Product');
 exports.getPackages = async (req, res) => {
   try {
     const packages = await Package.findAll({
-      include: [Order, Product],
+      include: [Order, Product]
     });
 
     return res.status(200).json({
       success: true,
       count: packages.length,
-      data: packages,
+      data: packages
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -29,17 +29,17 @@ exports.getSinglePackage = async (req, res) => {
   try {
     const packages = await Package.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: packages,
+      data: packages
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -51,37 +51,37 @@ exports.addPackage = async (req, res) => {
     // Check if orderID is found
     const order = await Order.findOne({
       where: {
-        id: req.body.orderId,
-      },
+        id: req.body.orderId
+      }
     });
 
     if (!order) {
       return res.status(404).json({
         sucess: false,
-        error: 'The orderID was not found',
+        error: "The orderID was not found"
       });
     }
     const product = await Product.findOne({
       where: {
-        id: req.body.productId,
-      },
+        id: req.body.productId
+      }
     });
 
     if (!product) {
       return res.status(404).json({
         sucess: false,
-        error: 'The productID was not found',
+        error: "The productID was not found"
       });
     }
     const packages = await Package.create(req.body);
 
     return res.status(200).json({
       success: true,
-      data: packages,
+      data: packages
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -92,30 +92,30 @@ exports.updatePackage = async (req, res) => {
   try {
     const packages = await Package.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!packages) {
       return res.status(404).json({
         success: false,
-        error: 'package not found',
+        error: "package not found"
       });
     }
 
     await packages.update(req.body, {
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: packages,
+      data: packages
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -126,28 +126,28 @@ exports.deletePackage = async (req, res) => {
   try {
     const packages = await Package.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!packages) {
       return res.status(404).json({
         success: false,
-        error: 'Order item not found',
+        error: "Order item not found"
       });
     }
 
     await packages.destroy({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
-      success: true,
+      success: true
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };

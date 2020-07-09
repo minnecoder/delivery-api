@@ -1,8 +1,8 @@
-const Stop = require('../models/Stop');
-const Customer = require('../models/Customer');
-const Order = require('../models/Order');
-const DeliveryRoute = require('../models/DeliveryRoute');
-const Truck = require('../models/Truck');
+const Stop = require("../models/Stop");
+const Customer = require("../models/Customer");
+const Order = require("../models/Order");
+const DeliveryRoute = require("../models/DeliveryRoute");
+const Truck = require("../models/Truck");
 
 // @desc Get all stops
 // @route GET /stops
@@ -10,17 +10,17 @@ const Truck = require('../models/Truck');
 exports.getStops = async (req, res) => {
   try {
     const stops = await Stop.findAll({
-      include: [Customer, Order, DeliveryRoute, Truck],
+      include: [Customer, Order, DeliveryRoute, Truck]
     });
 
     return res.status(200).json({
       success: true,
       count: stops.length,
-      data: stops,
+      data: stops
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -31,18 +31,18 @@ exports.getSingleStop = async (req, res) => {
   try {
     const stop = await Stop.findOne({
       where: {
-        id: req.params.id,
+        id: req.params.id
       },
-      include: [Customer, Order, DeliveryRoute, Truck],
+      include: [Customer, Order, DeliveryRoute, Truck]
     });
 
     return res.status(200).json({
       success: true,
-      data: stop,
+      data: stop
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -54,53 +54,53 @@ exports.addStop = async (req, res) => {
     // Check if customerID is found
     const customer = await Customer.findOne({
       where: {
-        id: req.body.customerId,
-      },
+        id: req.body.customerId
+      }
     });
 
     if (!customer) {
       return res.status(404).json({
         sucess: false,
-        error: 'The customerID was not found',
+        error: "The customerID was not found"
       });
     }
 
     const order = await Order.findOne({
       where: {
-        id: req.body.orderId,
-      },
+        id: req.body.orderId
+      }
     });
 
     if (!order) {
       return res.status(404).json({
         sucess: false,
-        error: 'The orderID was not found',
+        error: "The orderID was not found"
       });
     }
 
     const deliveryRoute = await DeliveryRoute.findOne({
       where: {
-        id: req.body.routeId,
-      },
+        id: req.body.routeId
+      }
     });
 
     if (!deliveryRoute) {
       return res.status(404).json({
         sucess: false,
-        error: 'The Delivery RouteID was not found',
+        error: "The Delivery RouteID was not found"
       });
     }
 
     const truck = await Truck.findOne({
       where: {
-        id: req.body.truckId,
-      },
+        id: req.body.truckId
+      }
     });
 
     if (!truck) {
       return res.status(404).json({
         sucess: false,
-        error: 'The truckID was not found',
+        error: "The truckID was not found"
       });
     }
 
@@ -108,11 +108,11 @@ exports.addStop = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: stop,
+      data: stop
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -120,30 +120,30 @@ exports.updateStop = async (req, res) => {
   try {
     const stop = await Stop.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!stop) {
       return res.status(404).json({
         success: false,
-        error: 'Delivery Route not found',
+        error: "Delivery Route not found"
       });
     }
 
     await stop.update(req.body, {
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: stop,
+      data: stop
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -154,28 +154,28 @@ exports.deleteStop = async (req, res) => {
   try {
     const stop = await Stop.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!stop) {
       return res.status(404).json({
         success: false,
-        error: 'Delivery Route not found',
+        error: "Delivery Route not found"
       });
     }
 
     await stop.destroy({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
-      success: true,
+      success: true
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };

@@ -1,4 +1,4 @@
-const Driver = require('../models/Driver');
+const Driver = require("../models/Driver");
 // const verify = require('../auth/verifyToken');
 
 // @desc Get all drivers
@@ -7,15 +7,15 @@ const Driver = require('../models/Driver');
 exports.getDrivers = async (req, res) => {
   try {
     const drivers = await Driver.findAll();
-
+    console.log(drivers);
     return res.status(200).json({
       success: true,
       count: drivers.length,
-      data: drivers,
+      data: drivers
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -26,17 +26,17 @@ exports.getSingleDriver = async (req, res) => {
   try {
     const driver = await Driver.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: driver,
+      data: driver
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -49,11 +49,11 @@ exports.addDriver = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: driver,
+      data: driver
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -64,11 +64,11 @@ exports.addBulkDrivers = async (req, res) => {
     return res.status(200).json({
       success: true,
       count: drivers.length,
-      data: drivers,
+      data: drivers
     });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -79,30 +79,30 @@ exports.updateDriver = async (req, res) => {
   try {
     const driver = await Driver.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!driver) {
       return res.status(404).json({
         success: false,
-        error: 'Driver not found',
+        error: "Driver not found"
       });
     }
 
     await driver.update(req.body, {
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
       success: true,
-      data: driver,
+      data: driver
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
 
@@ -113,28 +113,28 @@ exports.deleteDriver = async (req, res) => {
   try {
     const driver = await Driver.findOne({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     if (!driver) {
       return res.status(404).json({
         success: false,
-        error: 'Driver not found',
+        error: "Driver not found"
       });
     }
 
     await driver.destroy({
       where: {
-        id: req.params.id,
-      },
+        id: req.params.id
+      }
     });
 
     return res.status(200).json({
-      success: true,
+      success: true
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Server Error' });
+    return res.status(500).json({ error: "Server Error" });
   }
 };
