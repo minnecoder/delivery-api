@@ -30,6 +30,12 @@ exports.getSingleProduct = async (req, res) => {
       }
     });
 
+    if (!product) {
+      return res.status(404).json({
+        error: `There is no product with with the id ${req.params.id}`
+      });
+    }
+
     return res.status(200).json({
       success: true,
       data: product
@@ -45,6 +51,13 @@ exports.getSingleProduct = async (req, res) => {
 // @access User
 exports.addProduct = async (req, res) => {
   try {
+    // Check if the body of the request has data
+    if (Object.keys(req.body).length === 0) {
+      return res.status(404).json({
+        error: "The body can not be empty"
+      });
+    }
+
     const product = await Product.create(req.body);
 
     return res.status(200).json({
@@ -76,6 +89,12 @@ exports.addBulkProducts = async (req, res) => {
 // @route UPDATE /products/:id
 // @access User
 exports.updateProduct = async (req, res) => {
+  // Check if the body of the request has data
+  if (Object.keys(req.body).length === 0) {
+    return res.status(404).json({
+      error: "The body can not be empty"
+    });
+  }
   try {
     const product = await Product.findOne({
       where: {
@@ -83,6 +102,7 @@ exports.updateProduct = async (req, res) => {
       }
     });
 
+    // Check to see if the product exists
     if (!product) {
       return res.status(404).json({
         success: false,

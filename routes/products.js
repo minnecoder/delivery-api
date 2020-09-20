@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 // const verify = require('../auth/verifyToken');
 // const { productCUDAccess } = require('../auth/verifyRoles');
 const {
@@ -7,24 +7,24 @@ const {
   addProduct,
   addBulkProducts,
   updateProduct,
-  deleteProduct,
-} = require('../controllers/products');
+  deleteProduct
+} = require("../controllers/products");
 
 const router = express.Router();
 
 router
-  .route('/')
+  .route("/")
   .get(getProducts)
   .post(addProduct);
 // .post(verify, productCUDAccess, addProduct);
 
 router
-  .route('/:productID')
+  .route("/:id")
   .get(getSingleProduct)
   .put(updateProduct)
   .delete(deleteProduct);
 // .put(verify, productCUDAccess, updateProduct)
 // .delete(verify, productCUDAccess, deleteProduct);
 
-router.route('/bulk').post(addBulkProducts);
+router.route("/bulk").post(addBulkProducts);
 module.exports = router;

@@ -7,6 +7,11 @@ const app = express();
 
 app.use(cors());
 dotenv.config({ path: "./config/config.env" });
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 app.use(bodyParser.json());
 
 // DB Connection and Test

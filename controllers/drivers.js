@@ -7,7 +7,7 @@ const Driver = require("../models/Driver");
 exports.getDrivers = async (req, res) => {
   try {
     const drivers = await Driver.findAll();
-    console.log(drivers);
+
     return res.status(200).json({
       success: true,
       count: drivers.length,
