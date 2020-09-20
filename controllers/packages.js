@@ -61,6 +61,8 @@ exports.addPackage = async (req, res) => {
         error: "The orderID was not found"
       });
     }
+
+    // Check if productId is valid
     const product = await Product.findOne({
       where: {
         id: req.body.productId

@@ -32,7 +32,7 @@ exports.getSingleProduct = async (req, res) => {
 
     if (!product) {
       return res.status(404).json({
-        error: `There is no product with with the id ${req.params.id}`
+        error: "The id was not found"
       });
     }
 

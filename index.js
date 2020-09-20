@@ -9,7 +9,7 @@ app.use(cors());
 dotenv.config({ path: "./config/config.env" });
 app.use(
   bodyParser.urlencoded({
-    extended: true
+    extended: false
   })
 );
 app.use(bodyParser.json());

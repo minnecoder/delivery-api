@@ -1,34 +1,34 @@
-const Sequelize = require('sequelize');
-const db = require('../config/postgres-db');
-const Customer = require('./Customer');
+const Sequelize = require("sequelize");
+const db = require("../config/postgres-db");
+const Customer = require("./Customer");
 
-const Order = db.define('orders', {
+const Order = db.define("orders", {
   customerId: {
     type: Sequelize.INTEGER,
     references: {
       model: Customer,
-      key: 'id',
-      deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE,
-    },
+      key: "id",
+      deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+    }
   },
   order_number: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER
   },
   order_date: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATE
   },
   order_status: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   order_total: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.DECIMAL
   },
   createdAt: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATE
   },
   updatedAt: {
-    type: Sequelize.DATE,
-  },
+    type: Sequelize.DATE
+  }
 });
 Customer.hasMany(Order);
 Order.belongsTo(Customer);

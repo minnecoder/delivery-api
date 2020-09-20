@@ -1,22 +1,22 @@
-const express = require('express');
+const express = require("express");
 // const verify = require('../auth/verifyToken');
 const {
   getPackages,
   getSinglePackage,
   addPackage,
   updatePackage,
-  deletePackage,
-} = require('../controllers/packages');
+  deletePackage
+} = require("../controllers/packages");
 
 const router = express.Router();
 
 router
-  .route('/')
+  .route("/")
   .get(getPackages)
   .post(addPackage);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(getSinglePackage)
   .put(updatePackage)
   .delete(deletePackage);
