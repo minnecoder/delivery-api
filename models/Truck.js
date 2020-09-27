@@ -1,25 +1,25 @@
-const Sequelize = require('sequelize');
-const db = require('../config/postgres-db');
+const Sequelize = require("sequelize");
+const db = require("../config/postgres-db");
 
-const Truck = db.define('trucks', {
+const Truck = db.define("trucks", {
   truck_year: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER
   },
   truck_make: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   truck_model: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   truck_license_number: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   createdAt: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATE
   },
   updatedAt: {
-    type: Sequelize.DATE,
-  },
+    type: Sequelize.DATE
+  }
 });
 
 module.exports = Truck;

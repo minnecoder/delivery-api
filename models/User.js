@@ -1,29 +1,29 @@
-const Sequelize = require('sequelize');
-const db = require('../config/postgres-db');
+const Sequelize = require("sequelize");
+const db = require("../config/postgres-db");
 
-const User = db.define('users', {
+const User = db.define("users", {
   user_name: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   email: {
     type: Sequelize.STRING,
     isEmail: true,
-    unique: 'compositeIndex',
+    unique: "compositeIndex"
   },
   password: {
     type: Sequelize.STRING,
-    min: 8,
+    min: 8
   },
   role: {
     type: Sequelize.STRING,
-    isIn: [['driver', 'manager', 'admin', 'user', 'customer']],
+    isIn: [["driver", "manager", "admin", "user", "customer"]]
   },
   createdAt: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATE
   },
   updatedAt: {
-    type: Sequelize.DATE,
-  },
+    type: Sequelize.DATE
+  }
 });
 
 module.exports = User;

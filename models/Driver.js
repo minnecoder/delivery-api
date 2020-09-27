@@ -1,19 +1,19 @@
-const Sequelize = require('sequelize');
-const db = require('../config/postgres-db');
+const Sequelize = require("sequelize");
+const db = require("../config/postgres-db");
 
-const Driver = db.define('drivers', {
+const Driver = db.define("drivers", {
   first_name: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   last_name: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   createdAt: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATE
   },
   updatedAt: {
-    type: Sequelize.DATE,
-  },
+    type: Sequelize.DATE
+  }
 });
 
 module.exports = Driver;
