@@ -11,17 +11,18 @@ const Order = db.define("orders", {
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
   },
-  order_number: {
-    type: Sequelize.INTEGER
-  },
-  order_date: {
-    type: Sequelize.DATE
-  },
   order_status: {
-    type: Sequelize.STRING
+    type: Sequelize.ENUM,
+    values: ["created", "picked", "on_truck", "delivered"]
   },
   order_total: {
     type: Sequelize.DECIMAL
+  },
+  is_grouped: {
+    type: Sequelize.BOOLEAN
+  },
+  prev_order_num: {
+    type: Sequelize.INTEGER
   },
   createdAt: {
     type: Sequelize.DATE
