@@ -1,32 +1,23 @@
 const Sequelize = require("sequelize");
 const db = require("../config/postgres-db");
 const Driver = require("./Driver");
-const DeliveryRoute = require("./DeliveryRoute");
-const Truck = require("./Truck");
+const Vehicles = require("./Vehicles");
 
 const DriverReport = db.define(
   "driver_report",
   {
-    driverId: {
+    driver_id: {
       type: Sequelize.INTEGER,
       references: {
         model: Driver,
         key: "id",
-        defferable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
       }
     },
-    routeId: {
+    vehicles_id: {
       type: Sequelize.INTEGER,
       references: {
-        model: DeliveryRoute,
-        key: "id",
-        defferable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-      }
-    },
-    truckId: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: Truck,
+        model: Vehicles,
         key: "id",
         defferable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
       }
@@ -70,7 +61,10 @@ const DriverReport = db.define(
     num_signature_stops: {
       type: Sequelize.INTEGER
     },
-    date: {
+    createdAt: {
+      type: Sequelize.DATE
+    },
+    updatedAt: {
       type: Sequelize.DATE
     }
   },
@@ -80,9 +74,7 @@ const DriverReport = db.define(
 );
 Driver.hasMany(DriverReport);
 DriverReport.belongsTo(Driver);
-Truck.hasMany(DriverReport);
-DriverReport.belongsTo(Truck);
-DeliveryRoute.hasMany(DriverReport);
-DriverReport.belongsTo(DeliveryRoute);
+Vehicles.hasMany(DriverReport);
+DriverReport.belongsTo(Vehicles);
 
 module.exports = DriverReport;

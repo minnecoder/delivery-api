@@ -2,14 +2,13 @@ const Sequelize = require("sequelize");
 const db = require("../config/postgres-db");
 const Customer = require("./Customer");
 const Order = require("./Order");
-const DeliveryRoute = require("./DeliveryRoute");
-const Truck = require("./Truck");
+const Vehicles = require("./Vehicles");
 const Driver = require("./Driver");
 
 const Stop = db.define(
   "stops",
   {
-    customerId: {
+    customer_id: {
       type: Sequelize.INTEGER,
       references: {
         model: Customer,
@@ -17,7 +16,7 @@ const Stop = db.define(
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
       }
     },
-    orderId: {
+    order_id: {
       type: Sequelize.INTEGER,
       references: {
         model: Order,
@@ -25,23 +24,15 @@ const Stop = db.define(
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
       }
     },
-    routeId: {
+    vehicles_id: {
       type: Sequelize.INTEGER,
       references: {
-        model: DeliveryRoute,
+        model: Vehicles,
         key: "id",
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
       }
     },
-    truckId: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: Truck,
-        key: "id",
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-      }
-    },
-    driverId: {
+    driver_id: {
       type: Sequelize.INTEGER,
       references: {
         model: Driver,
@@ -82,10 +73,8 @@ Customer.hasMany(Stop);
 Stop.belongsTo(Customer);
 Order.hasMany(Stop);
 Stop.belongsTo(Order);
-DeliveryRoute.hasMany(Stop);
-Stop.belongsTo(DeliveryRoute);
-Truck.hasMany(Stop);
-Stop.belongsTo(Truck);
+Vehicles.hasMany(Stop);
+Stop.belongsTo(Vehicles);
 Driver.hasMany(Stop);
 Stop.belongsTo(Driver);
 

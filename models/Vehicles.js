@@ -1,18 +1,25 @@
 const Sequelize = require("sequelize");
 const db = require("../config/postgres-db");
 
-const Truck = db.define("trucks", {
-  truck_year: {
+const Vehicles = db.define("vehicles", {
+  vehicle_year: {
     type: Sequelize.INTEGER
   },
-  truck_make: {
+  vehicle_make: {
     type: Sequelize.STRING
   },
-  truck_model: {
+  vehicle_model: {
     type: Sequelize.STRING
   },
-  truck_license_number: {
+  vehicle_license_plate: {
     type: Sequelize.STRING
+  },
+  vehicle_tab_date: {
+    type: Sequelize.DATE
+  },
+  vehicle_status: {
+    type: Sequelize.ENUM,
+    values: ["running", "being_repaired"]
   },
   createdAt: {
     type: Sequelize.DATE
@@ -22,4 +29,4 @@ const Truck = db.define("trucks", {
   }
 });
 
-module.exports = Truck;
+module.exports = Vehicles;

@@ -18,6 +18,10 @@ const Product = db.define("products", {
     type: Sequelize.INTEGER,
     isNumeric: true
   },
+  product_status: {
+    type: Sequelize.ENUM,
+    values: ["out_of_stock", "in_stock", "running_low"]
+  },
   createdAt: {
     type: Sequelize.DATE
   },

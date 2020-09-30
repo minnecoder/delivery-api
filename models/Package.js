@@ -1,10 +1,10 @@
 const Sequelize = require("sequelize");
 const db = require("../config/postgres-db");
 const Order = require("./Order");
-const Product = require("./Product");
+const OrderItems = require("./OrderItems");
 
 const Package = db.define("packages", {
-  orderId: {
+  order_id: {
     type: Sequelize.INTEGER,
     references: {
       model: Order,
@@ -12,18 +12,19 @@ const Package = db.define("packages", {
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
   },
-  productId: {
+  items_id: {
     type: Sequelize.INTEGER,
     references: {
-      model: Product,
+      model: OrderItems,
       key: "id",
       deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
   },
-  unit_price: {
-    type: Sequelize.DECIMAL
+  package_status: {
+    type: Sequelize.ENUM,
+    values: ["not started", "picked", "on_truck", "delivered", "damaged", "returned"]
   },
-  quantity: {
+  package_barcode: {
     type: Sequelize.INTEGER,
     isNumeric: true
   },
@@ -48,7 +49,7 @@ Package.associate = models => {
 };
 Order.hasMany(Package);
 Package.belongsTo(Order);
-Product.hasMany(Package);
-Package.belongsTo(Product);
+OrderItems.hasMany(Package);
+Package.belongsTo(OrderItems);
 
 module.exports = Package;
