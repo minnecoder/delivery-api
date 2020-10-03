@@ -22,7 +22,7 @@ const Package = db.define("packages", {
   },
   package_status: {
     type: Sequelize.ENUM,
-    values: ["not started", "picked", "on_truck", "delivered", "damaged", "returned"]
+    values: ["not started", "picked", "scanned", "on_truck", "delivered", "damaged", "returned"]
   },
   package_barcode: {
     type: Sequelize.INTEGER,
