@@ -47,7 +47,8 @@ const Stop = db.define(
       type: Sequelize.BOOLEAN
     },
     reason_code: {
-      type: Sequelize.STRING
+      type: Sequelize.ENUM,
+      values: ["business_closed"]
     },
     signer_name: {
       type: Sequelize.STRING
