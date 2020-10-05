@@ -1,16 +1,16 @@
-const DeliveryRoute = require("../models/DeliveryRoute");
+const Vehicle = require("../models/Vehicles");
 
-// @desc Get all deliveryRoutes
-// @route GET /deliveryRoutes
+// @desc Get all vehicles
+// @route GET /vehicles
 // @access User
-exports.getDeliveryRoutes = async (req, res) => {
+exports.getVehicles = async (req, res) => {
   try {
-    const deliveryRoutes = await DeliveryRoute.findAll();
+    const vehicles = await Vehicle.findAll();
 
     return res.status(200).json({
       success: true,
-      count: deliveryRoutes.length,
-      data: deliveryRoutes
+      count: vehicles.length,
+      data: vehicles
     });
   } catch (error) {
     console.error(error);
@@ -18,12 +18,12 @@ exports.getDeliveryRoutes = async (req, res) => {
   }
 };
 
-// @desc Get single deliveryRoute
-// @route GET /deliveryRoutes/:id
+// @desc Get single vehicle
+// @route GET /vehicles/:id
 // @access User
-exports.getSingleDeliveryRoute = async (req, res) => {
+exports.getSingleVehicle = async (req, res) => {
   try {
-    const deliveryRoute = await DeliveryRoute.findOne({
+    const vehicle = await Vehicle.findOne({
       where: {
         id: req.params.id
       }
@@ -31,7 +31,7 @@ exports.getSingleDeliveryRoute = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: deliveryRoute
+      data: vehicle
     });
   } catch (error) {
     console.error(error);
@@ -39,16 +39,16 @@ exports.getSingleDeliveryRoute = async (req, res) => {
   }
 };
 
-// @desc Add deliveryRoute
-// @route POST /deliveryRoutes
+// @desc Add vehicle
+// @route POST /vehicles
 // @access User
-exports.addDeliveryRoute = async (req, res) => {
+exports.addVehicle = async (req, res) => {
   try {
-    const deliveryRoute = await DeliveryRoute.create(req.body);
+    const vehicle = await Vehicle.create(req.body);
 
     return res.status(200).json({
       success: true,
-      data: deliveryRoute
+      data: vehicle
     });
   } catch (error) {
     console.error(error);
@@ -56,14 +56,14 @@ exports.addDeliveryRoute = async (req, res) => {
   }
 };
 
-exports.addBulkDeliveryRoutes = async (req, res) => {
+exports.addBulkVehicles = async (req, res) => {
   try {
-    const deliveryRoutes = await DeliveryRoute.bulkCreate(req.body);
+    const vehicles = await Vehicle.bulkCreate(req.body);
 
     return res.status(200).json({
       success: true,
-      count: deliveryRoutes.length,
-      data: deliveryRoutes
+      count: vehicles.length,
+      data: vehicles
     });
   } catch (error) {
     console.log(error);
@@ -71,25 +71,25 @@ exports.addBulkDeliveryRoutes = async (req, res) => {
   }
 };
 
-// @desc Update deliveryRoute
-// @route UPDATE /deliveryRoutes/:id
+// @desc Update vehicle
+// @route UPDATE /vehicles/:id
 // @access User
-exports.updateDeliveryRoute = async (req, res) => {
+exports.updateVehicle = async (req, res) => {
   try {
-    const deliveryRoute = await DeliveryRoute.findOne({
+    const vehicle = await Vehicle.findOne({
       where: {
         id: req.params.id
       }
     });
 
-    if (!deliveryRoute) {
+    if (!vehicle) {
       return res.status(404).json({
         success: false,
-        error: "Delivery Route not found"
+        error: "Vehicle not found"
       });
     }
 
-    await deliveryRoute.update(req.body, {
+    await Vehicle.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -97,7 +97,7 @@ exports.updateDeliveryRoute = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: deliveryRoute
+      data: vehicle
     });
   } catch (error) {
     console.error(error);
@@ -105,25 +105,25 @@ exports.updateDeliveryRoute = async (req, res) => {
   }
 };
 
-// @desc Delete deliveryRoute
-// @route DELETE /deliveryRoutes/:id
+// @desc Delete vehicle
+// @route DELETE /vehicles/:id
 // @access User
-exports.deleteDeliveryRoute = async (req, res) => {
+exports.deleteVehicle = async (req, res) => {
   try {
-    const deliveryRoute = await DeliveryRoute.findOne({
+    const vehicle = await Vehicle.findOne({
       where: {
         id: req.params.id
       }
     });
 
-    if (!deliveryRoute) {
+    if (!vehicle) {
       return res.status(404).json({
         success: false,
-        error: "Delivery Route not found"
+        error: "Vehicle not found"
       });
     }
 
-    await DeliveryRoute.destroy({
+    await Vehicle.destroy({
       where: {
         id: req.params.id
       }

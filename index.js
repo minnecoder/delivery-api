@@ -29,11 +29,10 @@ const user = require("./routes/user");
 const orders = require("./routes/orders");
 const products = require("./routes/products");
 const customers = require("./routes/customers");
-const deliveryRoutes = require("./routes/deliveryRoutes");
 const drivers = require("./routes/drivers");
 const packages = require("./routes/packages");
 const stops = require("./routes/stops");
-const trucks = require("./routes/trucks");
+const vehicles = require("./routes/vehicles");
 const driverReports = require("./routes/driverReport");
 const scanner = require("./routes/scanner");
 
@@ -42,11 +41,10 @@ app.use("/api/v1/user", user);
 app.use("/api/v1/orders", orders);
 app.use("/api/v1/products", products);
 app.use("/api/v1/customers", customers);
-app.use("/api/v1/deliveryroutes", deliveryRoutes);
 app.use("/api/v1/drivers", drivers);
 app.use("/api/v1/packages", packages);
 app.use("/api/v1/stops", stops);
-app.use("/api/v1/trucks", trucks);
+app.use("/api/v1/vehicles", vehicles);
 app.use("/api/v1/driverreports", driverReports);
 app.use("/api/v1/scanner", scanner);
 

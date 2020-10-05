@@ -1,22 +1,22 @@
-const express = require('express');
+const express = require("express");
 // const verify = require('../auth/verifyToken');
 const {
   getStops,
   getSingleStop,
   addStop,
   updateStop,
-  deleteStop,
-} = require('../controllers/stops');
+  deleteStop
+} = require("../controllers/stops");
 
 const router = express.Router();
 
 router
-  .route('/')
+  .route("/")
   .get(getStops)
   .post(addStop);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(getSingleStop)
   .put(updateStop)
   .delete(deleteStop);

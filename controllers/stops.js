@@ -1,8 +1,7 @@
 const Stop = require("../models/Stop");
 const Customer = require("../models/Customer");
 const Order = require("../models/Order");
-const DeliveryRoute = require("../models/DeliveryRoute");
-const Truck = require("../models/Truck");
+const Vehicles = require("../models/Vehicles");
 
 // @desc Get all stops
 // @route GET /stops
@@ -10,7 +9,7 @@ const Truck = require("../models/Truck");
 exports.getStops = async (req, res) => {
   try {
     const stops = await Stop.findAll({
-      include: [Customer, Order, DeliveryRoute, Truck]
+      include: [Customer, Order, Vehicles]
     });
 
     return res.status(200).json({
@@ -33,7 +32,7 @@ exports.getSingleStop = async (req, res) => {
       where: {
         id: req.params.id
       },
-      include: [Customer, Order, DeliveryRoute, Truck]
+      include: [Customer, Order, Vehicles]
     });
 
     return res.status(200).json({
@@ -78,20 +77,7 @@ exports.addStop = async (req, res) => {
       });
     }
 
-    const deliveryRoute = await DeliveryRoute.findOne({
-      where: {
-        id: req.body.routeId
-      }
-    });
-
-    if (!deliveryRoute) {
-      return res.status(404).json({
-        sucess: false,
-        error: "The Delivery RouteID was not found"
-      });
-    }
-
-    const truck = await Truck.findOne({
+    const truck = await Vehicles.findOne({
       where: {
         id: req.body.truckId
       }

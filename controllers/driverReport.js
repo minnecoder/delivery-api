@@ -1,7 +1,6 @@
 const DriverReport = require("../models/DriverReport");
 const Driver = require("../models/Driver");
-const DeliveryRoute = require("../models/DeliveryRoute");
-const Truck = require("../models/Truck");
+const Vehicle = require("../models/Vehicles");
 
 // @desc Get all driver reports
 // @route GET /driverreports
@@ -31,8 +30,7 @@ exports.getSingleDriverReport = async (req, res) => {
         id: req.params.id
       },
       include: Driver,
-      DeliveryRoute,
-      Truck
+      Vehicle
     });
 
     return res.status(200).json({
@@ -64,28 +62,14 @@ exports.addDriverReport = async (req, res) => {
       });
     }
 
-    // Check if delivery route is is valid
-    const route = await DeliveryRoute.findOne({
-      where: {
-        id: req.body.routeId
-      }
-    });
-
-    if (!route) {
-      return res.status(404).json({
-        success: false,
-        error: "The route ID was not found"
-      });
-    }
-
-    // Check if truckId is valid
-    const truck = await Truck.findOne({
+    // Check if vehicle_id is valid
+    const vehicle = await Vehicle.findOne({
       where: {
         id: req.body.truckId
       }
     });
 
-    if (!truck) {
+    if (!vehicle) {
       res.status(404).json({
         success: false,
         error: "The truck ID was not found"
@@ -174,7 +158,7 @@ exports.deleteDriverReport = async (req, res) => {
 // @desc Sync Update driver report
 // @route UPDATE /driverreports/update
 // @access User
-exports.syncUpdateDR = async (req, res) => {
+exports.updateDR = async (req, res) => {
   try {
     const driverReport = await DriverReport.findOne({
       where: {
@@ -182,6 +166,7 @@ exports.syncUpdateDR = async (req, res) => {
         date: req.body.date
       }
     });
+
     if (!driverReport) {
       return res.status(404).json({
         success: false,
@@ -201,5 +186,6 @@ exports.syncUpdateDR = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
+    return res.status(500).json({ error: "Server Error" });
   }
 };
