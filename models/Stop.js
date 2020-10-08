@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const db = require("../config/postgres-db");
 const Customer = require("./Customer");
 const Order = require("./Order");
-const Vehicles = require("./Vehicles");
+const Vehicles = require("./Vehicle");
 const Driver = require("./Driver");
 
 const Stop = db.define(

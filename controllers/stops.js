@@ -1,7 +1,7 @@
 const Stop = require("../models/Stop");
 const Customer = require("../models/Customer");
 const Order = require("../models/Order");
-const Vehicles = require("../models/Vehicles");
+const Vehicle = require("../models/Vehicle");
 
 // @desc Get all stops
 // @route GET /stops
@@ -9,7 +9,7 @@ const Vehicles = require("../models/Vehicles");
 exports.getStops = async (req, res) => {
   try {
     const stops = await Stop.findAll({
-      include: [Customer, Order, Vehicles]
+      include: [Customer, Order, Vehicle]
     });
 
     return res.status(200).json({
@@ -32,7 +32,7 @@ exports.getSingleStop = async (req, res) => {
       where: {
         id: req.params.id
       },
-      include: [Customer, Order, Vehicles]
+      include: [Customer, Order, Vehicle]
     });
 
     return res.status(200).json({
@@ -77,7 +77,7 @@ exports.addStop = async (req, res) => {
       });
     }
 
-    const truck = await Vehicles.findOne({
+    const truck = await Vehicle.findOne({
       where: {
         id: req.body.truckId
       }

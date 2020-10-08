@@ -1,16 +1,16 @@
-const Vehicle = require("../models/Vehicle");
+const PreviousSigner = require("../models/PreviousSigner");
 
-// @desc Get all vehicles
-// @route GET /vehicles
+// @desc Get all previoussigners
+// @route GET /previoussigners
 // @access User
-exports.getVehicles = async (req, res) => {
+exports.getPreviousSigners = async (req, res) => {
   try {
-    const vehicles = await Vehicle.findAll();
+    const previoussigners = await PreviousSigner.findAll();
 
     return res.status(200).json({
       success: true,
-      count: vehicles.length,
-      data: vehicles
+      count: previoussigners.length,
+      data: previoussigners
     });
   } catch (error) {
     console.error(error);
@@ -18,12 +18,12 @@ exports.getVehicles = async (req, res) => {
   }
 };
 
-// @desc Get single vehicle
-// @route GET /vehicles/:id
+// @desc Get single previoussigner
+// @route GET /previoussigners/:id
 // @access User
-exports.getSingleVehicle = async (req, res) => {
+exports.getSinglePreviousSigner = async (req, res) => {
   try {
-    const vehicle = await Vehicle.findOne({
+    const previoussigner = await PreviousSigner.findOne({
       where: {
         id: req.params.id
       }
@@ -31,7 +31,7 @@ exports.getSingleVehicle = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: vehicle
+      data: previoussigner
     });
   } catch (error) {
     console.error(error);
@@ -39,16 +39,16 @@ exports.getSingleVehicle = async (req, res) => {
   }
 };
 
-// @desc Add vehicle
-// @route POST /vehicles
+// @desc Add previoussigner
+// @route POST /previoussigners
 // @access User
-exports.addVehicle = async (req, res) => {
+exports.addPreviousSigner = async (req, res) => {
   try {
-    const vehicle = await Vehicle.create(req.body);
+    const previoussigner = await PreviousSigner.create(req.body);
 
     return res.status(200).json({
       success: true,
-      data: vehicle
+      data: previoussigner
     });
   } catch (error) {
     console.error(error);
@@ -56,14 +56,14 @@ exports.addVehicle = async (req, res) => {
   }
 };
 
-exports.addBulkVehicles = async (req, res) => {
+exports.addBulkPreviousSigners = async (req, res) => {
   try {
-    const vehicles = await Vehicle.bulkCreate(req.body);
+    const previoussigners = await PreviousSigner.bulkCreate(req.body);
 
     return res.status(200).json({
       success: true,
-      count: vehicles.length,
-      data: vehicles
+      count: previoussigners.length,
+      data: previoussigners
     });
   } catch (error) {
     console.log(error);
@@ -71,25 +71,25 @@ exports.addBulkVehicles = async (req, res) => {
   }
 };
 
-// @desc Update vehicle
-// @route UPDATE /vehicles/:id
+// @desc Update previoussigner
+// @route UPDATE /previoussigners/:id
 // @access User
-exports.updateVehicle = async (req, res) => {
+exports.updatePreviousSigner = async (req, res) => {
   try {
-    const vehicle = await Vehicle.findOne({
+    const previoussigner = await PreviousSigner.findOne({
       where: {
         id: req.params.id
       }
     });
 
-    if (!vehicle) {
+    if (!previoussigner) {
       return res.status(404).json({
         success: false,
-        error: "Vehicle not found"
+        error: "previoussigner not found"
       });
     }
 
-    await Vehicle.update(req.body, {
+    await PreviousSigner.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -97,7 +97,7 @@ exports.updateVehicle = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      data: vehicle
+      data: previoussigner
     });
   } catch (error) {
     console.error(error);
@@ -105,25 +105,25 @@ exports.updateVehicle = async (req, res) => {
   }
 };
 
-// @desc Delete vehicle
-// @route DELETE /vehicles/:id
+// @desc Delete previoussigner
+// @route DELETE /previoussigners/:id
 // @access User
-exports.deleteVehicle = async (req, res) => {
+exports.deletePreviousSigner = async (req, res) => {
   try {
-    const vehicle = await Vehicle.findOne({
+    const previoussigner = await PreviousSigner.findOne({
       where: {
         id: req.params.id
       }
     });
 
-    if (!vehicle) {
+    if (!previoussigner) {
       return res.status(404).json({
         success: false,
-        error: "Vehicle not found"
+        error: "previoussigner not found"
       });
     }
 
-    await Vehicle.destroy({
+    await PreviousSigner.destroy({
       where: {
         id: req.params.id
       }

@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../config/postgres-db");
 const Driver = require("./Driver");
-const Vehicles = require("./Vehicles");
+const Vehicles = require("./Vehicle");
 
 const DriverReport = db.define(
   "driver_report",

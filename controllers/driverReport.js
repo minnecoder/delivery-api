@@ -1,6 +1,6 @@
 const DriverReport = require("../models/DriverReport");
 const Driver = require("../models/Driver");
-const Vehicle = require("../models/Vehicles");
+const Vehicle = require("../models/Vehicle");
 
 // @desc Get all driver reports
 // @route GET /driverreports

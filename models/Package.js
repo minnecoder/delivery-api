@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../config/postgres-db");
 const Order = require("./Order");
-const OrderItems = require("./OrderItems");
+const OrderItems = require("./OrderItem");
 
 const Package = db.define("packages", {
   order_id: {
