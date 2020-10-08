@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 // const verify = require('../auth/verifyToken');
 // const { customerCUDAccess } = require('../auth/verifyRoles');
 const {
@@ -7,24 +7,24 @@ const {
   addCustomer,
   addBulkCustomers,
   updateCustomer,
-  deleteCustomer,
-} = require('../controllers/customers');
+  deleteCustomer
+} = require("../controllers/customers");
 
 const router = express.Router();
 
 router
-  .route('/')
+  .route("/")
   .get(getCustomers)
   .post(addCustomer);
 // .post(verify, customerCUDAccess, addCustomer);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(getSingleCustomer)
   .put(updateCustomer)
   .delete(deleteCustomer);
 // .put(verify, customerCUDAccess, updateCustomer)
 // .delete(verify, customerCUDAccess, deleteCustomer);
 
-router.route('/bulk').post(addBulkCustomers);
+router.route("/bulk").post(addBulkCustomers);
 module.exports = router;

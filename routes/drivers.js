@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 // const verify = require('../auth/verifyToken');
 const {
   getDrivers,
@@ -6,22 +6,22 @@ const {
   addDriver,
   addBulkDrivers,
   updateDriver,
-  deleteDriver,
-} = require('../controllers/drivers');
+  deleteDriver
+} = require("../controllers/drivers");
 
 const router = express.Router();
 
 router
-  .route('/')
+  .route("/")
   .get(getDrivers)
   .post(addDriver);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(getSingleDriver)
   .put(updateDriver)
   .delete(deleteDriver);
 
-router.route('/bulk').post(addBulkDrivers);
+router.route("/bulk").post(addBulkDrivers);
 
 module.exports = router;

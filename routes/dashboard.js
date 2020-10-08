@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('This is the main dashboard end point');
+router.get("/", (req, res) => {
+  res.send("This is the main dashboard end point");
 });
 
 module.exports = router;
