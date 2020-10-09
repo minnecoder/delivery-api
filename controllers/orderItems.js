@@ -3,7 +3,7 @@ const OrderItem = require("../models/OrderItem");
 // @desc Get all order items
 // @route GET /orderitems
 // @access User
-exports.getorderitems = async (req, res) => {
+exports.getOrderItems = async (req, res) => {
   try {
     const orderitems = await OrderItem.findAll();
 

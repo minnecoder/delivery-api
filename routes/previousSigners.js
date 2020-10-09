@@ -4,8 +4,8 @@ const {
   getPreviousSigners,
   getSinglePreviousSigner,
   addPreviousSigner,
-  updatePreviousSinger,
-  deletePreviousSinger
+  updatePreviousSigner,
+  deletePreviousSigner
 } = require("../controllers/previousSigners");
 
 const router = express.Router();
@@ -18,7 +18,7 @@ router
 router
   .route("/:id")
   .get(getSinglePreviousSigner)
-  .put(updatePreviousSinger)
-  .delete(deletePreviousSinger);
+  .put(updatePreviousSigner)
+  .delete(deletePreviousSigner);
 
 module.exports = router;
