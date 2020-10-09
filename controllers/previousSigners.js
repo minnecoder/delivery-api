@@ -1,6 +1,6 @@
 const PreviousSigner = require("../models/PreviousSigner");
 
-// @desc Get all previoussigners
+// @desc Get all previous signers
 // @route GET /previoussigners
 // @access User
 exports.getPreviousSigners = async (req, res) => {
@@ -18,7 +18,7 @@ exports.getPreviousSigners = async (req, res) => {
   }
 };
 
-// @desc Get single previoussigner
+// @desc Get single previous signer
 // @route GET /previoussigners/:id
 // @access User
 exports.getSinglePreviousSigner = async (req, res) => {
@@ -39,7 +39,7 @@ exports.getSinglePreviousSigner = async (req, res) => {
   }
 };
 
-// @desc Add previoussigner
+// @desc Add previous signer
 // @route POST /previoussigners
 // @access User
 exports.addPreviousSigner = async (req, res) => {
@@ -71,7 +71,7 @@ exports.addBulkPreviousSigners = async (req, res) => {
   }
 };
 
-// @desc Update previoussigner
+// @desc Update previous signer
 // @route UPDATE /previoussigners/:id
 // @access User
 exports.updatePreviousSigner = async (req, res) => {
@@ -105,7 +105,7 @@ exports.updatePreviousSigner = async (req, res) => {
   }
 };
 
-// @desc Delete previoussigner
+// @desc Delete previous signer
 // @route DELETE /previoussigners/:id
 // @access User
 exports.deletePreviousSigner = async (req, res) => {
