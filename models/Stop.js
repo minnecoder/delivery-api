@@ -48,7 +48,21 @@ const Stop = db.define(
     },
     reason_code: {
       type: Sequelize.ENUM,
-      values: ["business_closed"]
+      values: [
+        "Business Closed",
+        "Customer Not Available",
+        "Address Problem",
+        "Holiday Closed",
+        "Requested Re-delivery",
+        "Damaged",
+        "Refused By Customer",
+        "Secured Building-Access Denied",
+        "Undeliverable Address",
+        "Ran Out Of Time",
+        "Truck Breakdown",
+        "Weather",
+        "Placed on Wrong Truck"
+      ]
     },
     signer_name: {
       type: Sequelize.STRING
