@@ -47,6 +47,12 @@ exports.addCustomer = async (req, res) => {
   try {
     const customer = await Customer.create(req.body);
 
+    // create new previous signers entry
+
+    // create new customer notes entry
+
+    // create new customer hours entry
+
     return res.status(200).json({
       success: true,
       data: customer
