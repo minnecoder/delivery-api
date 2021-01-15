@@ -2,6 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUI = require("swagger-ui-express");
+const swaggerDoc = require("./swagger.json");
 
 const app = express();
 
@@ -22,6 +25,8 @@ db.authenticate()
   .catch(error => {
     console.log("Error: ", error);
   });
+
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
 // Routes
 const dashboard = require("./routes/dashboard");
