@@ -1,0 +1,9 @@
+{
+    "version": "1.0.0",
+    "title": "Delivery Driver API",
+    "description": "API for a delivery driver application",
+    "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+    }
+}

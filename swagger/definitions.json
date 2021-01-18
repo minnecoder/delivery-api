@@ -1,0 +1,8 @@
+{
+    "Customer": {
+        "$ref": "./definitions/customer.json"
+    },
+    "Driver": {
+        "$ref": "./definitions/driver.json"
+    }
+}

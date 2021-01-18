@@ -1,0 +1,40 @@
+{
+    "properties": {
+        "first_name": {
+            "type": "string"
+        },
+        "last_name": {
+            "type": "string"
+        },
+        "phone_number": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "birthday": {
+            "type": "string",
+            "format": "date"
+        },
+        "hire_date": {
+            "type": "string",
+            "format": "date"
+        },
+        "vehicle_type": {
+            "type": "string",
+            "description": "Vehicle Type",
+            "enum": [
+                "car",
+                "pickup",
+                "suv",
+                "van",
+                "cargo van",
+                "sprinter van",
+                "box truck",
+                "dock truck",
+                "semi"
+            ]
+        }
+    },
+    "xml": {
+        "name": "Driver"
+    }
+}

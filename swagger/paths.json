@@ -1,0 +1,8 @@
+{
+    "/customers": {
+        "$ref": "./paths/customer.json"
+    },
+    "/customers/{id}": {
+        "$ref": "./paths/customer/{id}.json"
+    }
+}

@@ -1,11 +1,10 @@
 {
     "swagger": "2.0",
     "info": {
-        "version": "1.0.0",
-        "title": "Delivery Driver API",
-        "description": "API for a delivery driver application"
+        "$ref": "./swagger/info.json#"
     },
-    "host": "localhost:4000/api/v1",
+    "host": "localhost:4000",
+    "basePath": "/api/v1",
     "tags": [
         {
             "name": "Customers",
@@ -16,113 +15,10 @@
             "description": "Customer Hour operations"
         }
     ],
-    "schemes": [
-        "http"
-    ],
-    "consumes": [
-        "application/json"
-    ],
-    "produces": [
-        "application/json"
-    ],
     "paths": {
-        "/customers": {
-            "get": {
-                "tags": [
-                    "Customers"
-                ],
-                "description": "Returns all customers",
-                "responses": {
-                    "200": {
-                        "description": "A list of customers"
-                    }
-                }
-            }
-        },
-        "/customers/{id}": {
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "required": "true",
-                    "description": "ID of customer",
-                    "type": "integer"
-                }
-            ],
-            "get": {
-                "tags": [
-                    "Customers"
-                ],
-                "description": "Return single customer",
-                "responses": {
-                    "200": {
-                        "description": "Single customer returned successfully"
-                    },
-                    "404": {
-                        "description": "ID not found"
-                    }
-                }
-            }
-        }
+        "$ref": "./swagger/paths.json"
     },
     "definitions": {
-        "Customer": {
-            "properties": {
-                "customer_name": {
-                    "type": "string"
-                },
-                "address": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                },
-                "zip": {
-                    "type": "integer"
-                },
-                "phone": {
-                    "type": "string"
-                },
-                "email": {
-                    "type": "string"
-                }
-            }
-        },
-        "Driver": {
-            "properties": {
-                "first_name": {
-                    "type": "string"
-                },
-                "last_name": {
-                    "type": "string"
-                },
-                "phone_number": {
-                    "type": "integer"
-                },
-                "birthday": {
-                    "type": "date"
-                },
-                "hire_date": {
-                    "type": "date"
-                },
-                "vehicle_type": {
-                    "type": "enum",
-                    "enum": [
-                        "car",
-                        "pickup",
-                        "suv",
-                        "van",
-                        "cargo_van",
-                        "sprinter_van",
-                        "box_truck",
-                        "dock_truck",
-                        "semi"
-                    ]
-                }
-            }
-        }
+        "$ref": "./swagger/definitions.json"
     }
 }

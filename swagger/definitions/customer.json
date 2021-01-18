@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "customer_name": {
+            "type": "string"
+        },
+        "address": {
+            "type": "string"
+        },
+        "city": {
+            "type": "string"
+        },
+        "state": {
+            "type": "string"
+        },
+        "zip": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        }
+    },
+    "xml": {
+        "name": "Customer"
+    }
+}
