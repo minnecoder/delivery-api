@@ -24,10 +24,10 @@ const Driver = db.define("drivers", {
       "pickup",
       "suv",
       "van",
-      "cargo_van",
-      "sprinter_van",
-      "box_truck",
-      "dock_truck",
+      "cargo van",
+      "sprinter van",
+      "box truck",
+      "dock truck",
       "semi"
     ]
   },
