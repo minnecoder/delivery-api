@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "swagger": "swagger-cli bundle -o swagger-compiled.json swagger.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sean Parkin",
