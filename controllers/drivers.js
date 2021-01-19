@@ -30,6 +30,13 @@ exports.getSingleDriver = async (req, res) => {
       }
     });
 
+    if (!driver) {
+      return res.status(404).json({
+        success: false,
+        error: "Driver not found"
+      });
+    }
+
     return res.status(200).json({
       success: true,
       data: driver
