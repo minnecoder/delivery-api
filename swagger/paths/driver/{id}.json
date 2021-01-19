@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Drivers"
+        ],
+        "summary": "Find driver by ID",
+        "description": "Return single driver",
+        "operationId": "getSingleDriver",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of driver",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single driver returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update driver with a given ID",
+        "tags": [
+            "Drivers"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete driver with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Driver deleted"
+            },
+            "404": {
+                "description": "Failed. Driver not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete driver with a given ID",
+        "tags": [
+            "Drivers"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete driver with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Driver deleted"
+            },
+            "404": {
+                "description": "Failed. Driver not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

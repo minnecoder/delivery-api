@@ -1,8 +1,14 @@
 {
     "/customers": {
-        "$ref": "./paths/customer.json"
+        "$ref": "./paths/customer/customer.json"
     },
     "/customers/{id}": {
         "$ref": "./paths/customer/{id}.json"
+    },
+    "/drivers": {
+        "$ref": "./paths/driver/driver.json"
+    },
+    "/drivers/{id}": {
+        "$ref": "./paths/driver/{id}.json"
     }
 }
