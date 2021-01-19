@@ -5,16 +5,9 @@
     },
     "host": "localhost:4000",
     "basePath": "/api/v1",
-    "tags": [
-        {
-            "name": "Customers",
-            "description": "Customer operations"
-        },
-        {
-            "name": "Customer Hours",
-            "description": "Customer Hour operations"
-        }
-    ],
+    "tags": {
+        "$ref": "./swagger/tags.json"
+    },
     "paths": {
         "$ref": "./swagger/paths.json"
     },

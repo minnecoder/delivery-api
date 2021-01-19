@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Customers",
+        "description": "Customer operations"
+    },
+    {
+        "name": "Customer Hours",
+        "description": "Customer Hour operations"
+    },
+    {
+        "name": "Drivers",
+        "description": "Driver operations"
+    }
+]
