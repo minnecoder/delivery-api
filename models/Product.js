@@ -20,7 +20,7 @@ const Product = db.define("products", {
   },
   product_status: {
     type: Sequelize.ENUM,
-    values: ["out_of_stock", "in_stock", "running_low"]
+    values: ["out of stock", "in stock", "running low"]
   },
   createdAt: {
     type: Sequelize.DATE
