@@ -29,6 +29,13 @@ exports.getSingleCustomerNote = async (req, res) => {
       }
     });
 
+    if (!customernote) {
+      return res.status(404).json({
+        success: false,
+        error: "customer note not found"
+      });
+    }
+
     return res.status(200).json({
       success: true,
       data: customernote
