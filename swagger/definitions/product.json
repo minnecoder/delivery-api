@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "item": {
+            "type": "string"
+        },
+        "address": {
+            "type": "string"
+        },
+        "cost": {
+            "type": "number",
+            "format": "float"
+        },
+        "price": {
+            "type": "number",
+            "format": "float"
+        },
+        "on_hand": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "product_status": {
+            "type": "string",
+            "description": "Product Status",
+            "enum": [
+                "out of stock",
+                "in stock",
+                "running low"
+            ]
+        }
+    }
+}

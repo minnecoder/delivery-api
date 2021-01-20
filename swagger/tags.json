@@ -14,5 +14,9 @@
     {
         "name": "Customer Notes",
         "description": "Customer Note operations"
+    },
+    {
+        "name": "Products",
+        "description": "Product operations"
     }
 ]
