@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "customer_id": {
+            "type": "integer",
+            "format": "int64"
+        },
+        "note": {
+            "type": "string"
+        }
+    },
+    "xml": {
+        "name": "CustomerNote"
+    }
+}

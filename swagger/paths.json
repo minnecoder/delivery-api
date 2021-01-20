@@ -10,5 +10,11 @@
     },
     "/drivers/{id}": {
         "$ref": "./paths/driver/{id}.json"
+    },
+    "/customerNotes": {
+        "$ref": "./paths/customerNote/customerNote.json"
+    },
+    "/customerNotes/{id}": {
+        "$ref": "./paths/customerNote/{id}.json"
     }
 }

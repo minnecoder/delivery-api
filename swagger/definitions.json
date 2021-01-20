@@ -4,5 +4,8 @@
     },
     "Driver": {
         "$ref": "./definitions/driver.json"
+    },
+    "CustomerNote": {
+        "$ref": "./definitions/customerNote.json"
     }
 }

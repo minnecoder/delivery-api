@@ -10,5 +10,9 @@
     {
         "name": "Drivers",
         "description": "Driver operations"
+    },
+    {
+        "name": "Customer Notes",
+        "description": "Customer Note operations"
     }
 ]

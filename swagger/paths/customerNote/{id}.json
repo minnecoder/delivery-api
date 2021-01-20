@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Customer Notes"
+        ],
+        "summary": "Find customer note by ID",
+        "description": "Return single customer note",
+        "operationId": "getSingleCustomerNote",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of customer note",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single customer note returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update customer note with a given ID",
+        "tags": [
+            "Customer Notes"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete customer note with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Customer Note deleted"
+            },
+            "404": {
+                "description": "Failed. Customer note not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete customer note with a given ID",
+        "tags": [
+            "Customer Notes"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete customer note with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Customer note deleted"
+            },
+            "404": {
+                "description": "Failed. Customer note not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}
