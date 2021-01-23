@@ -16,5 +16,14 @@
     },
     "/customerNotes/{id}": {
         "$ref": "./paths/customerNote/{id}.json"
+    },
+    "/user/add": {
+        "$ref": "./paths/user/addUser.json"
+    },
+    "/user/login": {
+        "$ref": "./paths/user/loginUser.json"
+    },
+    "/user/{userName}": {
+        "$ref": "./paths/user/getUser.json"
     }
 }

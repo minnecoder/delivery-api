@@ -1,0 +1,40 @@
+{
+    "post": {
+        "tags": [
+            "Users"
+        ],
+        "summary": "Login User",
+        "description": "",
+        "operationId": "loginUser",
+        "consumes": [
+            "application/json",
+            "application/xml"
+        ],
+        "produces": [
+            "application/xml",
+            "application/json"
+        ],
+        "parameters": [
+            {
+                "in": "body",
+                "name": "body",
+                "description": "User object to login",
+                "required": true,
+                "schema": {
+                    "$ref": "../../definitions/user.json"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "User logged in"
+            },
+            "400": {
+                "description": "User name or password is wrong"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "properties": {
+        "user_name": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        },
+        "password": {
+            "type": "string",
+            "min": 8
+        },
+        "role": {
+            "type": "string",
+            "description": "Roles",
+            "enum": [
+                "driver",
+                "manager",
+                "admin",
+                "user",
+                "customer"
+            ]
+        }
+    }
+}

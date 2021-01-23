@@ -1,0 +1,30 @@
+{
+    "get": {
+        "tags": [
+            "User"
+        ],
+        "summary": "Find user by user name",
+        "description": "Return single user",
+        "operatinId": "getUser",
+        "parameters": [
+            {
+                "name": "userName",
+                "in": "path",
+                "description": "User name",
+                "required": true,
+                "type": "string"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single user returned successfully"
+            },
+            "400": {
+                "description": "User not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

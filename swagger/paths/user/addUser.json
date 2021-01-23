@@ -1,0 +1,40 @@
+{
+    "post": {
+        "tags": [
+            "Users"
+        ],
+        "summary": "Create a new User",
+        "description": "",
+        "operationId": "addUser",
+        "consumes": [
+            "application/json",
+            "application/xml"
+        ],
+        "produces": [
+            "application/xml",
+            "application/json"
+        ],
+        "parameters": [
+            {
+                "in": "body",
+                "name": "body",
+                "description": "User object to add",
+                "required": true,
+                "schema": {
+                    "$ref": "../../definitions/user.json"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New user is created"
+            },
+            "400": {
+                "description": "Email or User name already exists"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

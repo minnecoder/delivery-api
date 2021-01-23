@@ -18,5 +18,9 @@
     {
         "name": "Products",
         "description": "Product operations"
+    },
+    {
+        "name": "User",
+        "description": "User operations"
     }
 ]
