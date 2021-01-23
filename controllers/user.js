@@ -44,7 +44,7 @@ exports.addUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   // Check if user exists
   const user = await User.findOne({ where: { user_name: req.body.user_name } });
-  if (!user) return res.json({ error: "User name or password is wrong" });
+  if (!user) return res.status(400).json({ error: "User name or password is wrong" });
 
   // Check if password is correct
   const validPassword = await bcrypt.compare(req.body.password, user.password);
@@ -65,6 +65,8 @@ exports.getUser = async (req, res) => {
     const user = await User.findOne({ where: { userName: req.params.userName } }).select(
       "-password"
     );
+
+    if (!user) return res.status(400).json({ error: "User not found" });
 
     return res.status(200).json({
       success: true,
