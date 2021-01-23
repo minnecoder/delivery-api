@@ -5,7 +5,7 @@
         ],
         "summary": "Find user by user name",
         "description": "Return single user",
-        "operatinId": "getUser",
+        "operationId": "getUser",
         "parameters": [
             {
                 "name": "userName",
