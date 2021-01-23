@@ -17,6 +17,12 @@
     "/customerNotes/{id}": {
         "$ref": "./paths/customerNote/{id}.json"
     },
+    "/products": {
+        "$ref": "./paths/product/product.json"
+    },
+    "/products/{id}": {
+        "$ref": "./paths/product/{id}.json"
+    },
     "/user/add": {
         "$ref": "./paths/user/addUser.json"
     },
@@ -25,5 +31,11 @@
     },
     "/user/{userName}": {
         "$ref": "./paths/user/getUser.json"
+    },
+    "/vehicles": {
+        "$ref": "./paths/vehicle/vehicle.json"
+    },
+    "/vehicles/{id}": {
+        "$ref": "./paths/vehicle/{id}.json"
     }
 }

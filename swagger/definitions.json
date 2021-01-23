@@ -10,5 +10,11 @@
     },
     "Product": {
         "$ref": "./definitions/product.json"
+    },
+    "User": {
+        "$ref": "./definitions/user.json"
+    },
+    "Vehicle": {
+        "$ref": "./definitions/vehicle.json"
     }
 }

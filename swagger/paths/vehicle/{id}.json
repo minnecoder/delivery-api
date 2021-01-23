@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Vehicles"
+        ],
+        "summary": "Find vehicle by ID",
+        "description": "Return single vehicle",
+        "operationId": "getSingleVehicle",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of vehicle",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single vehicle returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update vehicle with a given ID",
+        "tags": [
+            "Vehicles"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete vehicle with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Vehicle deleted"
+            },
+            "404": {
+                "description": "Failed. Vehicle not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete vehicle with a given ID",
+        "tags": [
+            "Vehicles"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete vehicle with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Vehicle deleted"
+            },
+            "404": {
+                "description": "Failed. Vehicle not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}
