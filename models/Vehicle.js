@@ -19,7 +19,7 @@ const Vehicles = db.define("vehicles", {
   },
   vehicle_status: {
     type: Sequelize.ENUM,
-    values: ["running", "being_repaired"]
+    values: ["running", "being repaired"]
   },
   createdAt: {
     type: Sequelize.DATE
