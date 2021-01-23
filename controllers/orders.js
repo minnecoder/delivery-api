@@ -33,6 +33,13 @@ exports.getSingleOrder = async (req, res) => {
       include: Customer
     });
 
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        error: "customer note not found"
+      });
+    }
+
     return res.status(200).json({
       success: true,
       data: order

@@ -29,6 +29,13 @@ exports.getSinglePreviousSigner = async (req, res) => {
       }
     });
 
+    if (!previoussigner) {
+      return res.status(404).json({
+        success: false,
+        error: "customer note not found"
+      });
+    }
+
     return res.status(200).json({
       success: true,
       data: previoussigner

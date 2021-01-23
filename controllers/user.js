@@ -66,7 +66,12 @@ exports.getUser = async (req, res) => {
       "-password"
     );
 
-    if (!user) return res.status(400).json({ error: "User not found" });
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        error: "customer note not found"
+      });
+    }
 
     return res.status(200).json({
       success: true,

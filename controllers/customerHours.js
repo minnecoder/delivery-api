@@ -28,6 +28,14 @@ exports.getSingleCustomerHours = async (req, res) => {
         id: req.params.id
       }
     });
+
+    if (!customerhours) {
+      return res.status(404).json({
+        success: false,
+        error: "customer note not found"
+      });
+    }
+
     return res.status(200).json({
       success: true,
       data: customerhours

@@ -33,6 +33,13 @@ exports.getSingleDriverReport = async (req, res) => {
       Vehicle
     });
 
+    if (!driverReport) {
+      return res.status(404).json({
+        success: false,
+        error: "customer note not found"
+      });
+    }
+
     return res.status(200).json({
       success: true,
       data: driverReport
