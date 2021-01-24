@@ -1,0 +1,29 @@
+{
+    "properties": {
+        "customerId": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "order_status": {
+            "type": "string",
+            "description": "Order Status",
+            "enum": [
+                "created",
+                "picked",
+                "on truck",
+                "delivered"
+            ]
+        },
+        "order_total": {
+            "type": "integer",
+            "format": "float"
+        },
+        "is_grouped": {
+            "type": "boolean"
+        },
+        "prev_order_num": {
+            "type": "integer",
+            "format": "int32"
+        }
+    }
+}

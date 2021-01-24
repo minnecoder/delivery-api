@@ -26,5 +26,9 @@
     {
         "name": "Vehicles",
         "description": "Vehicle operations"
+    },
+    {
+        "name": "Orders",
+        "description": "Order operations"
     }
 ]

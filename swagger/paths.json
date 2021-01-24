@@ -37,5 +37,11 @@
     },
     "/vehicles/{id}": {
         "$ref": "./paths/vehicle/{id}.json"
+    },
+    "/orders": {
+        "$ref": "./paths/order/order.json"
+    },
+    "/orders/{id}": {
+        "$ref": "./paths/order/{id}.json"
     }
 }
