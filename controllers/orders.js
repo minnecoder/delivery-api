@@ -54,18 +54,19 @@ exports.getSingleOrder = async (req, res) => {
 // @route POST /orders
 // @access User
 exports.addOrder = async (req, res) => {
+  console.log(req.body);
   try {
-    // Check if customerID is found
+    // Check if customer ID is found
     const customer = await Customer.findOne({
       where: {
-        id: req.body.customerId
+        id: req.body.customer_id
       }
     });
 
     if (!customer) {
       return res.status(404).json({
         sucess: false,
-        error: "The customerID was not found"
+        error: "The customer ID was not found"
       });
     }
     const order = await Order.create(req.body);
