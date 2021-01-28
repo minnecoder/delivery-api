@@ -1,7 +1,7 @@
 {
     "get": {
         "tags": [
-            "CustomerHours"
+            "Customer Hours"
         ],
         "summary": "Find customer hours by ID",
         "description": "Return single customer hours",
@@ -30,7 +30,7 @@
     "put": {
         "summary": "Update customer hours with a given ID",
         "tags": [
-            "CustomerHours"
+            "Customer Hours"
         ],
         "parameters": [
             {
@@ -56,7 +56,7 @@
     "delete": {
         "summary": "Delete customer hour with a given ID",
         "tags": [
-            "CustomerHours"
+            "Customer Hours"
         ],
         "parameters": [
             {
