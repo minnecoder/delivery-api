@@ -16,5 +16,8 @@
     },
     "Vehicle": {
         "$ref": "./definitions/vehicle.json"
+    },
+    "CustomerHour": {
+        "$ref": "./definitions/customerHour.json"
     }
 }

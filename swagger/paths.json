@@ -43,5 +43,11 @@
     },
     "/orders/{id}": {
         "$ref": "./paths/order/{id}.json"
+    },
+    "/customerHours": {
+        "$ref": "./paths/customerHour/customerHour.json"
+    },
+    "/customerHours/{id}": {
+        "$ref": "./paths/customerHour/{id}.json"
     }
 }

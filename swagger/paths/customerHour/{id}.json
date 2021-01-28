@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "CustomerHours"
+        ],
+        "summary": "Find customer hours by ID",
+        "description": "Return single customer hours",
+        "operationId": "getSingleCustomerHour",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of customer hours",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single customer hours returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update customer hours with a given ID",
+        "tags": [
+            "CustomerHours"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete customer hours with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Customer hours deleted"
+            },
+            "404": {
+                "description": "Failed. Customer hour not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete customer hour with a given ID",
+        "tags": [
+            "CustomerHours"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete customer hour with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Customer hour deleted"
+            },
+            "404": {
+                "description": "Failed. Customer hour not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

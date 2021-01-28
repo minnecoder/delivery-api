@@ -1,0 +1,59 @@
+{
+    "type": "object",
+    "properties": {
+        "customer_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "monday_open": {
+            "type": "string"
+        },
+        "monday_close": {
+            "type": "string"
+        },
+        "tuesday_open": {
+            "type": "string"
+        },
+        "tuesday_close": {
+            "type": "string"
+        },
+        "wednesday_open": {
+            "type": "string"
+        },
+        "wednesday_close": {
+            "type": "string"
+        },
+        "thursday_open": {
+            "type": "string"
+        },
+        "thursday_close": {
+            "type": "string"
+        },
+        "friday_open": {
+            "type": "string"
+        },
+        "friday_close": {
+            "type": "string"
+        },
+        "saturday_open": {
+            "type": "string"
+        },
+        "saturday_close": {
+            "type": "string"
+        },
+        "sunday_open": {
+            "type": "string"
+        },
+        "sunday_close": {
+            "type": "string"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date"
+        }
+    }
+}
