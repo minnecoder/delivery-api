@@ -1,6 +1,6 @@
 {
     "properties": {
-        "customerId": {
+        "customer_id": {
             "type": "integer",
             "format": "int32"
         },
