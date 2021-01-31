@@ -15,7 +15,7 @@ const Order = db.define(
     },
     order_status: {
       type: Sequelize.ENUM,
-      values: ["created", "picked", "on_truck", "delivered"]
+      values: ["created", "picked", "on truck", "delivered"]
     },
     order_total: {
       type: Sequelize.DECIMAL
