@@ -14,7 +14,7 @@ const DriverReport = db.define(
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
       }
     },
-    vehicles_id: {
+    vehicle_id: {
       type: Sequelize.INTEGER,
       references: {
         model: Vehicles,
@@ -61,14 +61,15 @@ const DriverReport = db.define(
     num_signature_stops: {
       type: Sequelize.INTEGER
     },
-    createdAt: {
+    created_at: {
       type: Sequelize.DATE
     },
-    updatedAt: {
+    updated_at: {
       type: Sequelize.DATE
     }
   },
   {
+    underscored: true,
     freezeTableName: true
   }
 );
