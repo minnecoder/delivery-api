@@ -24,7 +24,7 @@ const Stop = db.define(
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
       }
     },
-    vehicles_id: {
+    vehicle_id: {
       type: Sequelize.INTEGER,
       references: {
         model: Vehicles,
@@ -81,6 +81,7 @@ const Stop = db.define(
     }
   },
   {
+    underscored: true,
     freezeTableName: true
   }
 );
