@@ -23,6 +23,9 @@ const Order = db.define(
     is_grouped: {
       type: Sequelize.BOOLEAN
     },
+    previous_order_num: {
+      type: Sequelize.INTEGER
+    },
     created_at: {
       type: Sequelize.DATE
     },
