@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Order Items"
+        ],
+        "summary": "Find order item by ID",
+        "description": "Return single order item",
+        "operationId": "getSingleOrderItem",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of order item",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single order item returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update order item with a given ID",
+        "tags": [
+            "Order Items"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete order item with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Order Item deleted"
+            },
+            "404": {
+                "description": "Failed. Order Item not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete order item with a given ID",
+        "tags": [
+            "Order Items"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete order item with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Order Item deleted"
+            },
+            "404": {
+                "description": "Failed. Order Item not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "properties": {
+        "order_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "product_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "quantity": {
+            "type": "integer"
+        }
+    }
+}

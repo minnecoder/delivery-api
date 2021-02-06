@@ -8,16 +8,40 @@
         "description": "Customer Hour operations"
     },
     {
-        "name": "Drivers",
-        "description": "Driver operations"
-    },
-    {
         "name": "Customer Notes",
         "description": "Customer Note operations"
     },
     {
+        "name": "Drivers",
+        "description": "Driver operations"
+    },
+    {
+        "name": "Driver Reports",
+        "description": "Driver Report operations"
+    },
+    {
+        "name": "Orders",
+        "description": "Order operations"
+    },
+    {
+        "name": "Order Items",
+        "description": "Order Item operations"
+    },
+    {
+        "name": "Packages",
+        "description": "Package operations"
+    },
+    {
+        "name": "Previous Signer",
+        "description": "Previous Signer operations"
+    },
+    {
         "name": "Products",
         "description": "Product operations"
+    },
+    {
+        "name": "Stops",
+        "description": "Stop operations"
     },
     {
         "name": "User",
@@ -26,9 +50,5 @@
     {
         "name": "Vehicles",
         "description": "Vehicle operations"
-    },
-    {
-        "name": "Orders",
-        "description": "Order operations"
     }
 ]

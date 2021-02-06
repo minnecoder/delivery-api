@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Previous Signers"
+        ],
+        "summary": "Find previous signer by ID",
+        "description": "Return single previous signer",
+        "operationId": "getSinglePreviousSigner",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of previous signer",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single previous signer returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update previous signer with a given ID",
+        "tags": [
+            "Previous Signers"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete previous signer with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Previous signer deleted"
+            },
+            "404": {
+                "description": "Failed. Previous Signer not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete previous signer with a given ID",
+        "tags": [
+            "Previous Signers"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete previous signer with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Previous signer deleted"
+            },
+            "404": {
+                "description": "Failed. Previous Signer not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

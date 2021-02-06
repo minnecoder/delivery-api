@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Driver Reports"
+        ],
+        "summary": "Find driver report by ID",
+        "description": "Return single driver report",
+        "operationId": "getSingleDriver Report",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of driver report",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single driver report returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update driver report with a given ID",
+        "tags": [
+            "Driver Reports"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete driver report with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Driver Report deleted"
+            },
+            "404": {
+                "description": "Failed. Driver Report not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete driver report with a given ID",
+        "tags": [
+            "Driver Reports"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete driver report with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Driver Report deleted"
+            },
+            "404": {
+                "description": "Failed. Driver Report not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

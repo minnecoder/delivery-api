@@ -5,11 +5,11 @@
     "/customers/{id}": {
         "$ref": "./paths/customer/{id}.json"
     },
-    "/drivers": {
-        "$ref": "./paths/driver/driver.json"
+    "/customerHour": {
+        "$ref": "./paths/customerHour/customerHour.json"
     },
-    "/drivers/{id}": {
-        "$ref": "./paths/driver/{id}.json"
+    "/customerHour/{id}": {
+        "$ref": "./paths/customerHour/{id}.json"
     },
     "/customerNotes": {
         "$ref": "./paths/customerNote/customerNote.json"
@@ -17,11 +17,53 @@
     "/customerNotes/{id}": {
         "$ref": "./paths/customerNote/{id}.json"
     },
+    "/drivers/{id}": {
+        "$ref": "./paths/driver/{id}.json"
+    },
+    "/drivers": {
+        "$ref": "./paths/driver/driver.json"
+    },
+    "/driverReport": {
+        "$ref": "./paths/driverReport/driverReport.json"
+    },
+    "/driverReport/{id}": {
+        "$ref": "./paths/driverReport/{id}.json"
+    },
+    "/orders": {
+        "$ref": "./paths/order/order.json"
+    },
+    "/orders/{id}": {
+        "$ref": "./paths/order/{id}.json"
+    },
+    "/orderItem": {
+        "$ref": "./paths/orderItem/orderItem.json"
+    },
+    "/orderItem/{id}": {
+        "$ref": "./paths/orderItem/{id}.json"
+    },
+    "/packages": {
+        "$ref": "./paths/packages/packages.json"
+    },
+    "/packages/{id}": {
+        "$ref": "./paths/packages/{id}.json"
+    },
+    "/previousSigner": {
+        "$ref": "./paths/previousSigner/previousSigner.json"
+    },
+    "/previousSigner/{id}": {
+        "$ref": "./paths/previousSigner/{id}.json"
+    },
     "/products": {
         "$ref": "./paths/product/product.json"
     },
     "/products/{id}": {
         "$ref": "./paths/product/{id}.json"
+    },
+    "/stop": {
+        "$ref": "./paths/stop/stop.json"
+    },
+    "/stop/{id}": {
+        "$ref": "./paths/stop/{id}.json"
     },
     "/user/add": {
         "$ref": "./paths/user/addUser.json"
@@ -37,17 +79,5 @@
     },
     "/vehicles/{id}": {
         "$ref": "./paths/vehicle/{id}.json"
-    },
-    "/orders": {
-        "$ref": "./paths/order/order.json"
-    },
-    "/orders/{id}": {
-        "$ref": "./paths/order/{id}.json"
-    },
-    "/customerHours": {
-        "$ref": "./paths/customerHour/customerHour.json"
-    },
-    "/customerHours/{id}": {
-        "$ref": "./paths/customerHour/{id}.json"
     }
 }

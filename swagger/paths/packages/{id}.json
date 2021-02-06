@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Packages"
+        ],
+        "summary": "Find package by ID",
+        "description": "Return single package",
+        "operationId": "getSinglePackage",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of package",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single package returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update package with a given ID",
+        "tags": [
+            "Packages"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete package with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Package deleted"
+            },
+            "404": {
+                "description": "Failed. Package not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete package with a given ID",
+        "tags": [
+            "Packages"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete package with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Package deleted"
+            },
+            "404": {
+                "description": "Failed. Package not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

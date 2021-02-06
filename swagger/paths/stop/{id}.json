@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Stops"
+        ],
+        "summary": "Find stop by ID",
+        "description": "Return single stop",
+        "operationId": "getSingleStop",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of stop",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single stop returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update stop with a given ID",
+        "tags": [
+            "Stops"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete stop with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Stop deleted"
+            },
+            "404": {
+                "description": "Failed. Stop not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete stop with a given ID",
+        "tags": [
+            "Stops"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete stop with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Stop deleted"
+            },
+            "404": {
+                "description": "Failed. Stop not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

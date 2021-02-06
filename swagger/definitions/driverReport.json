@@ -1,0 +1,58 @@
+{
+    "type": "object",
+    "properties": {
+        "driver_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "vehicle_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "start_mileage": {
+            "type": "integer"
+        },
+        "first_stop_mileage": {
+            "type": "integer"
+        },
+        "last_stop_mileage": {
+            "type": "integer"
+        },
+        "final_mileage": {
+            "type": "integer"
+        },
+        "break1_start": {
+            "type": "string",
+            "format": "date"
+        },
+        "break1_end": {
+            "type": "string",
+            "format": "date"
+        },
+        "break2_start": {
+            "type": "string",
+            "format": "date"
+        },
+        "break2_end": {
+            "type": "string",
+            "format": "date"
+        },
+        "lunch_start": {
+            "type": "string",
+            "format": "date"
+        },
+        "lunch_end": {
+            "type": "string",
+            "format": "date"
+        },
+        "stops_completed": {
+            "type": "integer"
+        },
+        "stops_remaining": {
+            "type": "integer"
+        },
+        "num_signature_stops": {
+            "type": "integer"
+        }
+    }
+}

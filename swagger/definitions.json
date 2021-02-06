@@ -2,22 +2,40 @@
     "Customer": {
         "$ref": "./definitions/customer.json"
     },
-    "Driver": {
-        "$ref": "./definitions/driver.json"
+    "CustomerHour": {
+        "$ref": "./definitions/customerHour.json"
     },
     "CustomerNote": {
         "$ref": "./definitions/customerNote.json"
     },
+    "Driver": {
+        "$ref": "./definitions/driver.json"
+    },
+    "DriverReport": {
+        "$ref": "./definitions/driverReport.json"
+    },
+    "Order": {
+        "$ref": "./definitions/order.json"
+    },
+    "OrderItem": {
+        "$ref": "./definitions/orderItem.json"
+    },
+    "Package": {
+        "$ref": "./definitions/packages.json"
+    },
+    "PreviousSigner": {
+        "$ref": "./definitions/previousSigner.json"
+    },
     "Product": {
         "$ref": "./definitions/product.json"
+    },
+    "Stop": {
+        "$ref": "./definitions/stop.json"
     },
     "User": {
         "$ref": "./definitions/user.json"
     },
     "Vehicle": {
         "$ref": "./definitions/vehicle.json"
-    },
-    "CustomerHour": {
-        "$ref": "./definitions/customerHour.json"
     }
 }

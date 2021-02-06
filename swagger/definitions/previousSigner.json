@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "customer_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "first_name": {
+            "type": "string"
+        },
+        "last_name": {
+            "type": "string"
+        }
+    }
+}

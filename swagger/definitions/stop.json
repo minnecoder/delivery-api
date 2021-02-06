@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "customer_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "order_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "vehicle_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "driver_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "is_delivered": {
+            "type": "boolean"
+        },
+        "is_signed": {
+            "type": "boolean"
+        },
+        "reason_code": {
+            "type": "string",
+            "enum": [
+                "Business Closed",
+                "Customer Not Available",
+                "Address Problem",
+                "Holiday Closed",
+                "Requested Re-delivery",
+                "Damaged",
+                "Refused By Customer",
+                "Secured Building-Access Denied",
+                "Undeliverable Address",
+                "Ran Out Of Time",
+                "Truck Breakdown",
+                "Weather",
+                "Placed on Wrong Truck"
+            ]
+        },
+        "signer_name": {
+            "type": "string"
+        },
+        "start_time": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "stop_time": {
+            "type": "integer",
+            "format": "int32"
+        }
+    }
+}

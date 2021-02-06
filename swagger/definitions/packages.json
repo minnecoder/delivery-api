@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "order_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "order_item_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "product_id": {
+            "type": "integer",
+            "format": "int32"
+        },
+        "package_status": {
+            "type": "string",
+            "enum": [
+                "not started",
+                "picked",
+                "scanned",
+                "on truck",
+                "delivered",
+                "damaged",
+                "returned"
+            ]
+        },
+        "package_barcode": {
+            "type": "integer"
+        }
+    }
+}
