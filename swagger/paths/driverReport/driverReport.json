@@ -1,7 +1,7 @@
 {
     "get": {
         "tags": [
-            "Driver Report"
+            "Driver Reports"
         ],
         "description": "Returns all Driver Reports",
         "responses": {
@@ -15,7 +15,7 @@
     },
     "post": {
         "tags": [
-            "Driver Report"
+            "Driver Reports"
         ],
         "summary": "Create a new driver report",
         "description": "",
