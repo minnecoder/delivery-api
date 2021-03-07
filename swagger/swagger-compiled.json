@@ -1,0 +1,2214 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Delivery Driver API",
+    "description": "API for a delivery driver application",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:4000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Customers",
+      "description": "Customer operations"
+    },
+    {
+      "name": "Customer Hours",
+      "description": "Customer Hour operations"
+    },
+    {
+      "name": "Customer Notes",
+      "description": "Customer Note operations"
+    },
+    {
+      "name": "Drivers",
+      "description": "Driver operations"
+    },
+    {
+      "name": "Driver Reports",
+      "description": "Driver Report operations"
+    },
+    {
+      "name": "Orders",
+      "description": "Order operations"
+    },
+    {
+      "name": "Order Items",
+      "description": "Order Item operations"
+    },
+    {
+      "name": "Packages",
+      "description": "Package operations"
+    },
+    {
+      "name": "Previous Signers",
+      "description": "Previous Signer operations"
+    },
+    {
+      "name": "Products",
+      "description": "Product operations"
+    },
+    {
+      "name": "Stops",
+      "description": "Stop operations"
+    },
+    {
+      "name": "User",
+      "description": "User operations"
+    },
+    {
+      "name": "Vehicles",
+      "description": "Vehicle operations"
+    }
+  ],
+  "paths": {
+    "/customers": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "description": "Returns all customers",
+        "responses": {
+          "200": {
+            "description": "A list of customers"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Create a new customer",
+        "description": "",
+        "operationId": "addCustomer",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Customer object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New customer is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/customers/{id}": {
+      "get": {
+        "tags": [
+          "Customers"
+        ],
+        "summary": "Find customer by ID",
+        "description": "Return single customer",
+        "operationId": "getSingleCustomer",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of customer",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single customer returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update customer with a given ID",
+        "tags": [
+          "Customers"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete customer with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer deleted"
+          },
+          "404": {
+            "description": "Failed. Customer not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete customer with a given ID",
+        "tags": [
+          "Customers"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete customer with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer deleted"
+          },
+          "404": {
+            "description": "Failed. Customer not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/customerHour": {
+      "get": {
+        "tags": [
+          "Customer Hours"
+        ],
+        "description": "Returns all customer hours",
+        "responses": {
+          "200": {
+            "description": "A list of customer hours"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Customer Hours"
+        ],
+        "summary": "Create a new customer hours",
+        "description": "",
+        "operationId": "addCustomerHours",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Customer hours object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerHour"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New customer hour is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/customerHour/{id}": {
+      "get": {
+        "tags": [
+          "Customer Hours"
+        ],
+        "summary": "Find customer hours by ID",
+        "description": "Return single customer hours",
+        "operationId": "getSingleCustomerHour",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of customer hours",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single customer hours returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update customer hours with a given ID",
+        "tags": [
+          "Customer Hours"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete customer hours with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer hours deleted"
+          },
+          "404": {
+            "description": "Failed. Customer hour not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete customer hour with a given ID",
+        "tags": [
+          "Customer Hours"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete customer hour with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer hour deleted"
+          },
+          "404": {
+            "description": "Failed. Customer hour not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/customerNotes": {
+      "get": {
+        "tags": [
+          "Customer Notes"
+        ],
+        "description": "Returns all customer notes",
+        "responses": {
+          "200": {
+            "description": "A list of customer notes"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Customer Notes"
+        ],
+        "summary": "Create a new customer note",
+        "description": "",
+        "operationId": "addCustomerNote",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Customer Note object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerNote"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New customer note is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/customerNotes/{id}": {
+      "get": {
+        "tags": [
+          "Customer Notes"
+        ],
+        "summary": "Find customer note by ID",
+        "description": "Return single customer note",
+        "operationId": "getSingleCustomerNote",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of customer note",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single customer note returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update customer note with a given ID",
+        "tags": [
+          "Customer Notes"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete customer note with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer Note deleted"
+          },
+          "404": {
+            "description": "Failed. Customer note not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete customer note with a given ID",
+        "tags": [
+          "Customer Notes"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete customer note with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer note deleted"
+          },
+          "404": {
+            "description": "Failed. Customer note not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/drivers/{id}": {
+      "get": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "Find driver by ID",
+        "description": "Return single driver",
+        "operationId": "getSingleDriver",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of driver",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single driver returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update driver with a given ID",
+        "tags": [
+          "Drivers"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete driver with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Driver deleted"
+          },
+          "404": {
+            "description": "Failed. Driver not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete driver with a given ID",
+        "tags": [
+          "Drivers"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete driver with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Driver deleted"
+          },
+          "404": {
+            "description": "Failed. Driver not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/drivers": {
+      "get": {
+        "tags": [
+          "Drivers"
+        ],
+        "description": "Return all drivers",
+        "responses": {
+          "200": {
+            "description": "A list of drivers"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "Create a new Driver",
+        "description": "",
+        "operationId": "addDriver",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Driver object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Driver"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New driver is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/driverReport": {
+      "get": {
+        "tags": [
+          "Driver Reports"
+        ],
+        "description": "Returns all Driver Reports",
+        "responses": {
+          "200": {
+            "description": "A list of driver reports"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Driver Reports"
+        ],
+        "summary": "Create a new driver report",
+        "description": "",
+        "operationId": "addDriverReport",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Driver Report object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DriverReport"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New driver report is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/driverReport/{id}": {
+      "get": {
+        "tags": [
+          "Driver Reports"
+        ],
+        "summary": "Find driver report by ID",
+        "description": "Return single driver report",
+        "operationId": "getSingleDriver Report",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of driver report",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single driver report returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update driver report with a given ID",
+        "tags": [
+          "Driver Reports"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete driver report with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Driver Report deleted"
+          },
+          "404": {
+            "description": "Failed. Driver Report not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete driver report with a given ID",
+        "tags": [
+          "Driver Reports"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete driver report with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Driver Report deleted"
+          },
+          "404": {
+            "description": "Failed. Driver Report not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "description": "Return all orders",
+        "responses": {
+          "200": {
+            "description": "A list of orders"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Create a new Order",
+        "description": "",
+        "operationId": "addOrder",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Order object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New order is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Find order by ID",
+        "description": "Return single order",
+        "operationId": "getSingleOrder",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single order returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update order with a given ID",
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete order with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order deleted"
+          },
+          "404": {
+            "description": "Failed. Order not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete order with a given ID",
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete order with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order deleted"
+          },
+          "404": {
+            "description": "Failed. Order not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/orderItem": {
+      "get": {
+        "tags": [
+          "Order Items"
+        ],
+        "description": "Returns all order items",
+        "responses": {
+          "200": {
+            "description": "A list of order items"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Order Items"
+        ],
+        "summary": "Create a new order item",
+        "description": "",
+        "operationId": "addOrderItem",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Order Item object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderItem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New order item is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/orderItem/{id}": {
+      "get": {
+        "tags": [
+          "Order Items"
+        ],
+        "summary": "Find order item by ID",
+        "description": "Return single order item",
+        "operationId": "getSingleOrderItem",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order item",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single order item returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update order item with a given ID",
+        "tags": [
+          "Order Items"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete order item with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order Item deleted"
+          },
+          "404": {
+            "description": "Failed. Order Item not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete order item with a given ID",
+        "tags": [
+          "Order Items"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete order item with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order Item deleted"
+          },
+          "404": {
+            "description": "Failed. Order Item not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/packages": {
+      "get": {
+        "tags": [
+          "Packages"
+        ],
+        "description": "Returns all packages",
+        "responses": {
+          "200": {
+            "description": "A list of packages"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Packages"
+        ],
+        "summary": "Create a new package",
+        "description": "",
+        "operationId": "addPackage",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Package object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Package"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New package is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/packages/{id}": {
+      "get": {
+        "tags": [
+          "Packages"
+        ],
+        "summary": "Find package by ID",
+        "description": "Return single package",
+        "operationId": "getSinglePackage",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of package",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single package returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update package with a given ID",
+        "tags": [
+          "Packages"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete package with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Package deleted"
+          },
+          "404": {
+            "description": "Failed. Package not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete package with a given ID",
+        "tags": [
+          "Packages"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete package with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Package deleted"
+          },
+          "404": {
+            "description": "Failed. Package not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/previousSigner": {
+      "get": {
+        "tags": [
+          "Previous Signers"
+        ],
+        "description": "Returns all previous signers",
+        "responses": {
+          "200": {
+            "description": "A list of previous signers"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Previous Signers"
+        ],
+        "summary": "Create a new previous signer",
+        "description": "",
+        "operationId": "addPreviousSigner",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Previous Signer object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PreviousSigner"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New previous signer is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/previousSigner/{id}": {
+      "get": {
+        "tags": [
+          "Previous Signers"
+        ],
+        "summary": "Find previous signer by ID",
+        "description": "Return single previous signer",
+        "operationId": "getSinglePreviousSigner",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of previous signer",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single previous signer returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update previous signer with a given ID",
+        "tags": [
+          "Previous Signers"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete previous signer with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Previous signer deleted"
+          },
+          "404": {
+            "description": "Failed. Previous Signer not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete previous signer with a given ID",
+        "tags": [
+          "Previous Signers"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete previous signer with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Previous signer deleted"
+          },
+          "404": {
+            "description": "Failed. Previous Signer not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Return all products",
+        "responses": {
+          "200": {
+            "description": "A list of products"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Create a new Product",
+        "description": "",
+        "operationId": "addProduct",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Product object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New product is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Find product by ID",
+        "description": "Return single product",
+        "operationId": "getSingleProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of product",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single product returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update product with a given ID",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete product with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product deleted"
+          },
+          "404": {
+            "description": "Failed. Product not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete product with a given ID",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete product with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product deleted"
+          },
+          "404": {
+            "description": "Failed. Product not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/stop": {
+      "get": {
+        "tags": [
+          "Stops"
+        ],
+        "description": "Returns all stops",
+        "responses": {
+          "200": {
+            "description": "A list of stops"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Stops"
+        ],
+        "summary": "Create a new stop",
+        "description": "",
+        "operationId": "addStop",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Stop object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Stop"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New stop is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/stop/{id}": {
+      "get": {
+        "tags": [
+          "Stops"
+        ],
+        "summary": "Find stop by ID",
+        "description": "Return single stop",
+        "operationId": "getSingleStop",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of stop",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single stop returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update stop with a given ID",
+        "tags": [
+          "Stops"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete stop with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stop deleted"
+          },
+          "404": {
+            "description": "Failed. Stop not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete stop with a given ID",
+        "tags": [
+          "Stops"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete stop with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stop deleted"
+          },
+          "404": {
+            "description": "Failed. Stop not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/user/add": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create a new User",
+        "description": "",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created"
+          },
+          "400": {
+            "description": "Email or User name already exists"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Login User",
+        "description": "",
+        "operationId": "loginUser",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object to login",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged in"
+          },
+          "400": {
+            "description": "User name or password is wrong"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/user/{userName}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Find user by user name",
+        "description": "Return single user",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "name": "userName",
+            "in": "path",
+            "description": "User name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single user returned successfully"
+          },
+          "400": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/vehicles": {
+      "get": {
+        "tags": [
+          "Vehicles"
+        ],
+        "description": "Return all vehicles",
+        "responses": {
+          "200": {
+            "description": "A list of vehicles"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Vehicles"
+        ],
+        "summary": "Create a new Vehicle",
+        "description": "",
+        "operationId": "addVehicle",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Vehicle object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New vehicle is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/vehicles/{id}": {
+      "get": {
+        "tags": [
+          "Vehicles"
+        ],
+        "summary": "Find vehicle by ID",
+        "description": "Return single vehicle",
+        "operationId": "getSingleVehicle",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of vehicle",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single vehicle returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update vehicle with a given ID",
+        "tags": [
+          "Vehicles"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete vehicle with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vehicle deleted"
+          },
+          "404": {
+            "description": "Failed. Vehicle not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete vehicle with a given ID",
+        "tags": [
+          "Vehicles"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete vehicle with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vehicle deleted"
+          },
+          "404": {
+            "description": "Failed. Vehicle not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Customer": {
+      "type": "object",
+      "properties": {
+        "customer_name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Customer"
+      }
+    },
+    "CustomerHour": {
+      "type": "object",
+      "properties": {
+        "customer_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "monday_open": {
+          "type": "string"
+        },
+        "monday_close": {
+          "type": "string"
+        },
+        "tuesday_open": {
+          "type": "string"
+        },
+        "tuesday_close": {
+          "type": "string"
+        },
+        "wednesday_open": {
+          "type": "string"
+        },
+        "wednesday_close": {
+          "type": "string"
+        },
+        "thursday_open": {
+          "type": "string"
+        },
+        "thursday_close": {
+          "type": "string"
+        },
+        "friday_open": {
+          "type": "string"
+        },
+        "friday_close": {
+          "type": "string"
+        },
+        "saturday_open": {
+          "type": "string"
+        },
+        "saturday_close": {
+          "type": "string"
+        },
+        "sunday_open": {
+          "type": "string"
+        },
+        "sunday_close": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "CustomerNote": {
+      "type": "object",
+      "properties": {
+        "customer_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "CustomerNote"
+      }
+    },
+    "Driver": {
+      "properties": {
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "birthday": {
+          "type": "string",
+          "format": "date"
+        },
+        "hire_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "vehicle_type": {
+          "type": "string",
+          "description": "Vehicle Type",
+          "enum": [
+            "car",
+            "pickup",
+            "suv",
+            "van",
+            "cargo van",
+            "sprinter van",
+            "box truck",
+            "dock truck",
+            "semi"
+          ]
+        }
+      },
+      "xml": {
+        "name": "Driver"
+      }
+    },
+    "DriverReport": {
+      "type": "object",
+      "properties": {
+        "driver_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "vehicle_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "start_mileage": {
+          "type": "integer"
+        },
+        "first_stop_mileage": {
+          "type": "integer"
+        },
+        "last_stop_mileage": {
+          "type": "integer"
+        },
+        "final_mileage": {
+          "type": "integer"
+        },
+        "break1_start": {
+          "type": "string",
+          "format": "date"
+        },
+        "break1_end": {
+          "type": "string",
+          "format": "date"
+        },
+        "break2_start": {
+          "type": "string",
+          "format": "date"
+        },
+        "break2_end": {
+          "type": "string",
+          "format": "date"
+        },
+        "lunch_start": {
+          "type": "string",
+          "format": "date"
+        },
+        "lunch_end": {
+          "type": "string",
+          "format": "date"
+        },
+        "stops_completed": {
+          "type": "integer"
+        },
+        "stops_remaining": {
+          "type": "integer"
+        },
+        "num_signature_stops": {
+          "type": "integer"
+        }
+      }
+    },
+    "Order": {
+      "properties": {
+        "customer_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "order_status": {
+          "type": "string",
+          "description": "Order Status",
+          "enum": [
+            "created",
+            "picked",
+            "on truck",
+            "delivered"
+          ]
+        },
+        "order_total": {
+          "type": "integer",
+          "format": "float"
+        },
+        "is_grouped": {
+          "type": "boolean"
+        },
+        "prev_order_num": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "OrderItem": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "product_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "quantity": {
+          "type": "integer"
+        }
+      }
+    },
+    "Package": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "order_item_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "product_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "package_status": {
+          "type": "string",
+          "enum": [
+            "not started",
+            "picked",
+            "scanned",
+            "on truck",
+            "delivered",
+            "damaged",
+            "returned"
+          ]
+        },
+        "package_barcode": {
+          "type": "integer"
+        }
+      }
+    },
+    "PreviousSigner": {
+      "type": "object",
+      "properties": {
+        "customer_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        }
+      }
+    },
+    "Product": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "cost": {
+          "type": "number",
+          "format": "float"
+        },
+        "price": {
+          "type": "number",
+          "format": "float"
+        },
+        "on_hand": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "product_status": {
+          "type": "string",
+          "description": "Product Status",
+          "enum": [
+            "out of stock",
+            "in stock",
+            "running low"
+          ]
+        }
+      }
+    },
+    "Stop": {
+      "type": "object",
+      "properties": {
+        "customer_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "order_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "vehicle_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "driver_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "is_delivered": {
+          "type": "boolean"
+        },
+        "is_signed": {
+          "type": "boolean"
+        },
+        "reason_code": {
+          "type": "string",
+          "enum": [
+            "Business Closed",
+            "Customer Not Available",
+            "Address Problem",
+            "Holiday Closed",
+            "Requested Re-delivery",
+            "Damaged",
+            "Refused By Customer",
+            "Secured Building-Access Denied",
+            "Undeliverable Address",
+            "Ran Out Of Time",
+            "Truck Breakdown",
+            "Weather",
+            "Placed on Wrong Truck"
+          ]
+        },
+        "signer_name": {
+          "type": "string"
+        },
+        "start_time": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "stop_time": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "User": {
+      "properties": {
+        "user_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string",
+          "minLength": 8
+        },
+        "role": {
+          "type": "string",
+          "description": "Roles",
+          "enum": [
+            "driver",
+            "manager",
+            "admin",
+            "user",
+            "customer"
+          ]
+        }
+      }
+    },
+    "Vehicle": {
+      "properties": {
+        "vehicle_year": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "vehicle_make": {
+          "type": "string"
+        },
+        "vehicle_model": {
+          "type": "string"
+        },
+        "vehicle_license_plate": {
+          "type": "string"
+        },
+        "vehicle_tab_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "vehicle_status": {
+          "type": "string",
+          "description": "Vehicle Status",
+          "enum": [
+            "running",
+            "being repaired"
+          ]
+        }
+      }
+    }
+  }
+}
