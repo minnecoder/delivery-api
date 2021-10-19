@@ -3,6 +3,7 @@
         "tags": [
             "Vehicles"
         ],
+        "summary": "Returns all of the vehicles",
         "description": "Return all vehicles",
         "responses": {
             "200": {

@@ -3,6 +3,7 @@
         "tags": [
             "Orders"
         ],
+        "summary": "Returns all of the orders",
         "description": "Return all orders",
         "responses": {
             "200": {

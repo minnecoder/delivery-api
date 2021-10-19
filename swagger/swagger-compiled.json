@@ -71,6 +71,7 @@
         "tags": [
           "Customers"
         ],
+        "summary": "Returns all customers",
         "description": "Returns all customers",
         "responses": {
           "200": {
@@ -199,12 +200,13 @@
         }
       }
     },
-    "/customerHour": {
+    "/customerHours": {
       "get": {
         "tags": [
           "Customer Hours"
         ],
-        "description": "Returns all customer hours",
+        "summary": "Returns all customers and their hours",
+        "description": "Returns all customers and their hours",
         "responses": {
           "200": {
             "description": "A list of customer hours"
@@ -250,7 +252,7 @@
         }
       }
     },
-    "/customerHour/{id}": {
+    "/customerHours/{id}": {
       "get": {
         "tags": [
           "Customer Hours"
@@ -337,6 +339,7 @@
         "tags": [
           "Customer Notes"
         ],
+        "summary": "Returns all of the customer notes",
         "description": "Returns all customer notes",
         "responses": {
           "200": {
@@ -465,6 +468,58 @@
         }
       }
     },
+    "/drivers": {
+      "get": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "Returns all of the drivers",
+        "description": "Return all drivers",
+        "responses": {
+          "200": {
+            "description": "A list of drivers"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Drivers"
+        ],
+        "summary": "Create a new Driver",
+        "description": "",
+        "operationId": "addDriver",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Driver object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Driver"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New driver is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
     "/drivers/{id}": {
       "get": {
         "tags": [
@@ -547,62 +602,12 @@
         }
       }
     },
-    "/drivers": {
-      "get": {
-        "tags": [
-          "Drivers"
-        ],
-        "description": "Return all drivers",
-        "responses": {
-          "200": {
-            "description": "A list of drivers"
-          },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Drivers"
-        ],
-        "summary": "Create a new Driver",
-        "description": "",
-        "operationId": "addDriver",
-        "consumes": [
-          "application/json",
-          "application/xml"
-        ],
-        "produces": [
-          "application/xml",
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Driver object to add",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Driver"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "New driver is created"
-          },
-          "500": {
-            "description": "Server Error"
-          }
-        }
-      }
-    },
     "/driverReport": {
       "get": {
         "tags": [
           "Driver Reports"
         ],
+        "summary": "Returns all of the driver reports",
         "description": "Returns all Driver Reports",
         "responses": {
           "200": {
@@ -736,6 +741,7 @@
         "tags": [
           "Orders"
         ],
+        "summary": "Returns all of the orders",
         "description": "Return all orders",
         "responses": {
           "200": {
@@ -869,6 +875,7 @@
         "tags": [
           "Order Items"
         ],
+        "summary": "Returns all of the order items",
         "description": "Returns all order items",
         "responses": {
           "200": {
@@ -1002,6 +1009,7 @@
         "tags": [
           "Packages"
         ],
+        "summary": "Returns all of the packages",
         "description": "Returns all packages",
         "responses": {
           "200": {
@@ -1135,6 +1143,7 @@
         "tags": [
           "Previous Signers"
         ],
+        "summary": "Returns all of the previous signers",
         "description": "Returns all previous signers",
         "responses": {
           "200": {
@@ -1268,6 +1277,7 @@
         "tags": [
           "Products"
         ],
+        "summary": "Returns all of the products",
         "description": "Return all products",
         "responses": {
           "200": {
@@ -1396,11 +1406,12 @@
         }
       }
     },
-    "/stop": {
+    "/stops": {
       "get": {
         "tags": [
           "Stops"
         ],
+        "summary": "Returns all stops",
         "description": "Returns all stops",
         "responses": {
           "200": {
@@ -1416,7 +1427,7 @@
           "Stops"
         ],
         "summary": "Create a new stop",
-        "description": "",
+        "description": "Create a new stop",
         "operationId": "addStop",
         "consumes": [
           "application/json",
@@ -1447,7 +1458,7 @@
         }
       }
     },
-    "/stop/{id}": {
+    "/stops/{id}": {
       "get": {
         "tags": [
           "Stops"
@@ -1644,6 +1655,7 @@
         "tags": [
           "Vehicles"
         ],
+        "summary": "Returns all of the vehicles",
         "description": "Return all vehicles",
         "responses": {
           "200": {

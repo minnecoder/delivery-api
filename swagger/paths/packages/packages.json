@@ -3,6 +3,7 @@
         "tags": [
             "Packages"
         ],
+        "summary": "Returns all of the packages",
         "description": "Returns all packages",
         "responses": {
             "200": {

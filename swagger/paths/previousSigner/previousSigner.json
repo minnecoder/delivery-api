@@ -3,6 +3,7 @@
         "tags": [
             "Previous Signers"
         ],
+        "summary": "Returns all of the previous signers",
         "description": "Returns all previous signers",
         "responses": {
             "200": {

@@ -3,6 +3,7 @@
         "tags": [
             "Customers"
         ],
+        "summary": "Returns all customers",
         "description": "Returns all customers",
         "responses": {
             "200": {

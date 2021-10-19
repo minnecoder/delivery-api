@@ -3,6 +3,7 @@
         "tags": [
             "Drivers"
         ],
+        "summary": "Returns all of the drivers",
         "description": "Return all drivers",
         "responses": {
             "200": {

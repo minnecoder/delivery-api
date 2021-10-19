@@ -3,6 +3,7 @@
         "tags": [
             "Stops"
         ],
+        "summary": "Returns all stops",
         "description": "Returns all stops",
         "responses": {
             "200": {
@@ -18,7 +19,7 @@
             "Stops"
         ],
         "summary": "Create a new stop",
-        "description": "",
+        "description": "Create a new stop",
         "operationId": "addStop",
         "consumes": [
             "application/json",

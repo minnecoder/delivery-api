@@ -3,6 +3,7 @@
         "tags": [
             "Customer Notes"
         ],
+        "summary": "Returns all of the customer notes",
         "description": "Returns all customer notes",
         "responses": {
             "200": {

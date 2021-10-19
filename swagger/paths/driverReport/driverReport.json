@@ -3,6 +3,7 @@
         "tags": [
             "Driver Reports"
         ],
+        "summary": "Returns all of the driver reports",
         "description": "Returns all Driver Reports",
         "responses": {
             "200": {
