@@ -5,10 +5,10 @@
     "/customers/{id}": {
         "$ref": "./paths/customer/{id}.json"
     },
-    "/customerHour": {
+    "/customerHours": {
         "$ref": "./paths/customerHour/customerHour.json"
     },
-    "/customerHour/{id}": {
+    "/customerHours/{id}": {
         "$ref": "./paths/customerHour/{id}.json"
     },
     "/customerNotes": {
@@ -17,16 +17,16 @@
     "/customerNotes/{id}": {
         "$ref": "./paths/customerNote/{id}.json"
     },
-    "/drivers/{id}": {
-        "$ref": "./paths/driver/{id}.json"
-    },
     "/drivers": {
         "$ref": "./paths/driver/driver.json"
     },
-    "/driverReport": {
+    "/drivers/{id}": {
+        "$ref": "./paths/driver/{id}.json"
+    },
+    "/driverReports": {
         "$ref": "./paths/driverReport/driverReport.json"
     },
-    "/driverReport/{id}": {
+    "/driverReports/{id}": {
         "$ref": "./paths/driverReport/{id}.json"
     },
     "/orders": {
@@ -35,10 +35,10 @@
     "/orders/{id}": {
         "$ref": "./paths/order/{id}.json"
     },
-    "/orderItem": {
+    "/orderItems": {
         "$ref": "./paths/orderItem/orderItem.json"
     },
-    "/orderItem/{id}": {
+    "/orderItems/{id}": {
         "$ref": "./paths/orderItem/{id}.json"
     },
     "/packages": {
@@ -47,10 +47,10 @@
     "/packages/{id}": {
         "$ref": "./paths/packages/{id}.json"
     },
-    "/previousSigner": {
+    "/previousSigners": {
         "$ref": "./paths/previousSigner/previousSigner.json"
     },
-    "/previousSigner/{id}": {
+    "/previousSigners/{id}": {
         "$ref": "./paths/previousSigner/{id}.json"
     },
     "/products": {
@@ -59,10 +59,10 @@
     "/products/{id}": {
         "$ref": "./paths/product/{id}.json"
     },
-    "/stop": {
+    "/stops": {
         "$ref": "./paths/stop/stop.json"
     },
-    "/stop/{id}": {
+    "/stops/{id}": {
         "$ref": "./paths/stop/{id}.json"
     },
     "/user/add": {
