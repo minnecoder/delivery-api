@@ -602,7 +602,7 @@
         }
       }
     },
-    "/driverReport": {
+    "/driverReports": {
       "get": {
         "tags": [
           "Driver Reports"
@@ -654,7 +654,7 @@
         }
       }
     },
-    "/driverReport/{id}": {
+    "/driverReports/{id}": {
       "get": {
         "tags": [
           "Driver Reports"
@@ -870,7 +870,7 @@
         }
       }
     },
-    "/orderItem": {
+    "/orderItems": {
       "get": {
         "tags": [
           "Order Items"
@@ -922,7 +922,7 @@
         }
       }
     },
-    "/orderItem/{id}": {
+    "/orderItems/{id}": {
       "get": {
         "tags": [
           "Order Items"
@@ -1138,7 +1138,7 @@
         }
       }
     },
-    "/previousSigner": {
+    "/previousSigners": {
       "get": {
         "tags": [
           "Previous Signers"
@@ -1190,7 +1190,7 @@
         }
       }
     },
-    "/previousSigner/{id}": {
+    "/previousSigners/{id}": {
       "get": {
         "tags": [
           "Previous Signers"
