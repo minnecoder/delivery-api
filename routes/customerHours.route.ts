@@ -1,0 +1,25 @@
+import { Router } from "express";
+import CustomerHoursController from '../controllers/customerHours.controller'
+import { CreateCustomerHoursDTO } from "../dtos/customerHours.dto";
+import { Routes } from '../interfaces/routes.interface'
+import validationMiddleware from "../middleware/validation.middleware";
+
+class CustomerHoursRoute implements Routes {
+    public path = '/customerhours'
+    public router = Router()
+    public customerHoursController = new CustomerHoursController()
+
+    constructor() {
+        this.initializeRoutes()
+    }
+
+    private initializeRoutes() {
+        this.router.get(`${this.path}`, this.customerHoursController.getCustomerHours)
+        this.router.get(`${this.path}/:id`, this.customerHoursController.getSingleCustomerHours)
+        this.router.post(`${this.path}`, validationMiddleware(CreateCustomerHoursDTO), this.customerHoursController.addCustomerHours)
+        this.router.put(`${this.path}`, validationMiddleware(CreateCustomerHoursDTO, true), this.customerHoursController.updateCustomerHours)
+        this.router.delete(`${this.path}`, this.customerHoursController.deleteCustomerHours)
+    }
+}
+
+export default CustomerHoursRoute
