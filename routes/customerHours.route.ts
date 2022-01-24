@@ -1,10 +1,10 @@
 import { Router } from "express";
 import CustomerHoursController from '../controllers/customerHours.controller'
 import { CreateCustomerHoursDTO } from "../dtos/customerHours.dto";
-import { Routes } from '../interfaces/routes.interface'
+import { Route } from '../interfaces/route.interface'
 import validationMiddleware from "../middleware/validation.middleware";
 
-class CustomerHoursRoute implements Routes {
+class CustomerHoursRoute implements Route {
     public path = '/customerhours'
     public router = Router()
     public customerHoursController = new CustomerHoursController()

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { CreateCustomerHoursDTO } from "../dtos/customerHours.dto";
-import { CustomerHours } from '../interfaces/customerHours.interface'
+import { CustomerHour } from '../interfaces/customerHour.interface'
 import customerHoursService from '../services/customerHours.service'
 
 
@@ -9,7 +9,7 @@ class CustomerHoursController {
 
     public getCustomerHours = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const findAllCustomerHoursData: CustomerHours[] = await this.customerHoursService.findAllCustomerHours();
+            const findAllCustomerHoursData: CustomerHour[] = await this.customerHoursService.findAllCustomerHours();
 
             return res.status(200).json({
                 data: findAllCustomerHoursData
@@ -35,7 +35,7 @@ class CustomerHoursController {
     public addCustomerHours = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const customerHoursData: CreateCustomerHoursDTO = req.body
-            const createCustomerHoursData: CustomerHours = await this.customerHoursService.createCustomerHours(customerHoursData);
+            const createCustomerHoursData: CustomerHour = await this.customerHoursService.createCustomerHours(customerHoursData);
 
             return res.status(200).json({
                 data: createCustomerHoursData
@@ -49,7 +49,7 @@ class CustomerHoursController {
         try {
             const customerHoursId = Number(req.params.id)
             const customerHoursData: CreateCustomerHoursDTO = req.body
-            const updateCustomerHours: CustomerHours = await this.customerHoursService.updateCustomerHours(customerHoursId, customerHoursData)
+            const updateCustomerHours: CustomerHour = await this.customerHoursService.updateCustomerHours(customerHoursId, customerHoursData)
 
             return res.status(200).json({
                 data: customerHoursData

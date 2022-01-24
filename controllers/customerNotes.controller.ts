@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { CreateCustomerNoteDTO } from "../dtos/customerNotes.dto";
-import { CustomerNotes } from '../interfaces/customerNotes.interface'
+import { CustomerNote } from '../interfaces/customerNote.interface'
 import customerNotesService from '../services/customerNotes.service'
 
 class CustomerNotesController {
@@ -8,7 +8,7 @@ class CustomerNotesController {
 
     public getCustomerNotes = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const findAllCustomerNotesData: CustomerNotes[] = await this.customerNotesService.findAllCustomerNotes();
+            const findAllCustomerNotesData: CustomerNote[] = await this.customerNotesService.findAllCustomerNotes();
 
             return res.status(200).json({
                 data: findAllCustomerNotesData
@@ -35,7 +35,7 @@ class CustomerNotesController {
         try {
             const customerNotesData: CreateCustomerNoteDTO = req.body
 
-            const createCustomerNotesData: CustomerNotes = await this.customerNotesService.createCustomerNotes(customerNotesData);
+            const createCustomerNotesData: CustomerNote = await this.customerNotesService.createCustomerNotes(customerNotesData);
 
             return res.status(200).json({
                 data: createCustomerNotesData
@@ -64,7 +64,7 @@ class CustomerNotesController {
         try {
             const customerNotesId = req.params.id
             const customerNotesData: CreateCustomerNoteDTO = req.body
-            const updateCustomerNotes: CustomerNotes = await this.customerNotesService.updateCustomerNotes(customerNotesId, customerNotesData);
+            const updateCustomerNotes: CustomerNote = await this.customerNotesService.updateCustomerNotes(customerNotesId, customerNotesData);
 
             return res.status(200).json({
                 success: true,

@@ -1,4 +1,5 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
+import { User } from '../interfaces/user.interface';
 
 export interface UserAttributes {
   id: number;
@@ -9,21 +10,22 @@ export interface UserAttributes {
   role: string;
 }
 
-module.exports = (sequelize: Sequelize) => {
-  class User extends Model<UserAttributes> implements UserAttributes {
-    id!: number;
-    first_name!: string
-    last_name!: string
-    email!: string
-    password!: string
-    role!: string
+export class Users extends Model<User, UserAttributes> implements UserAttributes {
+  id!: number;
+  first_name!: string
+  last_name!: string
+  email!: string
+  password!: string
+  role!: string
 
-    static associate(models: any) {
-      // define association here
-    }
-  };
+  static associate(models: any) {
+    // define association here
+  }
+};
 
-  User.init({
+export default function (sequelize: Sequelize): typeof Users {
+
+  Users.init({
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -54,7 +56,7 @@ module.exports = (sequelize: Sequelize) => {
     sequelize,
     modelName: 'users',
   });
-  return User
+  return Users
 }
 
 

@@ -1,4 +1,5 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
+import { CustomerHour } from '../interfaces/customerHour.interface';
 
 export interface CustomerHoursAttributes {
     id: number
@@ -19,30 +20,31 @@ export interface CustomerHoursAttributes {
     sunday_close: string
 }
 
-module.exports = (sequelize: Sequelize) => {
 
-    class CustomerHours extends Model<CustomerHoursAttributes> implements CustomerHoursAttributes {
-        id!: number;
-        customer_id!: number
-        monday_open!: string
-        monday_close!: string
-        tuesday_open!: string
-        tuesday_close!: string
-        wednesday_open!: string
-        wednesday_close!: string
-        thursday_open!: string
-        thursday_close!: string
-        friday_open!: string
-        friday_close!: string
-        saturday_open!: string
-        saturday_close!: string
-        sunday_open!: string
-        sunday_close!: string
 
-        static associate(models: any) {
-            CustomerHours.belongsTo(models.Customers)
-        }
+export class CustomerHours extends Model<CustomerHour, CustomerHoursAttributes> implements CustomerHours {
+    id!: number;
+    customer_id!: number
+    monday_open!: string
+    monday_close!: string
+    tuesday_open!: string
+    tuesday_close!: string
+    wednesday_open!: string
+    wednesday_close!: string
+    thursday_open!: string
+    thursday_close!: string
+    friday_open!: string
+    friday_close!: string
+    saturday_open!: string
+    saturday_close!: string
+    sunday_open!: string
+    sunday_close!: string
+
+    static associate(models: any) {
+        CustomerHours.belongsTo(models.Customers)
     }
+}
+export default function (sequelize: Sequelize): typeof CustomerHours {
 
     CustomerHours.init({
         id: {

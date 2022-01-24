@@ -1,4 +1,4 @@
-export interface Stops {
+export interface Stop {
     id: number
     customer_id: number
     order_id: number

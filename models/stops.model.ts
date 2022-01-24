@@ -1,4 +1,5 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
+import { Stop } from '../interfaces/stop.interface';
 
 export interface StopAttributes {
     id: number
@@ -14,29 +15,28 @@ export interface StopAttributes {
     stop_time: string
 }
 
-module.exports = (sequelize: Sequelize) => {
 
-    class Stops extends Model<StopAttributes> implements StopAttributes {
-        id!: number
-        customer_id!: number
-        order_id!: number
-        vehicle_id!: number
-        driver_id!: number
-        is_delivered!: string
-        is_signed!: string
-        reason_code!: string
-        signer_name!: string
-        start_time!: string
-        stop_time!: string
+export class Stops extends Model<Stop, StopAttributes> implements StopAttributes {
+    id!: number
+    customer_id!: number
+    order_id!: number
+    vehicle_id!: number
+    driver_id!: number
+    is_delivered!: string
+    is_signed!: string
+    reason_code!: string
+    signer_name!: string
+    start_time!: string
+    stop_time!: string
 
-        static associate(models: any) {
-            Stops.hasOne(models.Customers)
-            Stops.hasMany(models.Orders)
-            Stops.hasOne(models.Vehiclies)
-            Stops.hasOne(models.Drivers)
-        }
+    static associate(models: any) {
+        Stops.hasOne(models.Customers)
+        Stops.hasMany(models.Orders)
+        Stops.hasOne(models.Vehiclies)
+        Stops.hasOne(models.Drivers)
     }
-
+}
+export default function (sequelize: Sequelize): typeof Stops {
     Stops.init({
         id: {
             type: DataTypes.INTEGER,

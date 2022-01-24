@@ -1,10 +1,10 @@
 import { Router } from "express";
 import DriversController from '../controllers/drivers.controller'
 import { CreateDriversDTO } from "../dtos/drivers.dto";
-import { Routes } from '../interfaces/routes.interface'
+import { Route } from '../interfaces/route.interface'
 import validationMiddleware from "../middleware/validation.middleware";
 
-class DriversRoute implements Routes {
+class DriversRoute implements Route {
     public path = '/drivers'
     public router = Router()
     public driversController = new DriversController()

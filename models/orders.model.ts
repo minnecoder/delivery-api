@@ -1,4 +1,5 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
+import { Order } from '../interfaces/order.interface';
 
 export interface OrderAttributes {
     id: number
@@ -10,21 +11,21 @@ export interface OrderAttributes {
 }
 
 
-module.exports = (sequelize: Sequelize) => {
-    class Orders extends Model<OrderAttributes> implements OrderAttributes {
-        id!: number
-        customer_id!: number
-        order_status!: string
-        order_total!: number
-        is_grouped!: string
-        previous_order_number!: number
+export class Orders extends Model<Order, OrderAttributes> implements OrderAttributes {
+    id!: number
+    customer_id!: number
+    order_status!: string
+    order_total!: number
+    is_grouped!: string
+    previous_order_number!: number
 
-        static associate(models: any) {
-            Orders.belongsTo(models.Customers)
-        }
-
+    static associate(models: any) {
+        Orders.belongsTo(models.Customers)
     }
 
+}
+
+export default function (sequelize: Sequelize): typeof Orders {
     Orders.init({
         id: {
             type: DataTypes.INTEGER,

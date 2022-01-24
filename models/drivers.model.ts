@@ -1,4 +1,5 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
+import { Driver } from '../interfaces/driver.interface';
 
 export interface DriverAttributes {
     id: number
@@ -10,18 +11,18 @@ export interface DriverAttributes {
     vehicle_type: string
 }
 
-module.exports = (sequelize: Sequelize) => {
-    class Drivers extends Model<DriverAttributes> implements DriverAttributes {
-        id!: number
-        first_name!: string
-        last_name!: string
-        phone_number!: number
-        birthday!: string
-        hire_date!: string
-        vehicle_type!: string
+export class Drivers extends Model<Driver, DriverAttributes> implements Driver {
+    id!: number
+    first_name!: string
+    last_name!: string
+    phone_number!: number
+    birthday!: string
+    hire_date!: string
+    vehicle_type!: string
 
-    }
+}
 
+export default function (sequelize: Sequelize): typeof Drivers {
     Drivers.init({
         id: {
             type: DataTypes.INTEGER,

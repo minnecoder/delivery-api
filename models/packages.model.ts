@@ -1,4 +1,5 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
+import { Package } from '../interfaces/package.interface';
 
 export interface PackageAttributes {
     id: number
@@ -9,23 +10,22 @@ export interface PackageAttributes {
     package_barcode: number
 }
 
-module.exports = (sequelize: Sequelize) => {
 
-    class Packages extends Model<PackageAttributes> implements PackageAttributes {
-        id!: number
-        order_id!: number
-        order_item_id!: number
-        product_id!: number
-        package_status!: string
-        package_barcode!: number
+export class Packages extends Model<Package, PackageAttributes> implements PackageAttributes {
+    id!: number
+    order_id!: number
+    order_item_id!: number
+    product_id!: number
+    package_status!: string
+    package_barcode!: number
 
-        static associate(models: any) {
-            Packages.belongsTo(models.Orders)
-            Packages.hasMany(models.OrderItems)
-            Packages.hasMany(models.Products)
-        }
+    static associate(models: any) {
+        Packages.belongsTo(models.Orders)
+        Packages.hasMany(models.OrderItems)
+        Packages.hasMany(models.Products)
     }
-
+}
+export default function (sequelize: Sequelize): typeof Packages {
     Packages.init({
         id: {
             type: DataTypes.INTEGER,

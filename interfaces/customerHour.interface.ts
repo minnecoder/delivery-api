@@ -1,4 +1,4 @@
-export interface CustomerHours {
+export interface CustomerHour {
     id: number
     customer_id: number
     monday_open: string

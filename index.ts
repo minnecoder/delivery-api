@@ -3,7 +3,7 @@ import cors from "cors";
 import express from "express";
 import hpp from 'hpp'
 import DB from './config/postgres-db'
-import { Routes } from './interfaces/routes.interface'
+import { Route } from './interfaces/route.interface'
 import swaggerUI from "swagger-ui-express";
 import swaggerDoc from "./swagger/swagger-compiled.json";
 import errorMiddleware from './middleware/error.middleware';
@@ -13,7 +13,7 @@ class App {
     public port: string | number
     public env: string
 
-    constructor(routes: Routes[]) {
+    constructor(routes: Route[]) {
         this.app = express()
         this.port = process.env.PORT || 4000
         this.env = process.env.NODE_ENV || "development"
@@ -55,7 +55,7 @@ class App {
         this.app.use(errorMiddleware)
     }
 
-    private initializeRoutes(routes: Routes[]) {
+    private initializeRoutes(routes: Route[]) {
         routes.forEach(route => {
             this.app.use('/api/v1/', route.router)
         })

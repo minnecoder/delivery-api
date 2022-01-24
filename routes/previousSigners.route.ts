@@ -1,10 +1,10 @@
 import { Router } from "express";
 import PreviousSignersController from '../controllers/previousSigners.controller'
 import { CreatePreviousSignerDTO } from "../dtos/previousSigners.dto";
-import { Routes } from '../interfaces/routes.interface'
+import { Route } from '../interfaces/route.interface'
 import validationMiddleware from "../middleware/validation.middleware";
 
-class PreviousSignersRoute implements Routes {
+class PreviousSignersRoute implements Route {
     public path = '/previoussigners'
     public router = Router()
     public previousSignersController = new PreviousSignersController()
