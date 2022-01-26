@@ -4,8 +4,8 @@
   "description": "API for a number of delivery based applicaitons",
   "main": "index.js",
   "scripts": {
-    "start": "node server.ts",
-    "build": "",
+    "start": "npm run build && node build/server.js",
+    "build": "cp ./config/config.env ./build/config && tsc && tsc-alias",
     "dev": "nodemon build/index.js",
     "dev-ts": "ts-node-dev --respawn --transpile-only server.ts",
     "type-check": "tsc --noEmit",
