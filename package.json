@@ -4,7 +4,7 @@
   "description": "API for a number of delivery based applicaitons",
   "main": "index.js",
   "scripts": {
-    "start": "node ./build/server.js",
+    "start": "node server.ts",
     "build": "",
     "dev": "nodemon build/index.js",
     "dev-ts": "ts-node-dev --respawn --transpile-only server.ts",
