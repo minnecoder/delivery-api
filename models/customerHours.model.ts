@@ -1,44 +1,23 @@
-import { Model, DataTypes, Sequelize } from 'sequelize';
+import { Model, DataTypes, Sequelize, BelongsToManyGetAssociationsMixin, BelongsToManyAddAssociationMixin, BelongsToManyHasAssociationMixin, BelongsToManyCountAssociationsMixin, BelongsToManyCreateAssociationMixin } from 'sequelize';
 import { CustomerHour } from '../interfaces/customerHour.interface';
 
-export interface CustomerHoursAttributes {
-    id: number
-    customer_id: number
-    monday_open: string
-    monday_close: string
-    tuesday_open: string
-    tuesday_close: string
-    wednesday_open: string
-    wednesday_close: string
-    thursday_open: string
-    thursday_close: string
-    friday_open: string
-    friday_close: string
-    saturday_open: string
-    saturday_close: string
-    sunday_open: string
-    sunday_close: string
-}
-
-
-
-export class CustomerHours extends Model<CustomerHour, CustomerHoursAttributes> implements CustomerHours {
-    id!: number;
-    customer_id!: number
-    monday_open!: string
-    monday_close!: string
-    tuesday_open!: string
-    tuesday_close!: string
-    wednesday_open!: string
-    wednesday_close!: string
-    thursday_open!: string
-    thursday_close!: string
-    friday_open!: string
-    friday_close!: string
-    saturday_open!: string
-    saturday_close!: string
-    sunday_open!: string
-    sunday_close!: string
+class CustomerHours extends Model<CustomerHour> implements CustomerHours {
+    declare id: number;
+    declare customerId: number
+    declare mondayOpen: string
+    declare mondayClose: string
+    declare tuesdayOpen: string
+    declare tuesdayClose: string
+    declare wednesdayOpen: string
+    declare wednesdayClose: string
+    declare thursdayOpen: string
+    declare thursdayClose: string
+    declare fridayOpen: string
+    declare fridayClose: string
+    declare saturdayOpen: string
+    declare saturdayClose: string
+    declare sundayOpen: string
+    declare sundayClose: string
 
     static associate(models: any) {
         CustomerHours.belongsTo(models.Customers)
@@ -52,67 +31,63 @@ export default function (sequelize: Sequelize): typeof CustomerHours {
             allowNull: false,
             primaryKey: true
         },
-        customer_id: {
+        customerId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Customers',
-                key: 'id'
-            }
         },
-        monday_open: {
+        mondayOpen: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        monday_close: {
+        mondayClose: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        tuesday_open: {
+        tuesdayOpen: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        tuesday_close: {
+        tuesdayClose: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        wednesday_open: {
+        wednesdayOpen: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        wednesday_close: {
+        wednesdayClose: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        thursday_open: {
+        thursdayOpen: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        thursday_close: {
+        thursdayClose: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        friday_open: {
+        fridayOpen: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        friday_close: {
+        fridayClose: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        saturday_open: {
+        saturdayOpen: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        saturday_close: {
+        saturdayClose: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        sunday_open: {
+        sundayOpen: {
             type: DataTypes.TIME,
             allowNull: false
         },
-        sunday_close: {
+        sundayClose: {
             type: DataTypes.TIME,
             allowNull: false
         },

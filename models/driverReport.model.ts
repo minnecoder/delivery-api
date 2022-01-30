@@ -1,44 +1,22 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 import { DriverReport } from '../interfaces/driverReport.interface';
-
-export interface DriverReportAttributes {
-    id: number
-    driver_id: number
-    vehicle_id: number
-    start_mileage: number
-    first_stop_mileage: number
-    last_stop_mileage: number
-    final_mileage: number
-    break1_start: string
-    break1_end: string
-    break2_start: string
-    break2_end: string
-    lunch_start: string
-    lunch_end: string
-    stops_completed: number
-    stops_remaining: number
-    number_signature_stops: number
-}
-
-
-
-export class DriverReports extends Model<DriverReport, DriverReportAttributes> implements DriverReport {
-    id!: number
-    driver_id!: number
-    vehicle_id!: number
-    start_mileage!: number
-    first_stop_mileage!: number
-    last_stop_mileage!: number
-    final_mileage!: number
-    break1_start!: string
-    break1_end!: string
-    break2_start!: string
-    break2_end!: string
-    lunch_start!: string
-    lunch_end!: string
-    stops_completed!: number
-    stops_remaining!: number
-    number_signature_stops!: number
+export class DriverReports extends Model<DriverReport> implements DriverReport {
+    declare id: number
+    declare driverId: number;
+    declare vehicleId: number;
+    declare startMileage: number;
+    declare firstStopMileage: number;
+    declare lastStopMileage: number;
+    declare finalMileage: number;
+    declare break1Start: string;
+    declare break1End: string;
+    declare break2Start: string;
+    declare break2End: string;
+    declare lunchStart: string;
+    declare lunchEnd: string;
+    declare stopsCompleted: number;
+    declare stopsRemaining: number;
+    declare numberSignatureStops: number;
 
     static associate(models: any) {
         DriverReports.hasMany(models.Drivers)
@@ -54,73 +32,52 @@ export default function (sequelize: Sequelize): typeof DriverReports {
             autoIncrement: true,
             allowNull: false
         },
-        driver_id: {
+        driverId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Drivers',
-                key: 'id'
-            }
         },
-        vehicle_id: {
+        vehicleId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Vehicles',
-                key: 'id'
-            }
         },
-        start_mileage: {
+        startMileage: {
             type: DataTypes.INTEGER,
-            allowNull: false
         },
-        first_stop_mileage: {
+        firstStopMileage: {
             type: DataTypes.INTEGER,
-            allowNull: false
         },
-        last_stop_mileage: {
+        lastStopMileage: {
             type: DataTypes.INTEGER,
-            allowNull: false
         },
-        final_mileage: {
+        finalMileage: {
             type: DataTypes.INTEGER,
-            allowNull: false
         },
-        break1_start: {
+        break1Start: {
             type: DataTypes.TIME,
-            allowNull: false
         },
-        break1_end: {
+        break1End: {
             type: DataTypes.TIME,
-            allowNull: false
         },
-        break2_start: {
+        break2Start: {
             type: DataTypes.TIME,
-            allowNull: false
         },
-        break2_end: {
+        break2End: {
             type: DataTypes.TIME,
-            allowNull: false
         },
-        lunch_start: {
+        lunchStart: {
             type: DataTypes.TIME,
-            allowNull: false
         },
-        lunch_end: {
+        lunchEnd: {
             type: DataTypes.TIME,
-            allowNull: false
         },
-        stops_completed: {
+        stopsCompleted: {
             type: DataTypes.INTEGER,
-            allowNull: false
         },
-        stops_remaining: {
+        stopsRemaining: {
             type: DataTypes.INTEGER,
-            allowNull: false
         },
-        number_signature_stops: {
+        numberSignatureStops: {
             type: DataTypes.INTEGER,
-            allowNull: false
         }
     }, {
         sequelize,

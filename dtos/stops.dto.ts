@@ -5,34 +5,44 @@ export class CreateStopsDTO {
     public id: number
 
     @IsInt()
-    public customer_id: number
+    public customerId: number
 
     @IsInt()
-    public order_id: number
+    public orderId: number
 
     @IsInt()
-    public vehicle_id: number
+    public vehicleId: number
 
     @IsInt()
-    public driver_id: number
+    public driverId: number
 
     @IsString()
     @IsBoolean()
-    public is_delivered: string
+    public isDelivered: string
 
     @IsString()
     @IsBoolean()
-    public is_signed: string
+    public isSigned: string
 
     @IsString()
-    public reason_code: string
+    public state: string
 
     @IsString()
-    public signer_name: string
+    public reasonCode: string
 
     @IsString()
-    public start_time: string
+    public signerName: string
 
     @IsString()
-    public stop_time: string
+    public startTime: string
+
+    @IsString()
+    public endTime: string
+
+    @IsString()
+    public averageTime: string
+
+    @IsString()
+    @IsBoolean()
+    public isReturnStop: boolean
 }

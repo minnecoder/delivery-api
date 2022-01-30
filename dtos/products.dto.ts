@@ -5,6 +5,9 @@ export class CreateProductsDTO {
     public id: number
 
     @IsString()
+    public item: string
+
+    @IsString()
     public description: string
 
     @IsInt()
@@ -14,8 +17,8 @@ export class CreateProductsDTO {
     public price: number
 
     @IsInt()
-    public on_hand: number
+    public onHand: number
 
     @IsString()
-    public product_status: string
+    public productStatus: string
 }

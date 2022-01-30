@@ -1,23 +1,13 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 import { Package } from '../interfaces/package.interface';
 
-export interface PackageAttributes {
-    id: number
-    order_id: number
-    order_item_id: number
-    product_id: number
-    package_status: string
-    package_barcode: number
-}
-
-
-export class Packages extends Model<Package, PackageAttributes> implements PackageAttributes {
-    id!: number
-    order_id!: number
-    order_item_id!: number
-    product_id!: number
-    package_status!: string
-    package_barcode!: number
+class Packages extends Model<Package> implements Packages {
+    declare id: number
+    declare orderId: number
+    declare orderItemId: number
+    declare productId: number
+    declare packageStatus: string
+    declare packageBarcode: number
 
     static associate(models: any) {
         Packages.belongsTo(models.Orders)
@@ -33,38 +23,26 @@ export default function (sequelize: Sequelize): typeof Packages {
             autoIncrement: true,
             allowNull: false
         },
-        order_id: {
+        orderId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Orders',
-                key: 'id'
-            }
         },
-        order_item_id: {
+        orderItemId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'OrderItems',
-                key: 'id'
-            }
         },
-        product_id: {
+        productId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Products',
-                key: 'id'
-            }
         },
-        package_status: {
+        packageStatus: {
             type: DataTypes.ENUM,
             allowNull: false,
+            defaultValue: "not started",
             values: ["not started", "picked", "scanned", "on truck", "delivered", "damaged", "returned"]
         },
-        package_barcode: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+        packageBarcode: {
+            type: DataTypes.INTEGER
         }
     }, {
         sequelize,

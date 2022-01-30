@@ -5,17 +5,17 @@ export class CreateOrdersDTO {
     public id: number
 
     @IsInt()
-    public customer_id: number
+    public customerId: number
 
     @IsString()
-    public order_status: string
+    public orderStatus: string
 
     @IsInt()
-    public order_total: number
+    public orderTotal: number
 
     @IsString()
-    public is_grouped: string
+    public isGrouped: string
 
     @IsInt()
-    public previous_order_number: number
+    public previousOrderNumber: number
 }

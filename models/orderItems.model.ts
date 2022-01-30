@@ -1,24 +1,15 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 import { OrderItem } from '../interfaces/orderItem.interface';
 
-export interface OrderItemsAttributes {
-    id: number
-    order_id: number
-    product_id: number
-    quantity: number
-}
-
-
-export class OrderItems extends Model<OrderItem, OrderItemsAttributes> implements OrderItems {
-    id!: number
-    order_id!: number
-    product_id!: number
-    quantity!: number
+class OrderItems extends Model<OrderItem> implements OrderItems {
+    declare id: number
+    declare orderId: number
+    declare productId: number
+    declare quantity: number
 
     static associate(models: any) {
         OrderItems.belongsTo(models.Orders)
         OrderItems.hasMany(models.Products)
-
     }
 }
 
@@ -30,21 +21,13 @@ export default function (sequelize: Sequelize): typeof OrderItems {
             autoIncrement: true,
             allowNull: false
         },
-        order_id: {
+        orderId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Orders',
-                key: 'id'
-            }
         },
-        product_id: {
+        productId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Products',
-                key: 'id'
-            }
         },
         quantity: {
             type: DataTypes.INTEGER,
@@ -52,7 +35,7 @@ export default function (sequelize: Sequelize): typeof OrderItems {
         }
     }, {
         sequelize,
-        modelName: 'order_items'
+        modelName: 'orderItems'
     })
     return OrderItems
 }

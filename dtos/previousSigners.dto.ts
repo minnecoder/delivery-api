@@ -5,11 +5,11 @@ export class CreatePreviousSignerDTO {
     public id: number
 
     @IsInt()
-    public customer_id: number
+    public customerId: number
 
     @IsString()
-    public first_name: string
+    public firstName: string
 
     @IsString()
-    public last_name: string
+    public lastName: string
 }

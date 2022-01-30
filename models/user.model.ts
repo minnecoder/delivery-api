@@ -1,22 +1,13 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 import { User } from '../interfaces/user.interface';
 
-export interface UserAttributes {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string;
-  role: string;
-}
-
-export class Users extends Model<User, UserAttributes> implements UserAttributes {
-  id!: number;
-  first_name!: string
-  last_name!: string
-  email!: string
-  password!: string
-  role!: string
+export class Users extends Model<User> implements Users {
+  declare id: number;
+  declare firstName: string
+  declare lastName: string
+  declare email: string
+  declare password: string
+  declare role: string
 
   static associate(models: any) {
     // define association here
@@ -31,11 +22,11 @@ export default function (sequelize: Sequelize): typeof Users {
       allowNull: false,
       primaryKey: true
     },
-    first_name: {
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    last_name: {
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false
     },

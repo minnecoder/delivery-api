@@ -5,17 +5,17 @@ export class CreatePackagesDTO {
     public id: number
 
     @IsInt()
-    public order_id: number
+    public orderId: number
 
     @IsInt()
-    public order_item_id: number
+    public orderItemId: number
 
     @IsInt()
-    public product_id: number
+    public productId: number
 
     @IsString()
-    public product_status: string
+    public productStatus: string
 
     @IsInt()
-    public package_barcode: number
+    public packageBarcode: number
 }

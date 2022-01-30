@@ -1,28 +1,17 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 import { Order } from '../interfaces/order.interface';
 
-export interface OrderAttributes {
-    id: number
-    customer_id: number
-    order_status: string
-    order_total: number
-    is_grouped: string
-    previous_order_number: number
-}
-
-
-export class Orders extends Model<Order, OrderAttributes> implements OrderAttributes {
-    id!: number
-    customer_id!: number
-    order_status!: string
-    order_total!: number
-    is_grouped!: string
-    previous_order_number!: number
+class Orders extends Model<Order> implements Orders {
+    declare id: number
+    declare customerId: number
+    declare orderStatus: string
+    declare orderTotal: number
+    declare isGrouped: string
+    declare previousOrderNumber: number
 
     static associate(models: any) {
         Orders.belongsTo(models.Customers)
     }
-
 }
 
 export default function (sequelize: Sequelize): typeof Orders {
@@ -33,30 +22,27 @@ export default function (sequelize: Sequelize): typeof Orders {
             autoIncrement: true,
             allowNull: false
         },
-        customer_id: {
+        customerId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Customers',
-                key: 'id'
-            }
         },
-        order_status: {
+        orderStatus: {
             type: DataTypes.ENUM,
             allowNull: false,
+            defaultValue: "created",
             values: ["created", "picked", "on truck", "delivered"]
         },
-        order_total: {
+        orderTotal: {
             type: DataTypes.DECIMAL,
             allowNull: false
         },
-        is_grouped: {
+        isGrouped: {
             type: DataTypes.BOOLEAN,
+            defaultValue: false,
             allowNull: false
         },
-        previous_order_number: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+        previousOrderNumber: {
+            type: DataTypes.INTEGER
         }
     }, {
         sequelize,

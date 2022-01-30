@@ -5,47 +5,47 @@ export class CreateDriverReportDTO {
     public id: number
 
     @IsInt()
-    public driver_id: number
+    public driverId: number
 
     @IsInt()
-    public vehicle_id: number
+    public vehicleId: number
 
     @IsInt()
-    public start_mileage: number
+    public startMileage: number
 
     @IsInt()
-    public first_stop_mileage: number
+    public firstStopMileage: number
 
     @IsInt()
-    public last_stop_mileage: number
+    public lastStopMileage: number
 
     @IsInt()
-    public final_mileage: number
+    public finalMileage: number
 
     @IsString()
-    public break1_start: string
+    public break1Start: string
 
     @IsString()
-    public break1_end: string
+    public break1End: string
 
     @IsString()
-    public break2_start: string
+    public break2Start: string
 
     @IsString()
-    public break2_end: string
+    public break2End: string
 
     @IsString()
-    public lunch_start: string
+    public lunchStart: string
 
     @IsString()
-    public lunch_end: string
+    public lunchEnd: string
 
     @IsInt()
-    public stops_completed: number
+    public stopsCompleted: number
 
     @IsInt()
-    public stops_remaining: number
+    public stopsRemaining: number
 
     @IsInt()
-    public number_signature_stops: number
+    public numberSignatureStops: number
 }

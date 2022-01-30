@@ -1,24 +1,40 @@
-import { IsString, IsInt } from "class-validator"
+import { IsString, IsInt, IsPhoneNumber, IsEmail, IsDate } from "class-validator"
 
 export class CreateDriversDTO {
     @IsInt()
     public id: number
 
-    @IsString()
-    public first_name: string
+    @IsInt()
+    public organizationId: number
 
     @IsString()
-    public last_name: string
+    public firstName: string
+
+    @IsString()
+    public lastName: string
 
     @IsInt()
-    public phone_number: number
+    public addressId: number
+
+    @IsInt()
+    @IsPhoneNumber()
+    public phone: number
 
     @IsString()
+    @IsEmail()
+    public email: string
+
+    @IsString()
+    @IsDate()
     public birthday: string
 
     @IsString()
-    public hire_date: string
+    @IsDate()
+    public hireDate: string
 
-    @IsString()
-    public vehicle: string
+    @IsInt()
+    public team: number
+
+    @IsInt()
+    public vehicleId: number
 }

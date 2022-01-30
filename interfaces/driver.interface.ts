@@ -1,9 +1,13 @@
 export interface Driver {
     id: number
-    first_name: string
-    last_name: string
-    phone_number: number
+    organizationId: number
+    firstName: string
+    lastName: string
+    addressId: number
+    phone: number
+    email: string
     birthday: string
-    hire_date: string
-    vehicle_type: string
+    hireDate: string
+    team: number
+    vehicleId: number
 }

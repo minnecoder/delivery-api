@@ -5,10 +5,10 @@ export class CreateOrderItemsDTO {
     public id: number
 
     @IsInt()
-    public order_id: number
+    public orderId: number
 
     @IsInt()
-    public product_id: number
+    public productId: number
 
     @IsInt()
     public quantity: number

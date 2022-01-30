@@ -5,47 +5,47 @@ export class CreateCustomerHoursDTO {
     public id!: number
 
     @IsInt()
-    public customer_id!: number
+    public customerId!: number
 
     @IsString()
-    public monday_open!: string
+    public mondayOpen!: string
 
     @IsString()
-    public monday_close!: string
+    public mondayClose!: string
 
     @IsString()
-    public tuesday_open!: string
+    public tuesdayOpen!: string
 
     @IsString()
-    public tuesday_close!: string
+    public tuesdayClose!: string
 
     @IsString()
-    public wednesday_open!: string
+    public wednesdayOpen!: string
 
     @IsString()
-    public wednesday_close!: string
+    public wednesdayClose!: string
 
     @IsString()
-    public thursday_open!: string
+    public thursdayOpen!: string
 
     @IsString()
-    public thursday_close!: string
+    public thursdayClose!: string
 
     @IsString()
-    public friday_open!: string
+    public fridayOpen!: string
 
     @IsString()
-    public friday_close!: string
+    public fridayClose!: string
 
     @IsString()
-    public saturday_open!: string
+    public saturdayOpen!: string
 
     @IsString()
-    public saturday_close!: string
+    public saturdayClose!: string
 
     @IsString()
-    public sunday_open!: string
+    public sundayOpen!: string
 
     @IsString()
-    public sunday_close!: string
+    public sundayClose!: string
 }

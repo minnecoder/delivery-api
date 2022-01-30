@@ -4,24 +4,18 @@ export class CreateCustomerDTO {
     @IsInt()
     public id: number
 
-    @IsString()
-    public customerName: string
+    @IsInt()
+    public organizationId: number
 
     @IsString()
-    public address: string
+    public name: string
 
     @IsString()
-    public city: string
-
-    @IsString()
-    public state: string
-
-    @IsString()
-    public zip: string
+    public addressId: number
 
     @IsInt()
     @IsPhoneNumber()
-    public phone: string
+    public phone: number
 
     @IsString()
     @IsEmail()

@@ -1,33 +1,21 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 import { Stop } from '../interfaces/stop.interface';
 
-export interface StopAttributes {
-    id: number
-    customer_id: number
-    order_id: number
-    vehicle_id: number
-    driver_id: number
-    is_delivered: string
-    is_signed: string
-    reason_code: string
-    signer_name: string
-    start_time: string
-    stop_time: string
-}
-
-
-export class Stops extends Model<Stop, StopAttributes> implements StopAttributes {
-    id!: number
-    customer_id!: number
-    order_id!: number
-    vehicle_id!: number
-    driver_id!: number
-    is_delivered!: string
-    is_signed!: string
-    reason_code!: string
-    signer_name!: string
-    start_time!: string
-    stop_time!: string
+class Stops extends Model<Stop> implements Stops {
+    declare id: number
+    declare customerId: number
+    declare orderId: number
+    declare vehicleId: number
+    declare driverId: number
+    declare isDelivered: string
+    declare isSigned: string
+    declare state: string
+    declare reasonCode: string
+    declare signerName: string
+    declare startTime: string
+    declare endTime: string
+    declare averageTime: string
+    declare isReturnStop: boolean
 
     static associate(models: any) {
         Stops.hasOne(models.Customers)
@@ -44,49 +32,36 @@ export default function (sequelize: Sequelize): typeof Stops {
             autoIncrement: true,
             allowNull: false
         },
-        customer_id: {
+        customerId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Customers',
-                key: 'id'
-            }
         },
-        order_id: {
+        orderId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Orders',
-                key: 'id'
-            }
         },
-        vehicle_id: {
+        vehicleId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Vehicles',
-                key: 'id'
-            }
         },
-        driver_id: {
+        driverId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Drivers',
-                key: 'id'
-            }
         },
-        is_delivered: {
+        isDelivered: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            defaultValue: false
         },
-        is_signed: {
+        isSigned: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            defaultValue: false
         },
-        reason_code: {
+        state: {
+            type: DataTypes.STRING
+
+        },
+        reasonCode: {
             type: DataTypes.ENUM,
-            allowNull: false,
             values: [
                 "Business Closed",
                 "Customer Not Available",
@@ -103,17 +78,20 @@ export default function (sequelize: Sequelize): typeof Stops {
                 "Placed on Wrong Truck"
             ]
         },
-        signer_name: {
+        signerName: {
             type: DataTypes.STRING,
-            allowNull: false
         },
-        start_time: {
+        startTime: {
             type: DataTypes.TIME,
-            allowNull: false
         },
-        stop_time: {
+        endTime: {
             type: DataTypes.TIME,
-            allowNull: false
+        },
+        averageTime: {
+            type: DataTypes.STRING
+        },
+        isReturnStop: {
+            type: DataTypes.BOOLEAN
         }
     }, {
         sequelize,

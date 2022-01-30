@@ -1,16 +1,11 @@
-import { Model, DataTypes, Sequelize } from 'sequelize';
+import { Model, DataTypes, Sequelize, BelongsToManyGetAssociationsMixin, BelongsToManyAddAssociationMixin, BelongsToManyHasAssociationMixin, BelongsToManyCountAssociationsMixin, BelongsToManyCreateAssociationMixin } from 'sequelize';
 import { CustomerNote } from '../interfaces/customerNote.interface';
+import Customers from './customers.model';
 
-export interface CustomerNotesAttributes {
-    id: number
-    customer_id: number
-    note: string
-}
-
-export class CustomerNotes extends Model<CustomerNote, CustomerNotesAttributes> implements CustomerNotes {
-    id!: number
-    customer_id!: number
-    note!: string
+class CustomerNotes extends Model<CustomerNote> implements CustomerNotes {
+    declare id: number
+    declare customerId: number
+    declare note: string
 
     static associate(models: any) {
         CustomerNotes.belongsTo(models.Customers)
@@ -24,13 +19,9 @@ export default function (sequelize: Sequelize): typeof CustomerNotes {
             allowNull: false,
             primaryKey: true
         },
-        customer_id: {
+        customerId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            references: {
-                model: 'Customer',
-                key: 'id'
-            }
         },
         note: {
             type: DataTypes.STRING,
@@ -42,3 +33,5 @@ export default function (sequelize: Sequelize): typeof CustomerNotes {
     })
     return CustomerNotes
 }
+
+

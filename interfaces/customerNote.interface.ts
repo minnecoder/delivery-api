@@ -1,5 +1,5 @@
 export interface CustomerNote {
     id: number
-    customer_id: number
+    customerId: number
     note: string
 }

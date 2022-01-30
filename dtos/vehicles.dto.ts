@@ -5,20 +5,20 @@ export class CreateVehiclesDTO {
     public id: number
 
     @IsInt()
-    public vehicle_year: number
+    public vehicleYear: number
 
     @IsString()
-    public vehicle_make: string
+    public vehicleMake: string
 
     @IsString()
-    public vehicle_model: string
+    public vehicleModel: string
 
     @IsString()
-    public vehicle_license_plate: string
+    public licensePlate: string
 
     @IsString()
-    public vehicle_tab_date: string
+    public tabRenwealDate: string
 
     @IsString()
-    public vehicle_status: string
+    public vehicleStatus: string
 }

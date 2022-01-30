@@ -1,29 +1,17 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 import { Product } from '../interfaces/product.interface';
 
-export interface ProductAttributes {
-    id: number
-    item: string
-    description: string
-    cost: number
-    price: number
-    on_hand: number
-    product_status: string
-}
-
-
-export class Products extends Model<Product, ProductAttributes> implements ProductAttributes {
-    id!: number
-    item!: string
-    description!: string
-    cost!: number
-    price!: number
-    on_hand!: number
-    product_status!: string
+class Products extends Model<Product> implements Products {
+    declare id: number
+    declare item: string
+    declare description: string
+    declare cost: number
+    declare price: number
+    declare onHand: number
+    declare productStatus: string
 }
 
 export default function (sequelize: Sequelize): typeof Products {
-
     Products.init({
         id: {
             type: DataTypes.INTEGER,
@@ -43,17 +31,14 @@ export default function (sequelize: Sequelize): typeof Products {
             type: DataTypes.DECIMAL,
             allowNull: false
         },
-        price: {
-            type: DataTypes.DECIMAL,
-            allowNull: false
-        },
-        on_hand: {
+        onHand: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        product_status: {
+        productStatus: {
             type: DataTypes.ENUM,
             allowNull: false,
+            defaultValue: "in stock",
             values: ["out of stock", "in stock", "running low"]
         }
     }, {

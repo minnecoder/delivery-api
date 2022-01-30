@@ -1,27 +1,13 @@
-import { Model, DataTypes, Sequelize } from 'sequelize';
+import { Model, DataTypes, Sequelize, HasManyAddAssociationMixin } from 'sequelize';
 import { Customer } from '../interfaces/customer.interface';
 
-export interface CustomerAttributes {
-    id: number
-    customer_name: string
-    address: string
-    city: string
-    state: string
-    zip: string
-    phone: number
-    email: string
-}
-
-
-export class Customers extends Model<Customer, CustomerAttributes> implements Customer {
-    id!: number
-    customer_name!: string
-    address!: string
-    city!: string
-    state!: string
-    zip!: string
-    phone!: number
-    email!: string
+class Customers extends Model<Customer> implements Customer {
+    declare id: number
+    declare organizationId: number;
+    declare name: string;
+    declare addressId: number;
+    declare phone: number
+    declare email: string
 
     static associate(models: any) {
         Customers.hasOne(models.CustomerHours)
@@ -36,23 +22,15 @@ export default function (sequelize: Sequelize): typeof Customers {
             allowNull: false,
             primaryKey: true
         },
-        customer_name: {
+        organizationId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        address: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        city: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        state: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        zip: {
+        addressId: {
             type: DataTypes.INTEGER,
             allowNull: false
         },

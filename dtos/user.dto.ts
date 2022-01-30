@@ -5,10 +5,10 @@ export class CreateUserDTO {
     public id: number
 
     @IsString()
-    public first_name: string;
+    public firstName: string;
 
     @IsString()
-    public last_name: string;
+    public lastName: string;
 
     @IsString()
     @IsEmail()

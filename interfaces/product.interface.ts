@@ -3,6 +3,6 @@ export interface Product {
     item: string
     description: string
     cost: number
-    on_hand: number
-    product_status: string
+    onHand: number
+    productStatus: string
 }

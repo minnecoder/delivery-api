@@ -1,25 +1,14 @@
 import { Model, DataTypes, Sequelize } from 'sequelize';
 import { Vehicle } from '../interfaces/vehicle.interface';
 
-export interface VehicleAttributes {
-    id: number
-    vehicle_year: number
-    vehicle_make: string
-    vehicle_model: string
-    vehicle_license_plate: string
-    tab_renewal_date: string
-    vehicle_status: string
-}
-
-
-export class Vehicles extends Model<Vehicle, VehicleAttributes> implements VehicleAttributes {
-    id!: number
-    vehicle_year!: number
-    vehicle_make!: string
-    vehicle_model!: string
-    vehicle_license_plate!: string
-    tab_renewal_date!: string
-    vehicle_status!: string
+class Vehicles extends Model<Vehicle> implements Vehicles {
+    declare id: number
+    declare vehicleYear: number
+    declare vehicleMake: string
+    declare vehicleModel: string
+    declare licensePlate: string
+    declare tabRenewalDate: string
+    declare vehicleStatus: string
 }
 export default function (sequelize: Sequelize): typeof Vehicles {
     Vehicles.init({
@@ -29,30 +18,29 @@ export default function (sequelize: Sequelize): typeof Vehicles {
             autoIncrement: true,
             allowNull: false
         },
-        vehicle_year: {
+        vehicleYear: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        vehicle_make: {
+        vehicleMake: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        vehicle_model: {
+        vehicleModel: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        vehicle_license_plate: {
+        licensePlate: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        tab_renewal_date: {
+        tabRenewalDate: {
             type: DataTypes.DATE,
-            allowNull: false
         },
-        vehicle_status: {
+        vehicleStatus: {
             type: DataTypes.ENUM,
             allowNull: false,
-            values: ["running", "being repaired"]
+            values: ["operational", "being repaired", "in the lot"]
         }
     }, {
         sequelize,

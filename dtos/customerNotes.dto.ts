@@ -5,7 +5,7 @@ export class CreateCustomerNoteDTO {
     public id: number
 
     @IsInt()
-    public customer_id: number
+    public customerId: number
 
     @IsString()
     public note: string

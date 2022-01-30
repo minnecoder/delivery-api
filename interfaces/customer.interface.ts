@@ -1,10 +1,8 @@
 export interface Customer {
     id: number
-    customer_name: string
-    address: string
-    city: string
-    state: string
-    zip: string
+    organizationId: number
+    name: string
+    addressId: number
     phone: number
     email: string
 }
