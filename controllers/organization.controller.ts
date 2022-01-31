@@ -9,7 +9,7 @@ class OrganizationsController {
 
     public getOrganizations = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const findAllOrganizationsData: Organization[] = await this.organizationService.findAllOrganizations();
+            const findAllOrganizationsData: Organization[] = await this.organizationService.findAllOrganization();
 
             return res.status(200).json({
                 data: findAllOrganizationsData
@@ -22,7 +22,7 @@ class OrganizationsController {
     public getSingleOrganizations = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const organizationId = Number(req.params.id)
-            const findSingleOrganizationsData = await this.organizationService.findOrganizationsById(organizationId);
+            const findSingleOrganizationsData = await this.organizationService.findOrganizationById(organizationId);
 
             return res.status(200).json({
                 data: findSingleOrganizationsData
@@ -35,7 +35,7 @@ class OrganizationsController {
     public addOrganizations = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const organizationData: CreateOrganizationDTO = req.body
-            const createOrganizationsData: Organization = await this.organizationService.createOrganizations(organizationData);
+            const createOrganizationsData: Organization = await this.organizationService.createOrganization(organizationData);
 
             return res.status(200).json({
                 data: createOrganizationsData
@@ -49,7 +49,7 @@ class OrganizationsController {
         try {
             const organizationId = Number(req.params.id)
             const organizationData: CreateOrganizationDTO = req.body
-            const updateOrganizations: Organization = await this.organizationService.updateOrganizations(organizationId, organizationData)
+            const updateOrganizations: Organization = await this.organizationService.updateOrganization(organizationId, organizationData)
 
             return res.status(200).json({
                 data: organizationData
@@ -63,7 +63,7 @@ class OrganizationsController {
         try {
             const organizationId = Number(req.params.id)
 
-            const deleteOrganizationsData = await this.organizationService.deleteOrganizations(organizationId);
+            const deleteOrganizationsData = await this.organizationService.deleteOrganization(organizationId);
 
             return res.status(200).json({
                 success: true
