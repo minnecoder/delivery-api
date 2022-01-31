@@ -17,8 +17,8 @@ class DriversRoute implements Route {
         this.router.get(`${this.path}`, this.driversController.getDrivers)
         this.router.get(`${this.path}/:id`, this.driversController.getSingleDriver)
         this.router.post(`${this.path}`, validationMiddleware(CreateDriversDTO), this.driversController.addDriver)
-        this.router.put(`${this.path}`, validationMiddleware(CreateDriversDTO, true), this.driversController.updateDriver)
-        this.router.delete(`${this.path}`, this.driversController.deleteDriver)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreateDriversDTO, true), this.driversController.updateDriver)
+        this.router.delete(`${this.path}/:id`, this.driversController.deleteDriver)
     }
 }
 

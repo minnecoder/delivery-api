@@ -17,8 +17,8 @@ class ProductsRoute implements Route {
         this.router.get(`${this.path}`, this.productsController.getProducts)
         this.router.get(`${this.path}/:id`, this.productsController.getSingleProduct)
         this.router.post(`${this.path}`, validationMiddleware(CreateProductsDTO), this.productsController.addProduct)
-        this.router.put(`${this.path}`, validationMiddleware(CreateProductsDTO, true), this.productsController.updateProduct)
-        this.router.delete(`${this.path}`, this.productsController.deleteProduct)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreateProductsDTO, true), this.productsController.updateProduct)
+        this.router.delete(`${this.path}/:id`, this.productsController.deleteProduct)
     }
 }
 

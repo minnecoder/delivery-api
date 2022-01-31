@@ -17,8 +17,8 @@ class OrdersRoute implements Route {
         this.router.get(`${this.path}`, this.ordersController.getOrders)
         this.router.get(`${this.path}/:id`, this.ordersController.getSingleOrder)
         this.router.post(`${this.path}`, validationMiddleware(CreateOrdersDTO), this.ordersController.addOrder)
-        this.router.put(`${this.path}`, validationMiddleware(CreateOrdersDTO, true), this.ordersController.updateOrder)
-        this.router.delete(`${this.path}`, this.ordersController.deleteOrder)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreateOrdersDTO, true), this.ordersController.updateOrder)
+        this.router.delete(`${this.path}/:id`, this.ordersController.deleteOrder)
     }
 }
 

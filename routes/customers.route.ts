@@ -17,8 +17,8 @@ class CustomerRoute implements Route {
         this.router.get(`${this.path}`, this.customerController.getCustomers)
         this.router.get(`${this.path}/:id`, this.customerController.getSingleCustomer)
         this.router.post(`${this.path}`, validationMiddleware(CreateCustomerDTO), this.customerController.addCustomer)
-        this.router.put(`${this.path}`, validationMiddleware(CreateCustomerDTO, true), this.customerController.updateCustomer)
-        this.router.delete(`${this.path}`, this.customerController.deleteCustomer)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreateCustomerDTO, true), this.customerController.updateCustomer)
+        this.router.delete(`${this.path}/:id`, this.customerController.deleteCustomer)
     }
 }
 

@@ -17,8 +17,8 @@ class PreviousSignersRoute implements Route {
         this.router.get(`${this.path}`, this.previousSignersController.getPreviousSigners)
         this.router.get(`${this.path}/:id`, this.previousSignersController.getSinglePreviousSigner)
         this.router.post(`${this.path}`, validationMiddleware(CreatePreviousSignerDTO), this.previousSignersController.addPreviousSigner)
-        this.router.put(`${this.path}`, validationMiddleware(CreatePreviousSignerDTO, true), this.previousSignersController.updatePreviousSigner)
-        this.router.delete(`${this.path}`, this.previousSignersController.deletePreviousSigner)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreatePreviousSignerDTO, true), this.previousSignersController.updatePreviousSigner)
+        this.router.delete(`${this.path}/:id`, this.previousSignersController.deletePreviousSigner)
     }
 }
 

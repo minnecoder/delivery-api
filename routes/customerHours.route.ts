@@ -17,8 +17,8 @@ class CustomerHoursRoute implements Route {
         this.router.get(`${this.path}`, this.customerHoursController.getCustomerHours)
         this.router.get(`${this.path}/:id`, this.customerHoursController.getSingleCustomerHours)
         this.router.post(`${this.path}`, validationMiddleware(CreateCustomerHoursDTO), this.customerHoursController.addCustomerHours)
-        this.router.put(`${this.path}`, validationMiddleware(CreateCustomerHoursDTO, true), this.customerHoursController.updateCustomerHours)
-        this.router.delete(`${this.path}`, this.customerHoursController.deleteCustomerHours)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreateCustomerHoursDTO, true), this.customerHoursController.updateCustomerHours)
+        this.router.delete(`${this.path}/:id`, this.customerHoursController.deleteCustomerHours)
     }
 }
 

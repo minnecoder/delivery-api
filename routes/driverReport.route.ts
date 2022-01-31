@@ -17,8 +17,8 @@ class DriverReportRoute implements Route {
         this.router.get(`${this.path}`, this.driverReportController.getDriverReports)
         this.router.get(`${this.path}/:id`, this.driverReportController.getSingleDriverReport)
         this.router.post(`${this.path}`, validationMiddleware(CreateDriverReportDTO), this.driverReportController.addDriverReport)
-        this.router.put(`${this.path}`, validationMiddleware(CreateDriverReportDTO, true), this.driverReportController.updateDriverReport)
-        this.router.delete(`${this.path}`, this.driverReportController.deleteDriverReport)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreateDriverReportDTO, true), this.driverReportController.updateDriverReport)
+        this.router.delete(`${this.path}/:id`, this.driverReportController.deleteDriverReport)
     }
 }
 

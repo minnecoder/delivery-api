@@ -17,8 +17,8 @@ class VehiclesRoute implements Route {
         this.router.get(`${this.path}`, this.vehiclesController.getVehicles)
         this.router.get(`${this.path}/:id`, this.vehiclesController.getSingleVehicle)
         this.router.post(`${this.path}`, validationMiddleware(CreateVehiclesDTO), this.vehiclesController.addVehicle)
-        this.router.put(`${this.path}`, validationMiddleware(CreateVehiclesDTO, true), this.vehiclesController.updateVehicle)
-        this.router.delete(`${this.path}`, this.vehiclesController.deleteVehicle)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreateVehiclesDTO, true), this.vehiclesController.updateVehicle)
+        this.router.delete(`${this.path}/:id`, this.vehiclesController.deleteVehicle)
     }
 }
 

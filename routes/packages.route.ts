@@ -17,8 +17,8 @@ class PackagesRoute implements Route {
         this.router.get(`${this.path}`, this.packagesController.getPackages)
         this.router.get(`${this.path}/:id`, this.packagesController.getSinglePackage)
         this.router.post(`${this.path}`, validationMiddleware(CreatePackagesDTO), this.packagesController.addPackage)
-        this.router.put(`${this.path}`, validationMiddleware(CreatePackagesDTO, true), this.packagesController.updatePackage)
-        this.router.delete(`${this.path}`, this.packagesController.deletePackage)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreatePackagesDTO, true), this.packagesController.updatePackage)
+        this.router.delete(`${this.path}/:id`, this.packagesController.deletePackage)
     }
 }
 

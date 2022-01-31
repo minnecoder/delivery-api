@@ -17,8 +17,8 @@ class StopsRoute implements Route {
         this.router.get(`${this.path}`, this.stopsController.getStops)
         this.router.get(`${this.path}/:id`, this.stopsController.getSingleStop)
         this.router.post(`${this.path}`, validationMiddleware(CreateStopsDTO), this.stopsController.addStop)
-        this.router.put(`${this.path}`, validationMiddleware(CreateStopsDTO, true), this.stopsController.updateStop)
-        this.router.delete(`${this.path}`, this.stopsController.deleteStop)
+        this.router.put(`${this.path}/:id`, validationMiddleware(CreateStopsDTO, true), this.stopsController.updateStop)
+        this.router.delete(`${this.path}/:id`, this.stopsController.deleteStop)
     }
 }
 
