@@ -20,8 +20,7 @@ export default function (sequelize: Sequelize): typeof Packages {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true,
-            allowNull: false
+            autoIncrement: true
         },
         orderId: {
             type: DataTypes.INTEGER,

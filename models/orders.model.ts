@@ -19,8 +19,7 @@ export default function (sequelize: Sequelize): typeof Orders {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true,
-            allowNull: false
+            autoIncrement: true
         },
         customerId: {
             type: DataTypes.INTEGER,

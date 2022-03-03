@@ -30,7 +30,6 @@ export default function (sequelize: Sequelize): typeof DriverReports {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            allowNull: false
         },
         driverId: {
             type: DataTypes.INTEGER,

@@ -28,8 +28,8 @@ export default function (sequelize: Sequelize): typeof CustomerHours {
     CustomerHours.init({
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         customerId: {
             type: DataTypes.INTEGER,

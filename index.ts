@@ -40,7 +40,7 @@ class App {
 
     private connectToDB() {
 
-        DB.sequelize.sync({ force: false })
+        DB.sequelize.sync({ force: true })
     }
 
     private initializeMiddleware() {

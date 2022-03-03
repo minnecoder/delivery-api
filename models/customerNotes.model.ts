@@ -16,8 +16,8 @@ export default function (sequelize: Sequelize): typeof CustomerNotes {
     CustomerNotes.init({
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         customerId: {
             type: DataTypes.INTEGER,

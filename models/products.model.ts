@@ -16,8 +16,7 @@ export default function (sequelize: Sequelize): typeof Products {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true,
-            allowNull: false
+            autoIncrement: true
         },
         item: {
             type: DataTypes.STRING,

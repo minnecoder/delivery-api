@@ -22,7 +22,6 @@ export default function (sequelize: Sequelize): typeof Drivers {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            allowNull: false
         },
         organizationId: {
             type: DataTypes.INTEGER,
