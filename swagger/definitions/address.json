@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "number": {
+            "type": "integer"
+        },
+        "street": {
+            "type": "string"
+        },
+        "apartment": {
+            "type": "string"
+        },
+        "suite": {
+            "type": "number"
+        },
+        "city": {
+            "type": "string"
+        },
+        "state": {
+            "type": "string"
+        },
+        "postalCode": {
+            "type": "number"
+        },
+        "country": {
+            "type": "string"
+        }
+    },
+    "xml": {
+        "name": "Address"
+    }
+}

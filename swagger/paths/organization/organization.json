@@ -1,0 +1,52 @@
+{
+    "get": {
+        "tags": [
+            "Organizations"
+        ],
+        "summary": "Returns all organizations",
+        "description": "Returns all organizations",
+        "responses": {
+            "200": {
+                "description": "A list of organizations"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "post": {
+        "tags": [
+            "Organizations"
+        ],
+        "summary": "Create a new organization",
+        "description": "",
+        "operationId": "addOrganization",
+        "consumes": [
+            "application/json",
+            "application/xml"
+        ],
+        "produces": [
+            "application/xml",
+            "application/json"
+        ],
+        "parameters": [
+            {
+                "in": "body",
+                "name": "body",
+                "description": "Organization object to add",
+                "required": true,
+                "schema": {
+                    "$ref": "../../definitions/organization.json"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New organization is created"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "get": {
+        "tags": [
+            "Hubs"
+        ],
+        "summary": "Returns all hubs",
+        "description": "Returns all hubs",
+        "responses": {
+            "200": {
+                "description": "A list of hubs"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "post": {
+        "tags": [
+            "Hubs"
+        ],
+        "summary": "Create a new hub",
+        "description": "",
+        "operationId": "addHub",
+        "consumes": [
+            "application/json",
+            "application/xml"
+        ],
+        "produces": [
+            "application/xml",
+            "application/json"
+        ],
+        "parameters": [
+            {
+                "in": "body",
+                "name": "body",
+                "description": "Hub object to add",
+                "required": true,
+                "schema": {
+                    "$ref": "../../definitions/hub.json"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New hub is created"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

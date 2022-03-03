@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string"
+        },
+        "country": {
+            "type": "string"
+        },
+        "organizationAdmins": {
+            "type": "integer"
+        }
+    },
+    "xml": {
+        "name": "Organization"
+    }
+}

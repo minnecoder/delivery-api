@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Teams"
+        ],
+        "summary": "Find team by ID",
+        "description": "Return single team",
+        "operationId": "getSingleTeam",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of team",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single team returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update team with a given ID",
+        "tags": [
+            "Teams"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete team with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Team deleted"
+            },
+            "404": {
+                "description": "Failed. Team not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete team with a given ID",
+        "tags": [
+            "Teams"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete team with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Team deleted"
+            },
+            "404": {
+                "description": "Failed. Team not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

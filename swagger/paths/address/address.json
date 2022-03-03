@@ -1,0 +1,52 @@
+{
+    "get": {
+        "tags": [
+            "Address"
+        ],
+        "summary": "Returns all addresses",
+        "description": "Returns all addresses",
+        "responses": {
+            "200": {
+                "description": "A list of addresses"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "post": {
+        "tags": [
+            "Address"
+        ],
+        "summary": "Create a new address",
+        "description": "Create a new address",
+        "operationId": "addAddress",
+        "consumes": [
+            "application/json",
+            "application/xml"
+        ],
+        "produces": [
+            "application/json",
+            "application/xml"
+        ],
+        "parameters": [
+            {
+                "in": "body",
+                "name": "body",
+                "description": "Address object to add",
+                "required": true,
+                "schema": {
+                    "$ref": "../../definitions/address.json"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New address is created"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

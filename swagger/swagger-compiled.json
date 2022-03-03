@@ -13,6 +13,10 @@
   "basePath": "/api/v1",
   "tags": [
     {
+      "name": "Addresses",
+      "description": "Address operations"
+    },
+    {
       "name": "Customers",
       "description": "Customer operations"
     },
@@ -33,12 +37,20 @@
       "description": "Driver Report operations"
     },
     {
+      "name": "Hubs",
+      "description": "Hub operations"
+    },
+    {
       "name": "Orders",
       "description": "Order operations"
     },
     {
       "name": "Order Items",
       "description": "Order Item operations"
+    },
+    {
+      "name": "Organizations",
+      "description": "Organization operations"
     },
     {
       "name": "Packages",
@@ -57,6 +69,10 @@
       "description": "Stop operations"
     },
     {
+      "name": "Teams",
+      "description": "Team operations"
+    },
+    {
       "name": "User",
       "description": "User operations"
     },
@@ -66,6 +82,140 @@
     }
   ],
   "paths": {
+    "/addresses": {
+      "get": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Returns all addresses",
+        "description": "Returns all addresses",
+        "responses": {
+          "200": {
+            "description": "A list of addresses"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Address"
+        ],
+        "summary": "Create a new address",
+        "description": "Create a new address",
+        "operationId": "addAddress",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Address object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Address"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New address is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/addresses/{id}": {
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Find address by ID",
+        "description": "Return single address",
+        "operationId": "getSingleAddress",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of address",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single address returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update address with a given ID",
+        "tags": [
+          "Addresses"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete address with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Address deleted"
+          },
+          "404": {
+            "description": "Failed. Address not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete address with a given ID",
+        "tags": [
+          "Addresses"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete address with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Address deleted"
+          },
+          "404": {
+            "description": "Failed. Address not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
     "/customers": {
       "get": {
         "tags": [
@@ -736,6 +886,140 @@
         }
       }
     },
+    "/hubs": {
+      "get": {
+        "tags": [
+          "Hubs"
+        ],
+        "summary": "Returns all hubs",
+        "description": "Returns all hubs",
+        "responses": {
+          "200": {
+            "description": "A list of hubs"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Hubs"
+        ],
+        "summary": "Create a new hub",
+        "description": "",
+        "operationId": "addHub",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Hub object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Hub"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New hub is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/hubs/{id}": {
+      "get": {
+        "tags": [
+          "Hubs"
+        ],
+        "summary": "Find hub by ID",
+        "description": "Return single hub",
+        "operationId": "getSingleHub",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of hub",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single hub returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update hub with a given ID",
+        "tags": [
+          "Hubs"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete hub with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hub deleted"
+          },
+          "404": {
+            "description": "Failed. Hub not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete hub with a given ID",
+        "tags": [
+          "Hubs"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete hub with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hub deleted"
+          },
+          "404": {
+            "description": "Failed. Hub not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
     "/orders": {
       "get": {
         "tags": [
@@ -997,6 +1281,140 @@
           },
           "404": {
             "description": "Failed. Order Item not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/organizations": {
+      "get": {
+        "tags": [
+          "Organizations"
+        ],
+        "summary": "Returns all organizations",
+        "description": "Returns all organizations",
+        "responses": {
+          "200": {
+            "description": "A list of organizations"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Organizations"
+        ],
+        "summary": "Create a new organization",
+        "description": "",
+        "operationId": "addOrganization",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Organization object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Organization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New organization is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/organizations/{id}": {
+      "get": {
+        "tags": [
+          "Organizations"
+        ],
+        "summary": "Find organization by ID",
+        "description": "Return single organization",
+        "operationId": "getSingleOrganization",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of organization",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single organization returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update organization with a given ID",
+        "tags": [
+          "Organizations"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete organization with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organization deleted"
+          },
+          "404": {
+            "description": "Failed. Organization not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete organization with a given ID",
+        "tags": [
+          "Organizations"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete organization with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organization deleted"
+          },
+          "404": {
+            "description": "Failed. Organization not found"
           },
           "500": {
             "description": "Server Error"
@@ -1540,6 +1958,140 @@
         }
       }
     },
+    "/teams": {
+      "get": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "Returns all teams",
+        "description": "Returns all teams",
+        "responses": {
+          "200": {
+            "description": "A list of teams"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "Create a new team",
+        "description": "",
+        "operationId": "addTeam",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Team object to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Team"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "New team is created"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/teams/{id}": {
+      "get": {
+        "tags": [
+          "Teams"
+        ],
+        "summary": "Find team by ID",
+        "description": "Return single team",
+        "operationId": "getSingleTeam",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of team",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Single team returned successfully"
+          },
+          "404": {
+            "description": "ID not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update team with a given ID",
+        "tags": [
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete team with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Team deleted"
+          },
+          "404": {
+            "description": "Failed. Team not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete team with a given ID",
+        "tags": [
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "Delete team with id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Team deleted"
+          },
+          "404": {
+            "description": "Failed. Team not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
     "/user/add": {
       "post": {
         "tags": [
@@ -1786,6 +2338,38 @@
     }
   },
   "definitions": {
+    "Address": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer"
+        },
+        "street": {
+          "type": "string"
+        },
+        "apartment": {
+          "type": "string"
+        },
+        "suite": {
+          "type": "number"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "number"
+        },
+        "country": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Address"
+      }
+    },
     "Customer": {
       "type": "object",
       "properties": {
@@ -1988,6 +2572,26 @@
         }
       }
     },
+    "Hub": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "addressId": {
+          "type": "integer"
+        },
+        "teams": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "Hub"
+      }
+    },
     "Order": {
       "properties": {
         "customer_id": {
@@ -2031,6 +2635,26 @@
         "quantity": {
           "type": "integer"
         }
+      }
+    },
+    "Organization": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "organizationAdmins": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "Organization"
       }
     },
     "Package": {
@@ -2166,6 +2790,26 @@
           "type": "integer",
           "format": "int32"
         }
+      }
+    },
+    "Team": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "workers": {
+          "type": "integer"
+        },
+        "managers": {
+          "type": "integer"
+        },
+        "hubId": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "Team"
       }
     },
     "User": {

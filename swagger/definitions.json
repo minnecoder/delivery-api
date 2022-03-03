@@ -1,4 +1,7 @@
 {
+    "Address": {
+        "$ref": "./definitions/address.json"
+    },
     "Customer": {
         "$ref": "./definitions/customer.json"
     },
@@ -14,11 +17,17 @@
     "DriverReport": {
         "$ref": "./definitions/driverReport.json"
     },
+    "Hub": {
+        "$ref": "./definitions/hub.json"
+    },
     "Order": {
         "$ref": "./definitions/order.json"
     },
     "OrderItem": {
         "$ref": "./definitions/orderItem.json"
+    },
+    "Organization": {
+        "$ref": "./definitions/organization.json"
     },
     "Package": {
         "$ref": "./definitions/packages.json"
@@ -31,6 +40,9 @@
     },
     "Stop": {
         "$ref": "./definitions/stop.json"
+    },
+    "Team": {
+        "$ref": "./definitions/team.json"
     },
     "User": {
         "$ref": "./definitions/user.json"

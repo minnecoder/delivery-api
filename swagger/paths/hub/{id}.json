@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Hubs"
+        ],
+        "summary": "Find hub by ID",
+        "description": "Return single hub",
+        "operationId": "getSingleHub",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of hub",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single hub returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update hub with a given ID",
+        "tags": [
+            "Hubs"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete hub with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Hub deleted"
+            },
+            "404": {
+                "description": "Failed. Hub not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete hub with a given ID",
+        "tags": [
+            "Hubs"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete hub with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Hub deleted"
+            },
+            "404": {
+                "description": "Failed. Hub not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Addresses"
+        ],
+        "summary": "Find address by ID",
+        "description": "Return single address",
+        "operationId": "getSingleAddress",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of address",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single address returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update address with a given ID",
+        "tags": [
+            "Addresses"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete address with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Address deleted"
+            },
+            "404": {
+                "description": "Failed. Address not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete address with a given ID",
+        "tags": [
+            "Addresses"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete address with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Address deleted"
+            },
+            "404": {
+                "description": "Failed. Address not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

@@ -1,0 +1,82 @@
+{
+    "get": {
+        "tags": [
+            "Organizations"
+        ],
+        "summary": "Find organization by ID",
+        "description": "Return single organization",
+        "operationId": "getSingleOrganization",
+        "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "description": "ID of organization",
+                "required": true,
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Single organization returned successfully"
+            },
+            "404": {
+                "description": "ID not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "put": {
+        "summary": "Update organization with a given ID",
+        "tags": [
+            "Organizations"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete organization with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Organization deleted"
+            },
+            "404": {
+                "description": "Failed. Organization not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "delete": {
+        "summary": "Delete organization with a given ID",
+        "tags": [
+            "Organizations"
+        ],
+        "parameters": [
+            {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "description": "Delete organization with id",
+                "type": "integer"
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Organization deleted"
+            },
+            "404": {
+                "description": "Failed. Organization not found"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}

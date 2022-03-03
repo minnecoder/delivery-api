@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "workers": {
+            "type": "integer"
+        },
+        "managers": {
+            "type": "integer"
+        },
+        "hubId": {
+            "type": "integer"
+        }
+    },
+    "xml": {
+        "name": "Team"
+    }
+}

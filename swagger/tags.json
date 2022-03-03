@@ -1,5 +1,9 @@
 [
     {
+        "name": "Addresses",
+        "description": "Address operations"
+    },
+    {
         "name": "Customers",
         "description": "Customer operations"
     },
@@ -20,12 +24,20 @@
         "description": "Driver Report operations"
     },
     {
+        "name": "Hubs",
+        "description": "Hub operations"
+    },
+    {
         "name": "Orders",
         "description": "Order operations"
     },
     {
         "name": "Order Items",
         "description": "Order Item operations"
+    },
+    {
+        "name": "Organizations",
+        "description": "Organization operations"
     },
     {
         "name": "Packages",
@@ -42,6 +54,10 @@
     {
         "name": "Stops",
         "description": "Stop operations"
+    },
+    {
+        "name": "Teams",
+        "description": "Team operations"
     },
     {
         "name": "User",

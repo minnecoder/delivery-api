@@ -1,4 +1,10 @@
 {
+    "/addresses": {
+        "$ref": "./paths/address/address.json"
+    },
+    "/addresses/{id}": {
+        "$ref": "./paths/address/{id}.json"
+    },
     "/customers": {
         "$ref": "./paths/customer/customer.json"
     },
@@ -29,6 +35,12 @@
     "/driverReports/{id}": {
         "$ref": "./paths/driverReport/{id}.json"
     },
+    "/hubs": {
+        "$ref": "./paths/hub/hub.json"
+    },
+    "/hubs/{id}": {
+        "$ref": "./paths/hub/{id}.json"
+    },
     "/orders": {
         "$ref": "./paths/order/order.json"
     },
@@ -40,6 +52,12 @@
     },
     "/orderItems/{id}": {
         "$ref": "./paths/orderItem/{id}.json"
+    },
+    "/organizations": {
+        "$ref": "./paths/organization/organization.json"
+    },
+    "/organizations/{id}": {
+        "$ref": "./paths/organization/{id}.json"
     },
     "/packages": {
         "$ref": "./paths/packages/packages.json"
@@ -64,6 +82,12 @@
     },
     "/stops/{id}": {
         "$ref": "./paths/stop/{id}.json"
+    },
+    "/teams": {
+        "$ref": "./paths/team/team.json"
+    },
+    "/teams/{id}": {
+        "$ref": "./paths/team/{id}.json"
     },
     "/user/add": {
         "$ref": "./paths/user/addUser.json"

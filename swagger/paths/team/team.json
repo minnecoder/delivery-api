@@ -1,0 +1,52 @@
+{
+    "get": {
+        "tags": [
+            "Teams"
+        ],
+        "summary": "Returns all teams",
+        "description": "Returns all teams",
+        "responses": {
+            "200": {
+                "description": "A list of teams"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    },
+    "post": {
+        "tags": [
+            "Teams"
+        ],
+        "summary": "Create a new team",
+        "description": "",
+        "operationId": "addTeam",
+        "consumes": [
+            "application/json",
+            "application/xml"
+        ],
+        "produces": [
+            "application/xml",
+            "application/json"
+        ],
+        "parameters": [
+            {
+                "in": "body",
+                "name": "body",
+                "description": "Team object to add",
+                "required": true,
+                "schema": {
+                    "$ref": "../../definitions/team.json"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "New team is created"
+            },
+            "500": {
+                "description": "Server Error"
+            }
+        }
+    }
+}
