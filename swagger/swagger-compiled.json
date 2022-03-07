@@ -85,7 +85,7 @@
     "/addresses": {
       "get": {
         "tags": [
-          "Address"
+          "Addresses"
         ],
         "summary": "Returns all addresses",
         "description": "Returns all addresses",
@@ -100,7 +100,7 @@
       },
       "post": {
         "tags": [
-          "Address"
+          "Addresses"
         ],
         "summary": "Create a new address",
         "description": "Create a new address",
@@ -127,6 +127,9 @@
         "responses": {
           "200": {
             "description": "New address is created"
+          },
+          "404": {
+            "description": "Address not found"
           },
           "500": {
             "description": "Server Error"
@@ -156,7 +159,7 @@
             "description": "Single address returned successfully"
           },
           "404": {
-            "description": "ID not found"
+            "description": "Error: Not Found"
           },
           "500": {
             "description": "Server Error"
@@ -173,13 +176,13 @@
             "in": "path",
             "name": "id",
             "required": true,
-            "description": "Delete address with id",
+            "description": "Update address with id",
             "type": "integer"
           }
         ],
         "responses": {
           "200": {
-            "description": "Address deleted"
+            "description": "Address updated"
           },
           "404": {
             "description": "Failed. Address not found"

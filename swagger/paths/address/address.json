@@ -1,7 +1,7 @@
 {
     "get": {
         "tags": [
-            "Address"
+            "Addresses"
         ],
         "summary": "Returns all addresses",
         "description": "Returns all addresses",
@@ -16,7 +16,7 @@
     },
     "post": {
         "tags": [
-            "Address"
+            "Addresses"
         ],
         "summary": "Create a new address",
         "description": "Create a new address",
@@ -43,6 +43,9 @@
         "responses": {
             "200": {
                 "description": "New address is created"
+            },
+            "404": {
+                "description": "Address not found"
             },
             "500": {
                 "description": "Server Error"
